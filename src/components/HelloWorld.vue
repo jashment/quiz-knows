@@ -1,121 +1,74 @@
 <template>
-  <v-container>
-    <v-layout text-center wrap>
-      <v-flex xs12>
-        <v-img :src="require('../assets/logo.svg')" class="my-3" contain height="200"></v-img>
-      </v-flex>
+    <v-navigation-drawer
+      expand-on-hover
+      permanent
+    >
+      <template v-slot:prepend>
+        <v-list>
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-img src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/27337022_10160041719275327_1001198401363381299_n.jpg?_nc_cat=108&_nc_oc=AQndJbRHtM5b8QeNPuoIq-xW0zAG2OIqKUDS3C4ZHVYohsN3InQBGUcn7RGU8xjKzIo&_nc_ht=scontent-sjc3-1.xx&oh=5f2a5c0d90b408024f2f1905d68f515e&oe=5E2FC739"></v-img>
+            </v-list-item-avatar>
+          </v-list-item>
 
-      <v-flex mb-4>
-        <h1 class="display-2 font-weight-bold mb-3">Welcome to Vuetify</h1>
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br />please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-flex>
+          <v-list-item
+            link
+            two-line
+          >
+            <v-list-item-content>
+              <v-list-item-title class="title">Grant Shoop</v-list-item-title>
+              <v-list-item-subtitle>grantshoop@gmail.com</v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-icon>mdi-menu-down</v-icon>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+      </template>
 
-      <v-flex mb-5 xs12>
-        <h2 class="headline font-weight-bold mb-3">What's next?</h2>
+      <v-divider></v-divider>
 
-        <v-layout justify-center>
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >{{ next.text }}</a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex xs12 mb-5>
-        <h2 class="headline font-weight-bold mb-3">Important Links</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >{{ link.text }}</a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex xs12 mb-5>
-        <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >{{ eco.text }}</a>
-        </v-layout>
-      </v-flex>
-    </v-layout>
-  </v-container>
+      <v-list
+        nav
+        
+      >
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-view-dashboard</v-icon>
+            <v-icon></v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Dashboard</v-list-item-title>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-percent</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Grades</v-list-item-title>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-file-document-edit</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Tests</v-list-item-title>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-brain</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Quizzes</v-list-item-title>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-settings</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Settings</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    ecosystem: [
-      {
-        text: 'vuetify-loader',
-        href: 'https://github.com/vuetifyjs/vuetify-loader',
-      },
-      {
-        text: 'github',
-        href: 'https://github.com/vuetifyjs/vuetify',
-      },
-      {
-        text: 'awesome-vuetify',
-        href: 'https://github.com/vuetifyjs/awesome-vuetify',
-      },
-    ],
-    importantLinks: [
-      {
-        text: 'Documentation',
-        href: 'https://vuetifyjs.com',
-      },
-      {
-        text: 'Chat',
-        href: 'https://community.vuetifyjs.com',
-      },
-      {
-        text: 'Made with Vuetify',
-        href: 'https://madewithvuejs.com/vuetify',
-      },
-      {
-        text: 'Twitter',
-        href: 'https://twitter.com/vuetifyjs',
-      },
-      {
-        text: 'Articles',
-        href: 'https://medium.com/vuetify',
-      },
-    ],
-    whatsNext: [
-      {
-        text: 'Explore components',
-        href: 'https://vuetifyjs.com/components/api-explorer',
-      },
-      {
-        text: 'Select a layout',
-        href: 'https://vuetifyjs.com/layout/pre-defined',
-      },
-      {
-        text: 'Frequently Asked Questions',
-        href:
-          'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-      },
-    ],
-  }),
+  
 }
 </script>
