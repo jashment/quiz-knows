@@ -9,18 +9,18 @@
     </v-app-bar>
 
     <v-content>
-      <HelloWorld />
+      <Logger />
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Logger from './components/Logger'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Logger,
   },
   data: () => ({
     //
