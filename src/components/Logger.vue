@@ -23,7 +23,7 @@ export default {
   methods: {
     logKey: function(event) {
       console.log(event)
-      event.preventDefault()
+      // event.preventDefault()
       if (event.code != 'Backspace') {
         this.infoArray.push(event.key)
       }
@@ -34,7 +34,7 @@ export default {
   },
   mounted() {
     window.addEventListener('keypress', e => {
-      e.preventDefault()
+      // e.preventDefault()
       console.log(String.fromCharCode(e.keyCode))
     })
   },
