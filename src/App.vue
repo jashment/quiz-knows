@@ -9,6 +9,7 @@
     </v-app-bar>
 
     <v-content>
+      <Home />
       <Logger />
     </v-content>
   </v-app>
@@ -16,11 +17,13 @@
 
 <script>
 import Logger from './components/Logger'
+import Home from './components/Home'
 
 export default {
   name: 'App',
   components: {
     Logger,
+    Home,
   },
   data: () => ({
     //

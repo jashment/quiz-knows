@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="loggerDiv">
     <h1>Keyboard Events</h1>
     <label>Input:</label>
     <v-text-field type="text" v-on:keydown="logName" v-model="name" />
@@ -46,4 +46,9 @@ export default {
 </script>
 
 <style scoped>
+.loggerDiv {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
 </style>
