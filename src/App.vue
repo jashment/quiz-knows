@@ -13,7 +13,7 @@
       <Logger />
       <v-container>
         <v-row>
-          <v-col v-for="n in 6" :key="n" cols="12" sm="4">
+          <v-col v-for="n in 9" :key="n" cols="12" sm="4">
             <Card />
           </v-col>
         </v-row>
@@ -43,5 +43,9 @@ export default {
 <style scoped>
 div.cardComp.v-card {
   margin: auto;
+}
+div.container {
+  /* margin-left: 5; */
+  margin: 5;
 }
 </style>
