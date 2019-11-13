@@ -34,7 +34,7 @@ export default {
   mounted() {
     window.addEventListener('keypress', e => {
       // e.preventDefault()
-      // console.log(String.fromCharCode(e.keyCode))
+      String.fromCharCode(e.keyCode)
     })
   },
 }
