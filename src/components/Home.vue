@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-navigation-drawer expand-on-hover permanent clipped floating fixed>
+    <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
       <template v-slot:prepend>
         <v-list>
           <v-list-item>
@@ -72,4 +72,23 @@ export default {
 </script>
 
 <style scoped>
+.navDrawer {
+  background: #14ced2; /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    #00f4ff 0%,
+    #0cafff 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #00f4ff 0%,
+    #0cafff 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #00f4ff 0%,
+    #0cafff 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14ced2', endColorstr='#63b1e3',GradientType=0 ); /* IE6-9 */
+}
 </style>

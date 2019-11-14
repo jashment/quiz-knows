@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app>
+    <v-app-bar app clipped-left>
       <v-toolbar-title class="headline text-uppercase">
         <span>Quiz</span>
         <span class="font-weight-light">Knows</span>
@@ -11,6 +11,13 @@
     <v-content>
       <Home />
       <Logger />
+      <v-container>
+        <v-row>
+          <v-col v-for="n in 9" :key="n" cols="12" sm="4">
+            <Card />
+          </v-col>
+        </v-row>
+      </v-container>
     </v-content>
   </v-app>
 </template>
@@ -18,15 +25,27 @@
 <script>
 import Logger from './components/Logger'
 import Home from './components/Home'
+import Card from './components/Card'
 
 export default {
   name: 'App',
   components: {
-    Logger,
+    Card,
     Home,
+    Logger,
   },
   data: () => ({
     //
   }),
 }
 </script>
+
+<style scoped>
+div.cardComp.v-card {
+  margin: auto;
+}
+div.container {
+  /* margin-left: 5; */
+  margin: 5;
+}
+</style>
