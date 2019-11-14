@@ -2,7 +2,7 @@
   <div class="loggerDiv">
     <h1>Keyboard Events</h1>
     <label>Input:</label>
-    <v-text-field type="text" v-on:keyup="logKey" v-model="pressedKey" />
+    <v-text-field type="text" v-on:keydown="logKey" v-model="pressedKey" />
 
     <span>{{ pressedKey }}</span>
 
@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     logKey: function(event) {
-      // event.preventDefault()
+      event.preventDefault()
       if (event.code != 'Backspace') {
         this.infoArray.push(event.key)
       }
@@ -33,7 +33,7 @@ export default {
   },
   mounted() {
     window.addEventListener('keypress', e => {
-      // e.preventDefault()
+      e.preventDefault()
       String.fromCharCode(e.keyCode)
     })
   },
