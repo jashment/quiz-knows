@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating fixed>
+    <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
       <template v-slot:prepend>
         <v-list>
           <v-list-item>

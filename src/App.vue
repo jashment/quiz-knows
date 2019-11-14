@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app>
+    <v-app-bar app clipped-left>
       <v-toolbar-title class="headline text-uppercase">
         <span>Quiz</span>
         <span class="font-weight-light">Knows</span>
