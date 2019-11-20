@@ -37,28 +37,15 @@
         <v-list nav>
           <v-list-item link to="/cardlayout">
             <v-list-item-icon>
-              <v-icon>mdi-view-dashboard</v-icon>
-              <v-icon></v-icon>
+              <v-icon>mdi-brain</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Dashboard</v-list-item-title>
+            <v-list-item-title>Quizzes</v-list-item-title>
           </v-list-item>
           <v-list-item link to="/grades">
             <v-list-item-icon>
               <v-icon>mdi-percent</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Grades</v-list-item-title>
-          </v-list-item>
-          <v-list-item link to="/tests">
-            <v-list-item-icon>
-              <v-icon>mdi-file-document-edit</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Tests</v-list-item-title>
-          </v-list-item>
-          <v-list-item link to="/quizzes">
-            <v-list-item-icon>
-              <v-icon>mdi-brain</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Quizzes</v-list-item-title>
           </v-list-item>
           <v-list-item link to="/settings">
             <v-list-item-icon>
