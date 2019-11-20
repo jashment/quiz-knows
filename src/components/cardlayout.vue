@@ -17,7 +17,7 @@
 
 
 <script>
-import Card from './components/Card'
+import Card from './Card'
 
 export default {
   name: 'App',
@@ -39,7 +39,6 @@ export default {
 
 h1 {
     text-align: center;
-    margin-top: 250px;
 }
 
 

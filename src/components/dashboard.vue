@@ -2,7 +2,7 @@
 <div>
 
 <h1>Dashboard </h1>
-<router-link to="/cardlayout">Checkout Cards</router-link>
+<center><router-link to="/cardlayout">Checkout Cards</router-link></center>
 </div>
 </template>
 
