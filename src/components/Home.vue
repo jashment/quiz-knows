@@ -35,7 +35,7 @@
 
         <v-divider></v-divider>
         <v-list nav>
-          <v-list-item link to="/dashboard">
+          <v-list-item link to="/cardlayout">
             <v-list-item-icon>
               <v-icon>mdi-view-dashboard</v-icon>
               <v-icon></v-icon>
@@ -101,8 +101,4 @@ export default {
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14ced2', endColorstr='#63b1e3',GradientType=0 ); /* IE6-9 */
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> b3906e7abc1a33871f091f4066a64526b77808bb
