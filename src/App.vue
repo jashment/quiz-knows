@@ -12,9 +12,9 @@
        <router-view></router-view>
        
       </app-home>
-      <!-- <Logger />
+      <Logger />
       <Login />
-      <v-container>
+      <!-- <v-container>
         <v-row>
           <v-col v-for="n in 9" :key="n" cols="12" sm="4">
             <Card />
