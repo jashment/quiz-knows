@@ -2,10 +2,10 @@
   <div class="loggerDiv">
     <h1>Keyboard Events</h1>
     <label>Input:</label>
-    <v-text-field type="text" v-on:keydown="logName" v-model="name" />
+    <v-text-field type="text" v-on:keydown="logKey" v-model="pressedKey" />
 
-    <span>{{ name }}</span>
-    <span>{{ age }}</span>
+    <span>{{ pressedKey }}</span>
+
     <span>{{ infoArray }}</span>
     <br />
     <v-btn @click="clearArray">Click Me to Clear</v-btn>
@@ -16,22 +16,16 @@
 export default {
   data() {
     return {
-      name: '',
-      age: '',
+      pressedKey: '',
       infoArray: [],
     }
   },
   methods: {
-    logName: function(event) {
-      console.log(event)
+    logKey: function(event) {
+      event.preventDefault()
       if (event.code != 'Backspace') {
         this.infoArray.push(event.key)
       }
-      // console.log(this.infoArray)
-    },
-    logAge: function() {
-      this.infoArray.push(this.age)
-      console.log(this.infoArray)
     },
     clearArray: function() {
       this.infoArray = []
@@ -39,7 +33,8 @@ export default {
   },
   mounted() {
     window.addEventListener('keypress', e => {
-      console.log(String.fromCharCode(e.keyCode))
+      e.preventDefault()
+      String.fromCharCode(e.keyCode)
     })
   },
 }
