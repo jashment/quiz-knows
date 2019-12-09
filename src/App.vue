@@ -11,14 +11,14 @@
       <app-home>
         <router-view></router-view>
       </app-home>
-      <Logger />
+      <!-- <Logger /> -->
       <!-- <Login /> -->
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Logger from './components/Logger'
+// import Logger from './components/Logger'
 import Home from './components/Home'
 // import Card from './components/Card'
 // import Login from './components/Login'
@@ -28,7 +28,7 @@ export default {
   components: {
     // Card,
     appHome: Home,
-    Logger,
+    // Logger,
     // Login,
   },
   data: () => ({
@@ -44,5 +44,8 @@ div.cardComp.v-card {
 div.container {
   /* margin-left: 5; */
   margin: 5;
+}
+h1 {
+  text-align: center;
 }
 </style>
