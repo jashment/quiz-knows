@@ -11,7 +11,6 @@
       <app-home>
         <router-view></router-view>
       </app-home>
-      <h1>Welcome!</h1>
       <!-- <Logger /> -->
       <!-- <Login /> -->
     </v-content>
