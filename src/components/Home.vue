@@ -1,14 +1,7 @@
 <template>
   <div>
     <v-card>
-      <v-navigation-drawer
-        class="navDrawer"
-        expand-on-hover
-        permanent
-        clipped
-        floating
-        app
-      >
+      <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
         <template v-slot:prepend>
           <v-list>
             <v-list-item>
@@ -22,9 +15,7 @@
             <v-list-item link two-line>
               <v-list-item-content>
                 <v-list-item-title class="title">Grant Shoop</v-list-item-title>
-                <v-list-item-subtitle
-                  >grantshoop@gmail.com</v-list-item-subtitle
-                >
+                <v-list-item-subtitle>grantshoop@gmail.com</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
                 <v-icon>mdi-menu-down</v-icon>
@@ -41,6 +32,12 @@
               <v-icon></v-icon>
             </v-list-item-icon>
             <v-list-item-title>Dashboard</v-list-item-title>
+          </v-list-item>
+          <v-list-item link to="/logger">
+            <v-list-item-icon>
+              <v-icon>mdi-keyboard-outline</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Logger</v-list-item-title>
           </v-list-item>
           <v-list-item link to="/grades">
             <v-list-item-icon>

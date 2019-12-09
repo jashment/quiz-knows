@@ -9,24 +9,16 @@
     </v-app-bar>
     <v-content>
       <app-home>
-       <router-view></router-view>
-       
+        <router-view></router-view>
       </app-home>
       <Logger />
-      <Login />
-      <!-- <v-container>
-        <v-row>
-          <v-col v-for="n in 9" :key="n" cols="12" sm="4">
-            <Card />
-          </v-col>
-        </v-row>
-      </v-container> -->
+      <!-- <Login /> -->
     </v-content>
   </v-app>
 </template>
 
 <script>
-// import Logger from './components/Logger'
+import Logger from './components/Logger'
 import Home from './components/Home'
 // import Card from './components/Card'
 // import Login from './components/Login'
@@ -36,7 +28,7 @@ export default {
   components: {
     // Card,
     appHome: Home,
-    // Logger,
+    Logger,
     // Login,
   },
   data: () => ({
