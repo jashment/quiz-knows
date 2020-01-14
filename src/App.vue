@@ -11,25 +11,25 @@
       <app-home>
         <router-view></router-view>
       </app-home>
-      <!-- <Logger /> -->
-      <!-- <Login /> -->
+      <Logger />
+      <Login />
     </v-content>
   </v-app>
 </template>
 
 <script>
-// import Logger from './components/Logger'
+import Logger from './components/Logger'
 import Home from './components/Home'
 // import Card from './components/Card'
-// import Login from './components/Login'
+import Login from './components/Login'
 
 export default {
   name: 'App',
   components: {
     // Card,
     appHome: Home,
-    // Logger,
-    // Login,
+    Logger,
+    Login,
   },
   data: () => ({
     //
