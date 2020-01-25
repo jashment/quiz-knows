@@ -1,62 +1,88 @@
 <template>
-<v-container>
-    <div>
-    <h1>Grades</h1>
+  <v-container>
 
+    <h1 class="text-center py-12 font-weight-light">Grades for {{ student.name }}</h1>
     <v-expansion-panels>
-      <v-expansion-panel v-for="result in data" :key="result.index">
-        <v-expansion-panel-header>
-          <p>{{ result.details.softwareType }}</p>
-                <v-spacer></v-spacer>
-          <p>{{ result.attempts[0].date }}</p>
-                <v-spacer></v-spacer>
-          <p>{{ 45 }}</p>
-                <v-spacer></v-spacer>
-          <p>{{ 50 }}</p>
-                <v-spacer></v-spacer>
-          <p>{{ result.attempts[0].time }}</p>
-        </v-expansion-panel-header>
+      <v-expansion-panel v-for="quiz in quizzes" :key="quiz.index">
+        <v-expansion-panel-header>{{ quiz.name }}</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <v-container class="d-flex" v-col="4" v-for="attempt in result.attempts" :key="attempt.index">
-                <p>Attempt {{ attempt.id }}</p>
-                <v-spacer></v-spacer>
-                <p>{{ attempt.date }}</p>
-                <v-spacer></v-spacer>
-                <p>{{ attempt.score }}</p>
-                <v-spacer></v-spacer>
-                <p>{{ attempt.score }}</p>
-                <v-spacer></v-spacer>
-                <p>{{ attempt.time }}</p>
-                <v-spacer></v-spacer>
-              <v-btn text color="primary">Review</v-btn>
-            </v-container> 
+          <v-data-table
+            :headers="headers"
+            :items="attempts"
+            hide-default-footer
+            :sort-by="['Date', 'Score']"
+            :sort-desc="[false, true]"
+            multi-sort
+            class="elevation-1"
+          ></v-data-table>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-  </div>
-</v-container>  
+
+    
+  </v-container>
 </template>
 
 <script>
-import { data } from '../assets/data'
-
 export default {
-  //   props: ["data"],
-  data: () => ({
-    data,
-    attempts: data.attempts,
-  }),
-  methods: {
-    //   runTest() {
-    //       console.log(this.data)
-    //   }
+  data() {
+    return {
+      student: {name: 'Coby Yates'},
+      headers: [
+        {
+          text: 'Attempts',
+          align: 'left',
+          sortable: false,
+          value: 'name',
+        },
+        { text: 'Date', value: 'Date' },
+        { text: 'Score', value: 'Score' },
+        { text: 'Out of', value: 'OutOf' },
+        { text: 'Time', value: 'Time' },
+      ],
+      quizzes: [
+        {name: 'Adobe Premiere'},
+        {name: 'Avid Media Composer'},
+        {name: 'DaVinci Resolve'},
+      ],
+      attempts: [
+        {
+          name: 'Attempt 1',
+          Date: '1/25/2020',
+          Score: 25,
+          OutOf: 50,
+          Time: '5 minutes',
+        },
+        {
+          name: 'Attempt 2',
+          Date: '1/25/2020',
+          Score: 35,
+          OutOf: 50,
+          Time: '5 minutes',
+        },
+        {
+          name: 'Attempt 3',
+          Date: '1/25/2020',
+          Score: 42,
+          OutOf: 50,
+          Time: '5 minutes',
+        },
+        {
+          name: 'Attempt 4',
+          Date: '1/25/2020',
+          Score: 50,
+          OutOf: 50,
+          Time: '5 minutes',
+        },
+      ],
+    }
   },
 }
 </script>
 
 <style scoped>
-h1 {
+/* h1 {
   text-align: center;
-  margin-top: 250px;
-}
+  margin: 100px 0;
+} */
 </style>
