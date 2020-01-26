@@ -9,8 +9,7 @@
     </v-app-bar>
     <v-content>
       <app-home>
-       <router-view></router-view>
-       
+        <router-view></router-view>
       </app-home>
       <Logger />
       <Login />
