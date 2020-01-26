@@ -48,7 +48,7 @@ export default {
       attempts: [
         {
           name: 'Attempt 1',
-          Date: '1/25/2020',
+          Date: '1/24/2020',
           Score: 25,
           OutOf: 50,
           Time: '5 minutes',
@@ -81,8 +81,4 @@ export default {
 </script>
 
 <style scoped>
-/* h1 {
-  text-align: center;
-  margin: 100px 0;
-} */
 </style>
