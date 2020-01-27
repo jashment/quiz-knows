@@ -1,23 +1,22 @@
 <template>
   <v-container class="text-center">
-    <h1 class="text-center py-12 font-weight-light">Create New Quiz</h1>
+    <h1 class="text-center py-12 font-weight-light">Students Enrolled</h1>
     <v-data-table
       :headers="headers"
-      :items="questions"
-      sort-by="macOS"
-      class="elevation-1 mx-12 my-12"
+      :items="students"
+      sort-by="name"
+      class="elevation-3 mx-12 my-12"
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Premeire Quiz</v-toolbar-title>
+          <v-toolbar-title>Students</v-toolbar-title>
           <v-divider class="mx-4" inset vertical></v-divider>
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px">
-            <template v-slot:activator="{ on }">
+            <!-- <template v-slot:activator="{ on }">
               <v-btn color="primary" dark class="mb-2" v-on="on"
-                >New Question</v-btn
-              >
-            </template>
+                >New student</v-btn>
+            </template> -->
             <v-card>
               <v-card-title>
                 <span class="headline">{{ formTitle }}</span>
@@ -29,7 +28,7 @@
                     <v-col cols="12" sm="12" md="12">
                       <v-text-field
                         v-model="editedItem.name"
-                        label="Question"
+                        label="student"
                       ></v-text-field>
                     </v-col> 
                   </v-row>
@@ -52,9 +51,7 @@
                         label="Windows Shortcut"
                       ></v-text-field>
                     </v-col>
-                  </v-row>
-                    
-                 
+                  </v-row>                 
                 </v-container>
               </v-card-text>
 
@@ -67,6 +64,18 @@
           </v-dialog>
         </v-toolbar>
       </template>
+
+      <template v-slot:item.photo="{ item }">
+          <v-avatar size="30px">
+                <v-img 
+                    :src="item.photo"
+                    max-height=60    
+                    max-width=60
+                    class="circular-thumb-frame"> 
+                </v-img>
+          </v-avatar>          
+      </template>
+        
       <template v-slot:item.action="{ item }">
         <v-icon small class="mr-5 title" @click="editItem(item)" color="blue">
           mdi-pencil-outline
@@ -75,11 +84,7 @@
           mdi-trash-can-outline
         </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">Reset</v-btn>
-      </template>
     </v-data-table>
-    <v-btn class="primary mb-12">Save Quiz</v-btn>
   </v-container>
 </template>
 
@@ -88,28 +93,29 @@ export default {
   data: () => ({
     dialog: false,
     headers: [
-      { text: 'Question', align: 'left', sortable: false, value: 'name',},
-      { text: 'macOS', value: 'macOS', sortable: false },
-      { text: 'Windows', value: 'windows', sortable: false },
-      { text: 'Actions', value: 'action', sortable: false },
+        { text: 'Photo', value: `photo`, sortable: false },
+        { text: 'Name',value: 'name', sortable: false, },
+        { text: 'UVU ID', value: 'uvuid', sortable: false },
+        { text: 'Operating System', value: 'os', sortable: false },
+        { text: 'Actions', value: 'action', sortable: false },
     ],
-    questions: [],
+    students: [],
     editedIndex: -1,
     editedItem: {
       name: '',
-      macOS: '',
+      uvuid: '',
       windows: '',
     },
     defaultItem: {
       name: '',
-      macOS: '',
+      uvuid: '',
       windows: '',
     },
   }),
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? 'New Question' : 'Edit Question'
+      return this.editedIndex === -1 ? 'New student' : 'Edit student'
     },
   },
 
@@ -125,57 +131,69 @@ export default {
 
   methods: {
     initialize() {
-      this.questions = [
+      this.students = [
         {
-          name: 'How do you make an edit wherever your playhead is located?',
-          macOS: 'Cmd, K',
+          name: 'Jacob Mendez',
+          photo: 'https://uinames.com/api/photos/male/2.jpg',
+          uvuid: '55555555',
+          os: 'macOS',
           windows: 'Ctrl, K',
         },
         {
-          name:
-            'Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box',
-          macOS: 'M',
+          name: 'Wayne Bates',
+          photo: 'https://uinames.com/api/photos/male/15.jpg',
+          uvuid: '55555555',
+          os: 'macOS',
           windows: 'M',
         },
         {
-          name:
-            'What key do you press to locate a source clip from within your timeline?',
-          macOS: 'F',
+          name: 'Joyce Owens',
+          photo: 'https://uinames.com/api/photos/female/21.jpg',
+          uvuid: '55555555',
+          os: 'macOS',
           windows: 'F',
         },
         {
-          name: 'What keys bring up the Export Media dialog box?',
-          macOS: 'Cmd, M',
+          name: 'Eugene Herrera',
+          photo: 'https://uinames.com/api/photos/male/20.jpg',
+          uvuid: '55555555',
+          os: 'Windows',
           windows: 'Ctrl, M',
         },
         {
-          name: 'What key is for making In point on a clip?',
-          macOS: 'I',
+          name: 'Brittany Washington',
+          photo: 'https://uinames.com/api/photos/female/18.jpg',
+          uvuid: '55555555',
+          os: 'macOS',
           windows: 'I',
         },
         {
-          name: 'What key is for making Out point on a clip?',
-          macOS: 'O',
+          name: 'Alan Curtis',
+          photo: 'https://uinames.com/api/photos/male/6.jpg',
+          uvuid: '55555555',
+          os: 'macOS',
           windows: 'O',
         },
         {
-          name: 'What key makes your video playback at a faster speed?',
-          macOS: 'L',
+          name: 'Lauren Wells',
+          photo: 'https://uinames.com/api/photos/female/10.jpg',
+          uvuid: '55555555',
+          os: 'Windows',
           windows: 'L',
         },
       ]
     },
 
     editItem(item) {
-      this.editedIndex = this.questions.indexOf(item)
+      this.editedIndex = this.students.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
     },
 
     deleteItem(item) {
-      const index = this.questions.indexOf(item)
-      confirm('Are you sure you want to delete this question?') &&
-        this.questions.splice(index, 1)
+      const index = this.students.indexOf(item)
+      confirm('Are you sure you want to delete this student?') &&
+        this.students.splice(index, 1)
     },
 
     close() {
@@ -188,9 +206,9 @@ export default {
 
     save() {
       if (this.editedIndex > -1) {
-        Object.assign(this.questions[this.editedIndex], this.editedItem)
+        Object.assign(this.students[this.editedIndex], this.editedItem)
       } else {
-        this.questions.push(this.editedItem)
+        this.students.push(this.editedItem)
       }
       this.close()
     },
@@ -198,4 +216,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+</style>
