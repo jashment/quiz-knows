@@ -6,6 +6,7 @@ import quizzes from './components/quizzes'
 import settings from './components/settings'
 import cardlayout from './components/cardlayout'
 import logger from './components/Logger'
+import createQuiz from './components/teacher/CreateQuiz.vue'
 
 export const routes = [
   { path: '/dashboard', component: dashboard },
@@ -16,4 +17,5 @@ export const routes = [
   { path: '/settings', component: settings },
   { path: '/cardlayout', component: cardlayout },
   { path: '/logger', component: logger },
+  { path: '/create-quiz', component: createQuiz },
 ]
