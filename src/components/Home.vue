@@ -53,6 +53,12 @@
             </v-list-item-icon>
             <v-list-item-title>Settings</v-list-item-title>
           </v-list-item>
+          <v-list-item link to="/flashcards">
+            <v-list-item-icon>
+              <v-icon>mdi-settings</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Flashcards</v-list-item-title>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
     </v-card>
