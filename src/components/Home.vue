@@ -68,9 +68,12 @@
 <script>
 // import Logger from './Logger'
 export default {
-  // components: {
-  //   Logger,
-  // },
+  name: 'App',
+  components: {
+    // Card,,
+    // Logger,
+    // Login,
+  },
 }
 </script>
 
