@@ -55,7 +55,7 @@
           </v-list-item>
           <v-list-item link to="/flashcards">
             <v-list-item-icon>
-              <v-icon>mdi-settings</v-icon>
+              <v-icon>mdi-card-text</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Flashcards</v-list-item-title>
           </v-list-item>
@@ -66,7 +66,6 @@
   </div>
 </template>
 <script>
-// import Logger from './Logger'
 export default {
   name: 'App',
   components: {
@@ -76,7 +75,6 @@ export default {
   },
 }
 </script>
-
 <style scoped>
 .navDrawer {
   background: #14ced2; /* Old browsers */

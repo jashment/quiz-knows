@@ -13,8 +13,8 @@
             colorBack="#01F0FF"
             colorTextFront="white"
             colorTextBack="black"
-          > 
-          </vue-flashcard> 
+          >
+          </vue-flashcard>
         </div>
         <div class="col-md-4 col-lg-4 col-sm-4">
           <vue-flashcard
