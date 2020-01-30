@@ -26,6 +26,13 @@
 
         <v-divider></v-divider>
         <v-list nav>
+          <v-list-item link to="/register">
+            <v-list-item-icon>
+              <v-icon>mdi-account-plus-outline</v-icon>
+              <v-icon></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Register</v-list-item-title>
+          </v-list-item>
           <v-list-item link to="/dashboard">
             <v-list-item-icon>
               <v-icon>mdi-view-dashboard</v-icon>
