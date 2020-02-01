@@ -64,6 +64,18 @@
             </v-list-item-icon>
             <v-list-item-title>Quizzes</v-list-item-title>
           </v-list-item>
+          <v-list-item link to="/teacher/create-quiz">
+            <v-list-item-icon>
+              <v-icon>mdi-plus</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Create Quiz</v-list-item-title>
+          </v-list-item>
+          <v-list-item link to="/teacher/students">
+            <v-list-item-icon>
+              <v-icon>mdi-account-multiple-check</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Students</v-list-item-title>
+          </v-list-item>
           <v-list-item link to="/settings">
             <v-list-item-icon>
               <v-icon>mdi-settings</v-icon>
