@@ -11,7 +11,7 @@
                 <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                 <div class="col-md-6">
-                  <input
+                  <v-text-field
                     id="name"
                     type="name"
                     class="form-control"
@@ -20,6 +20,7 @@
                     required
                     autofocus
                     v-model="form.name"
+                    background-color="white"
                   />
                 </div>
               </div>
@@ -28,7 +29,7 @@
                 <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
                 <div class="col-md-6">
-                  <input
+                  <v-text-field
                     id="email"
                     type="email"
                     class="form-control"
@@ -37,6 +38,7 @@
                     required
                     autofocus
                     v-model="form.email"
+                    background-color="white"
                   />
                 </div>
               </div>
@@ -45,20 +47,21 @@
                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                 <div class="col-md-6">
-                  <input
+                  <v-text-field
                     id="password"
                     type="password"
                     class="form-control"
                     name="password"
                     required
                     v-model="form.password"
+                    background-color="white"
                   />
                 </div>
               </div>
 
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
-                  <button type="submit" class="btn btn-primary">Register</button>
+                  <v-btn type="submit" class="btn btn-primary">Register</v-btn>
                 </div>
               </div>
             </form>

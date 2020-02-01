@@ -33,6 +33,13 @@
             </v-list-item-icon>
             <v-list-item-title>Register</v-list-item-title>
           </v-list-item>
+          <v-list-item link to="/login">
+            <v-list-item-icon>
+              <v-icon>mdi-login</v-icon>
+              <v-icon></v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item>
           <v-list-item link to="/dashboard">
             <v-list-item-icon>
               <v-icon>mdi-view-dashboard</v-icon>
