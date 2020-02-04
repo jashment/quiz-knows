@@ -11,15 +11,8 @@
       <app-home>
         <router-view></router-view>
       </app-home>
-      <Logger />
-      <Login />
-      <!-- <v-container>
-        <v-row>
-          <v-col v-for="n in 9" :key="n" cols="12" sm="4">
-            <Card />
-          </v-col>
-        </v-row>
-      </v-container> -->
+      <!-- <Logger /> -->
+      <!-- <Login /> -->
     </v-content>
   </v-app>
 </template>
@@ -51,5 +44,8 @@ div.cardComp.v-card {
 div.container {
   /* margin-left: 5; */
   margin: 5;
+}
+h1 {
+  text-align: center;
 }
 </style>
