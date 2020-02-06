@@ -97,6 +97,7 @@ export default {
         { text: 'Name',value: 'name', sortable: false, },
         { text: 'UVU ID', value: 'uvuid', sortable: false },
         { text: 'Operating System', value: 'os', sortable: false },
+        { text: 'Approved', value: 'approval', sortable: false },
         { text: 'Actions', value: 'action', sortable: false },
     ],
     students: [],
@@ -137,49 +138,49 @@ export default {
           photo: 'https://uinames.com/api/photos/male/2.jpg',
           uvuid: '55555555',
           os: 'macOS',
-          windows: 'Ctrl, K',
+          approval: 'true'
         },
         {
           name: 'Wayne Bates',
           photo: 'https://uinames.com/api/photos/male/15.jpg',
           uvuid: '55555555',
           os: 'macOS',
-          windows: 'M',
+          approval: 'true'
         },
         {
           name: 'Joyce Owens',
           photo: 'https://uinames.com/api/photos/female/21.jpg',
           uvuid: '55555555',
           os: 'macOS',
-          windows: 'F',
+          approval: 'true'
         },
         {
           name: 'Eugene Herrera',
           photo: 'https://uinames.com/api/photos/male/20.jpg',
           uvuid: '55555555',
           os: 'Windows',
-          windows: 'Ctrl, M',
+          approval: 'true'
         },
         {
           name: 'Brittany Washington',
           photo: 'https://uinames.com/api/photos/female/18.jpg',
           uvuid: '55555555',
           os: 'macOS',
-          windows: 'I',
+          approval: 'true'
         },
         {
           name: 'Alan Curtis',
           photo: 'https://uinames.com/api/photos/male/6.jpg',
           uvuid: '55555555',
           os: 'macOS',
-          windows: 'O',
+          approval: 'true'
         },
         {
           name: 'Lauren Wells',
           photo: 'https://uinames.com/api/photos/female/10.jpg',
           uvuid: '55555555',
           os: 'Windows',
-          windows: 'L',
+          approval: 'true'
         },
       ]
     },
