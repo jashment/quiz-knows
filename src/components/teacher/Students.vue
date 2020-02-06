@@ -43,6 +43,8 @@
                 <v-btn color="green" @click="save(true)">Approve</v-btn>
               </v-card-actions>
 
+              <!-- end of not approving student -->
+
               <!-- If student has been approved, ability to remove approval -->
               <v-card-text v-if="editedItem.approval === true">
                 <v-container>
@@ -61,6 +63,8 @@
                 <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
                 <v-btn color="red" @click="save(false)">Remove Approval</v-btn>
               </v-card-actions>
+
+              <!-- end of removing approval from student -->
             </v-card>
           </v-dialog>
         </v-toolbar>
