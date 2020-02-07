@@ -12,7 +12,7 @@
         <v-divider />
         <p class="pt-4"><strong>Instructions</strong></p>
         <p>{{ details[3].instructions }}</p>
-        <center><v-btn color="green" class="mt-8">Take Quiz</v-btn></center>
+        <center><v-btn color="green" class="mt-8" to="/quizzes/quiz">Take Quiz</v-btn></center>
       </v-col>
     </v-row>
   </v-container>

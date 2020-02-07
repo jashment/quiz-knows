@@ -9,6 +9,7 @@ import logger from './components/Logger'
 import createQuiz from './components/teacher/CreateQuiz'
 import Students from './components/teacher/Students'
 import QuizDetails from './components/QuizDetails'
+import QuizPage from './components/QuizPage'
 
 export const routes = [
   { path: '/dashboard', component: dashboard },
@@ -17,6 +18,7 @@ export const routes = [
   { path: '/tests', component: tests },
   { path: '/quizzes', component: quizzes },
   { path: '/quizzes/quiz-details', component: QuizDetails},
+  { path: '/quizzes/quiz', component: QuizPage},
   { path: '/settings', component: settings },
   { path: '/cardlayout', component: cardlayout },
   { path: '/logger', component: logger },
