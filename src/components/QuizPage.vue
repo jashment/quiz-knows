@@ -4,7 +4,9 @@
       <v-col cols="6">
         <v-card class="mt-12 d-flex" height="400px">
           <div class="loggerDiv">
-            <h1 class="display-1 py-5">Question {{questions[currentPage].id}}</h1>
+            <h1 class="display-1 py-5">
+              Question {{ questions[currentPage].id }}
+            </h1>
             <label>{{ questions[currentPage].name }}</label>
             <v-text-field
               type="text"
@@ -23,20 +25,43 @@
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
-              <v-btn @click="clearArray" class="error" elevation="4">Clear</v-btn>
-              <v-btn v-if="this.currentPage !== this.questions.length - 1" color="green" @click="currentPage++; submitQuestion(infoArray)" elevation="4">Next</v-btn>
-              <v-btn v-if="this.currentPage == this.questions.length - 1" color="primary" @click="submitQuiz">Submit Quiz</v-btn>
+              <v-btn @click="clearArray" class="error" elevation="4"
+                >Clear</v-btn
+              >
+              <v-btn
+                v-if="this.currentPage !== this.questions.length - 1"
+                color="green"
+                @click="
+                  currentPage++
+                  submitQuestion(infoArray)
+                "
+                elevation="4"
+                >Next</v-btn
+              >
+              <v-btn
+                v-if="this.currentPage == this.questions.length - 1"
+                color="primary"
+                @click="submitQuiz(infoArray)"
+                >Submit Quiz</v-btn
+              >
             </div>
           </div>
         </v-card>
-        <v-pagination 
-          v-model="questions[currentPage].id" 
+        <v-pagination
+          v-model="questions[currentPage].id"
           :length="questions.length"
           :value="currentPage"
           disabled
           class="pt-9"
-          circle>
+          circle
+        >
         </v-pagination>
+      </v-col>
+    </v-row>
+    <v-row v-if="endTest == true">
+      <v-col>
+        Results:
+        {{ results }}
       </v-col>
     </v-row>
   </v-container>
@@ -50,57 +75,59 @@ export default {
       infoArray: [],
       currentPage: 0,
       userAnswers: [],
+      results: [],
+      endTest: false,
       questions: [
         {
           name: 'How do you make an edit wherever your playhead is located?',
           macOS: ['Cmd, K'],
-          windows: [ 'ctrl', 'k' ],
+          windows: 'a',
           answer: '',
-          id: 1
+          id: 1,
         },
         {
           name:
             'Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box',
           macOS: ['M'],
-          windows: ['M'],
+          windows: 'a,b',
           answer: '',
-          id: 2
+          id: 2,
         },
         {
           name:
             'What key do you press to locate a source clip from within your timeline?',
           macOS: ['F'],
-          windows: ['F'],
+          windows: 'a',
           answer: '',
-          id: 3
+          id: 3,
         },
         {
           name: 'What keys bring up the Export Media dialog box?',
           macOS: ['Cmd, M'],
-          windows: ['Ctrl, M'],
+          windows: 'a',
           answer: '',
-          id: 4
+          id: 4,
         },
         {
           name: 'What key is for making In point on a clip?',
           macOS: ['I'],
-          windows: ['I'],
+          windows: 'a',
           answer: '',
-          id: 5
+          id: 5,
         },
         {
           name: 'What key is for making Out point on a clip?',
           macOS: ['O'],
-          windows: ['O'],
+          windows: 'a',
           answer: '',
-          id: 6
+          id: 6,
         },
         {
           name: 'What key makes your video playback at a faster speed?',
           macOS: ['L'],
-          windows: ['L'],
+          windows: '',
           answer: '',
-          id: 7
+          id: 7,
         },
       ],
     }
@@ -120,23 +147,24 @@ export default {
     },
     submitQuestion(answer) {
       //take mac or pc in to evaluate the array
-      this.userAnswers.push(answer)      
+      this.userAnswers.push(answer)
       this.infoArray = []
-      console.log(this.userAnswers)
+      // console.log(this.userAnswers)
     },
     clearArray: function() {
       this.infoArray = []
     },
-    submitQuiz() {
-      console.log(this.userAnswers)
-      let test = []
+    submitQuiz(lastValue) {
+      // let results = []
+      this.userAnswers.push(lastValue)
       for (let i = 0; i < this.questions.length; i++) {
-        // const element = array[i];
-        test.push(this.questions[i].windows)
+        if(this.userAnswers[i] == this.questions[i].windows) {
+          this.results.push(true)
+        }else this.results.push(false)
       }
-      
-      console.log(test)
-    }
+      // console.log(results)
+      this.endTest = true
+    },
   },
   mounted() {
     window.addEventListener('keypress', e => {
