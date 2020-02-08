@@ -63,6 +63,7 @@ export default {
       form: {
         email: '',
         password: '',
+        uid: null,
       },
       error: null,
     }
@@ -73,12 +74,12 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(() => {
-          this.$routes.replace({ name: 'Dashboard' })
+          this.$router.replace('cardlayout')
         })
         .catch(err => {
           this.error = err.message
         })
-    },
+    }
   },
 }
 </script>

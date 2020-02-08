@@ -64,12 +64,6 @@
             </v-list-item-icon>
             <v-list-item-title>Tests</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/quizzes">
-            <v-list-item-icon>
-              <v-icon>mdi-brain</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Quizzes</v-list-item-title>
-          </v-list-item>
           <v-list-item link to="/teacher/create-quiz">
             <v-list-item-icon>
               <v-icon>mdi-plus</v-icon>
