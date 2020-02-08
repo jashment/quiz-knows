@@ -40,12 +40,11 @@
             </v-list-item-icon>
             <v-list-item-title>Login</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/dashboard">
+          <v-list-item link to="/cardlayout">
             <v-list-item-icon>
-              <v-icon>mdi-view-dashboard</v-icon>
-              <v-icon></v-icon>
+              <v-icon>mdi-brain</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Dashboard</v-list-item-title>
+            <v-list-item-title>Quizzes</v-list-item-title>
           </v-list-item>
           <v-list-item link to="/logger">
             <v-list-item-icon>
@@ -89,6 +88,12 @@
             </v-list-item-icon>
             <v-list-item-title>Settings</v-list-item-title>
           </v-list-item>
+          <v-list-item link to="/flashcards">
+            <v-list-item-icon>
+              <v-icon>mdi-card-text</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Flashcards</v-list-item-title>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
     </v-card>
@@ -96,14 +101,15 @@
   </div>
 </template>
 <script>
-// import Logger from './Logger'
 export default {
-  // components: {
-  //   Logger,
-  // },
+  name: 'App',
+  components: {
+    // Card,,
+    // Logger,
+    // Login,
+  },
 }
 </script>
-
 <style scoped>
 .navDrawer {
   background: #14ced2; /* Old browsers */

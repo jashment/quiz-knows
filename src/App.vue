@@ -2,8 +2,8 @@
   <v-app>
     <v-app-bar app clipped-left>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Quiz</span>
-        <span class="font-weight-light">Knows</span>
+        <span>Cinema</span>
+        <span class="font-weight-light">Portal</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
