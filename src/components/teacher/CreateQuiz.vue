@@ -79,7 +79,7 @@
         <v-btn color="primary" @click="initialize">Reset</v-btn>
       </template>
     </v-data-table>
-    <v-btn class="primary mb-12">Save Quiz</v-btn>
+    <v-btn class="primary mb-12" @click="saveQuiz">Save Quiz</v-btn>
   </v-container>
 </template>
 
@@ -170,6 +170,10 @@ export default {
       this.editedIndex = this.questions.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
+    },
+
+    saveQuiz() {
+      //save the quiz to the database
     },
 
     deleteItem(item) {
