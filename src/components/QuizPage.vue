@@ -15,13 +15,13 @@
             />
             <v-row>
               <v-col v-for="(info, i) in infoArray" :key="info" cols="3">
-                <v-card
-                  class="text-center pa-6"
-                  color="grey black--text"
-                  elevation="6"
-                >
-                  {{ infoArray[i].toUpperCase() }}
-                </v-card>
+                    <v-card
+                    class="text-center pa-6"
+                    color="grey black--text"
+                    elevation="6"
+                  >
+                    {{ infoArray[i].toUpperCase() }}
+                  </v-card>                
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
