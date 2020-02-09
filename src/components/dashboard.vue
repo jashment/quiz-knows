@@ -8,9 +8,16 @@
           <v-card elevation="6" class="cardComp">
             <div class="cardTop"></div>
             <v-card-title>{{ quiz.name }}</v-card-title>
-            <v-card-subtitle>Take quiz to improve score and time</v-card-subtitle>
+            <v-card-subtitle
+              >Take quiz to improve score and time</v-card-subtitle
+            >
             <v-card-actions>
-              <v-btn color="#00beff" class="white--text" to="/quizzes/quiz-details">View Quiz</v-btn>
+              <v-btn
+                color="#00beff"
+                class="white--text"
+                to="/quizzes/quiz-details"
+                >View Quiz</v-btn
+              >
             </v-card-actions>
           </v-card>
         </v-col>

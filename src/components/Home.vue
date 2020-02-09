@@ -8,7 +8,7 @@
               <v-list-item-avatar>
                 <!-- <v-img
                   src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/27337022_10160041719275327_1001198401363381299_n.jpg?_nc_cat=108&_nc_oc=AQndJbRHtM5b8QeNPuoIq-xW0zAG2OIqKUDS3C4ZHVYohsN3InQBGUcn7RGU8xjKzIo&_nc_ht=scontent-sjc3-1.xx&oh=5f2a5c0d90b408024f2f1905d68f515e&oe=5E2FC739"
-                ></v-img> -->
+                ></v-img>-->
               </v-list-item-avatar>
             </v-list-item>
 

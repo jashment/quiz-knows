@@ -2,7 +2,7 @@
   <div class="loggerDiv">
     <h1>Keyboard Events</h1>
     <label>Input:</label>
-    <v-text-field type="text" v-on:keydown="logKey" v-model="pressedKey" />
+    <v-text-field v-model="pressedKey" type="text" @keydown="logKey" />
 
     <span>{{ pressedKey }}</span>
 
@@ -20,6 +20,12 @@ export default {
       infoArray: [],
     }
   },
+  mounted() {
+    window.addEventListener('keypress', e => {
+      e.preventDefault()
+      String.fromCharCode(e.keyCode)
+    })
+  },
   methods: {
     logKey: function(event) {
       event.preventDefault()
@@ -30,12 +36,6 @@ export default {
     clearArray: function() {
       this.infoArray = []
     },
-  },
-  mounted() {
-    window.addEventListener('keypress', e => {
-      e.preventDefault()
-      String.fromCharCode(e.keyCode)
-    })
   },
 }
 </script>

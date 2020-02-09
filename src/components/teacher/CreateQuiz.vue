@@ -31,14 +31,16 @@
                         v-model="editedItem.name"
                         label="Question"
                       ></v-text-field>
-                    </v-col> 
+                    </v-col>
                   </v-row>
                   <v-row>
-                      <v-col class="text-center pb-0">
-                        <p>Enter keys separated by a comma. (example: cmd, shift, t)
-                        </p>
-                      </v-col>
-                    </v-row>
+                    <v-col class="text-center pb-0">
+                      <p>
+                        Enter keys separated by a comma. (example: cmd, shift,
+                        t)
+                      </p>
+                    </v-col>
+                  </v-row>
                   <v-row>
                     <v-col cols="12" sm="6" md="6">
                       <v-text-field
@@ -53,8 +55,6 @@
                       ></v-text-field>
                     </v-col>
                   </v-row>
-                    
-                 
                 </v-container>
               </v-card-text>
 
@@ -68,12 +68,12 @@
         </v-toolbar>
       </template>
       <template v-slot:item.action="{ item }">
-        <v-icon small class="mr-5 title" @click="editItem(item)" color="blue">
-          mdi-pencil-outline
-        </v-icon>
-        <v-icon small class="title" @click="deleteItem(item)" color="red">
-          mdi-trash-can-outline
-        </v-icon>
+        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)"
+          >mdi-pencil-outline</v-icon
+        >
+        <v-icon small class="title" color="red" @click="deleteItem(item)"
+          >mdi-trash-can-outline</v-icon
+        >
       </template>
       <template v-slot:no-data>
         <v-btn color="primary" @click="initialize">Reset</v-btn>
@@ -88,7 +88,7 @@ export default {
   data: () => ({
     dialog: false,
     headers: [
-      { text: 'Question', align: 'left', sortable: false, value: 'name',},
+      { text: 'Question', align: 'left', sortable: false, value: 'name' },
       { text: 'macOS', value: 'macOS', sortable: false },
       { text: 'Windows', value: 'windows', sortable: false },
       { text: 'Actions', value: 'action', sortable: false },

@@ -8,10 +8,11 @@
       sort-by="approval"
       class="elevation-3 mx-12 my-12"
     >
-
-    <template v-slot:item.approval="{ item }">
-      <v-chip :color="getColor(item.approval)" dark>{{ getApproved(item.approval) }}</v-chip>
-    </template>
+      <template v-slot:item.approval="{ item }">
+        <v-chip :color="getColor(item.approval)" dark>{{
+          getApproved(item.approval)
+        }}</v-chip>
+      </template>
 
       <template v-slot:top>
         <v-toolbar flat>
@@ -30,9 +31,13 @@
                   <v-row>
                     <v-col cols="12" sm="12" md="12" class="text-center">
                       <p class="title font-weight-regular">
-                        Would you like to approve <span class="font-weight-bold blue--text">{{editedItem.name}}</span> to your course?
-                      </p> 
-                    </v-col> 
+                        Would you like to approve
+                        <span class="font-weight-bold blue--text">{{
+                          editedItem.name
+                        }}</span>
+                        to your course?
+                      </p>
+                    </v-col>
                   </v-row>
                 </v-container>
               </v-card-text>
@@ -51,9 +56,13 @@
                   <v-row>
                     <v-col cols="12" sm="12" md="12" class="text-center">
                       <p class="title font-weight-regular">
-                        Would you like to remove approval for <span class="font-weight-bold blue--text">{{editedItem.name}}</span> to your course?
-                      </p> 
-                    </v-col> 
+                        Would you like to remove approval for
+                        <span class="font-weight-bold blue--text">{{
+                          editedItem.name
+                        }}</span>
+                        to your course?
+                      </p>
+                    </v-col>
                   </v-row>
                 </v-container>
               </v-card-text>
@@ -71,23 +80,23 @@
       </template>
 
       <template v-slot:item.photo="{ item }">
-          <v-avatar size="30px">
-                <v-img 
-                    :src="item.photo"
-                    max-height=60    
-                    max-width=60
-                    class="circular-thumb-frame"> 
-                </v-img>
-          </v-avatar>          
+        <v-avatar size="30px">
+          <v-img
+            :src="item.photo"
+            max-height="60"
+            max-width="60"
+            class="circular-thumb-frame"
+          ></v-img>
+        </v-avatar>
       </template>
-        
+
       <template v-slot:item.action="{ item }">
-        <v-icon small class="mr-5 title" @click="editItem(item)" color="blue">
-          mdi-pencil-outline
-        </v-icon>
-        <v-icon small class="title" @click="deleteItem(item)" color="red">
-          mdi-trash-can-outline
-        </v-icon>
+        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)"
+          >mdi-pencil-outline</v-icon
+        >
+        <v-icon small class="title" color="red" @click="deleteItem(item)"
+          >mdi-trash-can-outline</v-icon
+        >
       </template>
     </v-data-table>
   </v-container>
@@ -98,13 +107,13 @@ export default {
   data: () => ({
     dialog: false,
     headers: [
-        { text: 'Photo', value: `photo`, sortable: false },
-        { text: 'Name',value: 'name', sortable: false, },
-        { text: 'UVU ID', value: 'uvuid', sortable: false },
-        { text: 'Operating System', value: 'os', sortable: false },
-        { text: 'SignUp Date', value: 'signUp', sortable: false },
-        { text: 'Approved', value: 'approval', sortable: false },
-        { text: 'Actions', value: 'action', sortable: false },
+      { text: 'Photo', value: `photo`, sortable: false },
+      { text: 'Name', value: 'name', sortable: false },
+      { text: 'UVU ID', value: 'uvuid', sortable: false },
+      { text: 'Operating System', value: 'os', sortable: false },
+      { text: 'SignUp Date', value: 'signUp', sortable: false },
+      { text: 'Approved', value: 'approval', sortable: false },
+      { text: 'Actions', value: 'action', sortable: false },
     ],
     students: [],
     editedIndex: -1,
@@ -137,14 +146,14 @@ export default {
   },
 
   methods: {
-    getColor (approve) {
-        // if (approval === true) return 'red'
-        // else if (approval === false) return 'orange'
-        // else return 'green'
-        console.log(approve)
-        return (approve ? 'green' : 'red')
-      },
-    getApproved (approval) {
+    getColor(approve) {
+      // if (approval === true) return 'red'
+      // else if (approval === false) return 'orange'
+      // else return 'green'
+      console.log(approve)
+      return approve ? 'green' : 'red'
+    },
+    getApproved(approval) {
       if (approval === true) return 'Approved'
       else return 'Not Approved'
     },
@@ -156,7 +165,7 @@ export default {
           uvuid: '55555555',
           os: 'macOS',
           signUp: '3/1/20',
-          approval: true
+          approval: true,
         },
         {
           name: 'Wayne Bates',
@@ -164,7 +173,7 @@ export default {
           uvuid: '55555555',
           os: 'macOS',
           signUp: '3/1/20',
-          approval: true
+          approval: true,
         },
         {
           name: 'Joyce Owens',
@@ -172,7 +181,7 @@ export default {
           uvuid: '55555555',
           os: 'macOS',
           signUp: '3/1/20',
-          approval: true
+          approval: true,
         },
         {
           name: 'Eugene Herrera',
@@ -180,7 +189,7 @@ export default {
           uvuid: '55555555',
           os: 'Windows',
           signUp: '3/1/20',
-          approval: false
+          approval: false,
         },
         {
           name: 'Brittany Washington',
@@ -188,7 +197,7 @@ export default {
           uvuid: '55555555',
           os: 'macOS',
           signUp: '3/1/20',
-          approval: true
+          approval: true,
         },
         {
           name: 'Alan Curtis',
@@ -196,7 +205,7 @@ export default {
           uvuid: '55555555',
           os: 'macOS',
           signUp: '3/1/20',
-          approval: false
+          approval: false,
         },
         {
           name: 'Lauren Wells',
@@ -204,7 +213,7 @@ export default {
           uvuid: '55555555',
           os: 'Windows',
           signUp: '3/1/20',
-          approval: false
+          approval: false,
         },
       ]
     },
@@ -242,5 +251,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

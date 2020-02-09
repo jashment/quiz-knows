@@ -8,38 +8,33 @@
               Question {{ questions[currentPage].id }}
             </h1>
             <label>{{ questions[currentPage].name }}</label>
-            <v-text-field
-              type="text"
-              v-on:keyup="logKey"
-              v-model="pressedKey"
-            />
+            <v-text-field v-model="pressedKey" type="text" @keyup="logKey" />
             <v-row>
               <v-col v-for="(info, i) in infoArray" :key="info" cols="3">
-                    <v-card
-                    class="text-center pa-6"
-                    color="grey black--text"
-                    elevation="6"
-                  >
-                    {{ infoArray[i].toUpperCase() }}
-                  </v-card>                
+                <v-card
+                  class="text-center pa-6"
+                  color="grey black--text"
+                  elevation="6"
+                  >{{ infoArray[i].toUpperCase() }}</v-card
+                >
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
-              <v-btn @click="clearArray" class="error" elevation="4"
+              <v-btn class="error" elevation="4" @click="clearArray"
                 >Clear</v-btn
               >
               <v-btn
-                v-if="this.currentPage !== this.questions.length - 1"
+                v-if="currentPage !== questions.length - 1"
                 color="green"
+                elevation="4"
                 @click="
                   currentPage++
                   submitQuestion(infoArray)
                 "
-                elevation="4"
                 >Next</v-btn
               >
               <v-btn
-                v-if="this.currentPage == this.questions.length - 1"
+                v-if="currentPage == questions.length - 1"
                 color="primary"
                 @click="submitQuiz(infoArray)"
                 >Submit Quiz</v-btn
@@ -54,8 +49,7 @@
           disabled
           class="pt-9"
           circle
-        >
-        </v-pagination>
+        ></v-pagination>
       </v-col>
     </v-row>
     <v-row v-if="endTest == true">
@@ -132,6 +126,13 @@ export default {
       ],
     }
   },
+  mounted() {
+    window.addEventListener('keypress', e => {
+      e.preventDefault()
+      String.fromCharCode(e.keyCode)
+      // logKey(e.key)
+    })
+  },
   methods: {
     logKey: function(event) {
       event.preventDefault()
@@ -158,20 +159,13 @@ export default {
       // let results = []
       this.userAnswers.push(lastValue)
       for (let i = 0; i < this.questions.length; i++) {
-        if(this.userAnswers[i] == this.questions[i].windows) {
+        if (this.userAnswers[i] == this.questions[i].windows) {
           this.results.push(true)
-        }else this.results.push(false)
+        } else this.results.push(false)
       }
       // console.log(results)
       this.endTest = true
     },
-  },
-  mounted() {
-    window.addEventListener('keypress', e => {
-      e.preventDefault()
-      String.fromCharCode(e.keyCode)
-      // logKey(e.key)
-    })
   },
 }
 </script>

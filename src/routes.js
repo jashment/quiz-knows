@@ -31,5 +31,5 @@ export const routes = [
   { path: '/register', component: Register },
   { path: '/teacher/create-quiz', component: createQuiz },
   { path: '/teacher/students', component: Students },
-  { path: '/login', component: Login }
+  { path: '/login', component: Login },
 ]

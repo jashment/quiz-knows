@@ -1,7 +1,8 @@
 <template>
   <v-container>
-
-    <h1 class="text-center py-12 font-weight-light">Grades for {{ student.name }}</h1>
+    <h1 class="text-center py-12 font-weight-light">
+      Grades for {{ student.name }}
+    </h1>
     <v-expansion-panels>
       <v-expansion-panel v-for="quiz in quizzes" :key="quiz.index">
         <v-expansion-panel-header>{{ quiz.name }}</v-expansion-panel-header>
@@ -18,8 +19,6 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-
-    
   </v-container>
 </template>
 
@@ -27,7 +26,7 @@
 export default {
   data() {
     return {
-      student: {name: 'Coby Yates'},
+      student: { name: 'Coby Yates' },
       headers: [
         {
           text: 'Attempts',
@@ -41,9 +40,9 @@ export default {
         { text: 'Time', value: 'Time' },
       ],
       quizzes: [
-        {name: 'Adobe Premiere'},
-        {name: 'Avid Media Composer'},
-        {name: 'DaVinci Resolve'},
+        { name: 'Adobe Premiere' },
+        { name: 'Avid Media Composer' },
+        { name: 'DaVinci Resolve' },
       ],
       attempts: [
         {
@@ -80,5 +79,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -13,8 +13,8 @@ Vue.use(VueRouter)
 firebase.initializeApp(firebaseConfig)
 
 firebase.auth().onAuthStateChanged(user => {
-  store.dispatch("fetchUser", user);
-});
+  store.dispatch('fetchUser', user)
+})
 
 export const router = new VueRouter({
   routes,
