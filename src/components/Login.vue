@@ -34,6 +34,7 @@
                     required
                     autofocus
                     background-color="white"
+                    color="black"
                   />
                 </div>
               </div>
@@ -53,6 +54,7 @@
                     name="password"
                     required
                     background-color="white"
+                    color="black"
                   />
                 </div>
               </div>
