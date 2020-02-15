@@ -27,10 +27,10 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="12" md="12">
-                      <v-text-field
+                      <v-textarea
                         v-model="editedItem.name"
                         label="Question"
-                      ></v-text-field>
+                      ></v-textarea>
                     </v-col> 
                   </v-row>
                   <v-row>
