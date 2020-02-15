@@ -33,8 +33,6 @@
                     value
                     required
                     autofocus
-                    background-color="white"
-                    color="black"
                   />
                 </div>
               </div>
@@ -50,11 +48,9 @@
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="form-control"
+                    class="form-control text-black"
                     name="password"
                     required
-                    background-color="white"
-                    color="black"
                   />
                 </div>
               </div>
