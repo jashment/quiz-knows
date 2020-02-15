@@ -33,7 +33,6 @@
                     value
                     required
                     autofocus
-                    background-color="white"
                   />
                 </div>
               </div>
@@ -54,7 +53,6 @@
                     value
                     required
                     autofocus
-                    background-color="white"
                   />
                 </div>
               </div>
@@ -73,7 +71,6 @@
                     class="form-control"
                     name="password"
                     required
-                    background-color="white"
                   />
                 </div>
               </div>
