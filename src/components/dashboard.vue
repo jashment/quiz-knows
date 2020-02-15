@@ -52,6 +52,6 @@ button {
   margin: auto;
 }
 div.cardComp.v-card {
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
 </style>
