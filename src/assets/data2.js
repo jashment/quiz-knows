@@ -1,4 +1,7 @@
+
+
 export const data = [
+  // eslint-disable-next-line no-undef
   (headers = [
     {
       text: 'Attempts',
@@ -11,6 +14,7 @@ export const data = [
     { text: 'Out of', value: 'OutOf' },
     { text: 'Time', value: 'Time' },
   ]),
+  // eslint-disable-next-line no-undef
   (attempts = [
     {
       name: 'Attempt 1',

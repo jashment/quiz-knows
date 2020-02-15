@@ -4,7 +4,10 @@
       Grades for {{ student.name }}
     </h1>
     <v-expansion-panels>
-      <v-expansion-panel v-for="quiz in quizzes" :key="quiz.index">
+      <v-expansion-panel
+        v-for="quiz in quizzes"
+        :key="quiz.index"
+      >
         <v-expansion-panel-header>{{ quiz.name }}</v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-data-table
@@ -15,7 +18,7 @@
             :sort-desc="[false, true]"
             multi-sort
             class="elevation-1"
-          ></v-data-table>
+          />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>

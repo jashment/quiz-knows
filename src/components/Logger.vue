@@ -2,13 +2,19 @@
   <div class="loggerDiv">
     <h1>Keyboard Events</h1>
     <label>Input:</label>
-    <v-text-field v-model="pressedKey" type="text" @keydown="logKey" />
+    <v-text-field
+      v-model="pressedKey"
+      type="text"
+      @keydown="logKey"
+    />
 
     <span>{{ pressedKey }}</span>
 
     <span>{{ infoArray }}</span>
-    <br />
-    <v-btn @click="clearArray">Click Me to Clear</v-btn>
+    <br>
+    <v-btn @click="clearArray">
+      Click Me to Clear
+    </v-btn>
   </div>
 </template>
 

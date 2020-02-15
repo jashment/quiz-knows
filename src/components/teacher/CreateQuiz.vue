@@ -1,6 +1,8 @@
 <template>
   <v-container class="text-center">
-    <h1 class="text-center py-12 font-weight-light">Create New Quiz</h1>
+    <h1 class="text-center py-12 font-weight-light">
+      Create New Quiz
+    </h1>
     <v-data-table
       :headers="headers"
       :items="questions"
@@ -10,13 +12,26 @@
       <template v-slot:top>
         <v-toolbar flat>
           <v-toolbar-title>Premeire Quiz</v-toolbar-title>
-          <v-divider class="mx-4" inset vertical></v-divider>
-          <v-spacer></v-spacer>
-          <v-dialog v-model="dialog" max-width="500px" persistent>
+          <v-divider
+            class="mx-4"
+            inset
+            vertical
+          />
+          <v-spacer />
+          <v-dialog
+            v-model="dialog"
+            max-width="500px"
+            persistent
+          >
             <template v-slot:activator="{ on }">
-              <v-btn color="green" dark class="mb-2" v-on="on"
-                >New Question</v-btn
+              <v-btn
+                color="green"
+                dark
+                class="mb-2"
+                v-on="on"
               >
+                New Question
+              </v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -26,11 +41,15 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="12" md="12">
+                    <v-col
+                      cols="12"
+                      sm="12"
+                      md="12"
+                    >
                       <v-text-field
                         v-model="editedItem.name"
                         label="Question"
-                      ></v-text-field>
+                      />
                     </v-col>
                   </v-row>
                   <v-row>
@@ -42,44 +61,80 @@
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col cols="12" sm="6" md="6">
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="6"
+                    >
                       <v-text-field
                         v-model="editedItem.macOS"
                         label="macOS Shortcut"
-                      ></v-text-field>
+                      />
                     </v-col>
-                    <v-col cols="12" sm="6" md="6">
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="6"
+                    >
                       <v-text-field
                         v-model="editedItem.windows"
                         label="Windows Shortcut"
-                      ></v-text-field>
+                      />
                     </v-col>
                   </v-row>
                 </v-container>
               </v-card-text>
 
               <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-                <v-btn color="blue darken-1" @click="save">Save</v-btn>
+                <v-spacer />
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="close"
+                >
+                  Cancel
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  @click="save"
+                >
+                  Save
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
         </v-toolbar>
       </template>
       <template v-slot:item.action="{ item }">
-        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)"
-          >mdi-pencil-outline</v-icon
+        <v-icon
+          small
+          class="mr-5 title"
+          color="blue"
+          @click="editItem(item)"
         >
-        <v-icon small class="title" color="red" @click="deleteItem(item)"
-          >mdi-trash-can-outline</v-icon
+          mdi-pencil-outline
+        </v-icon>
+        <v-icon
+          small
+          class="title"
+          color="red"
+          @click="deleteItem(item)"
         >
+          mdi-trash-can-outline
+        </v-icon>
       </template>
       <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">Reset</v-btn>
+        <v-btn
+          color="primary"
+          @click="initialize"
+        >
+          Reset
+        </v-btn>
       </template>
     </v-data-table>
-    <v-btn class="primary mb-12">Save Quiz</v-btn>
+    <v-btn class="primary mb-12">
+      Save Quiz
+    </v-btn>
   </v-container>
 </template>
 

@@ -2,27 +2,43 @@
   <v-container>
     <v-row class="d-flex justify-center">
       <v-col cols="6">
-        <v-card class="mt-12 d-flex" height="400px">
+        <v-card
+          class="mt-12 d-flex"
+          height="400px"
+        >
           <div class="loggerDiv">
             <h1 class="display-1 py-5">
               Question {{ questions[currentPage].id }}
             </h1>
             <label>{{ questions[currentPage].name }}</label>
-            <v-text-field v-model="pressedKey" type="text" @keyup="logKey" />
+            <v-text-field
+              v-model="pressedKey"
+              type="text"
+              @keyup="logKey"
+            />
             <v-row>
-              <v-col v-for="(info, i) in infoArray" :key="info" cols="3">
+              <v-col
+                v-for="(info, i) in infoArray"
+                :key="info"
+                cols="3"
+              >
                 <v-card
                   class="text-center pa-6"
                   color="grey black--text"
                   elevation="6"
-                  >{{ infoArray[i].toUpperCase() }}</v-card
                 >
+                  {{ infoArray[i].toUpperCase() }}
+                </v-card>
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
-              <v-btn class="error" elevation="4" @click="clearArray"
-                >Clear</v-btn
+              <v-btn
+                class="error"
+                elevation="4"
+                @click="clearArray"
               >
+                Clear
+              </v-btn>
               <v-btn
                 v-if="currentPage !== questions.length - 1"
                 color="green"
@@ -31,14 +47,16 @@
                   currentPage++
                   submitQuestion(infoArray)
                 "
-                >Next</v-btn
               >
+                Next
+              </v-btn>
               <v-btn
                 v-if="currentPage == questions.length - 1"
                 color="primary"
                 @click="submitQuiz(infoArray)"
-                >Submit Quiz</v-btn
               >
+                Submit Quiz
+              </v-btn>
             </div>
           </div>
         </v-card>
@@ -49,7 +67,7 @@
           disabled
           class="pt-9"
           circle
-        ></v-pagination>
+        />
       </v-col>
     </v-row>
     <v-row v-if="endTest == true">

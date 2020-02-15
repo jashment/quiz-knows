@@ -6,40 +6,40 @@
           <vue-flashcard
             front="What does CTRL + V do?"
             back="Pastes what the user copied"
-            headerFront="Queston"
-            footerFront
-            footerBack
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          ></vue-flashcard>
+            header-front="Queston"
+            footer-front
+            footer-back
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
         </div>
         <div class="col-md-4 col-lg-4 col-sm-4">
           <vue-flashcard
             front="What does CTRL + C do?"
             back="Copies content to clipboard"
-            headerFront="Queston"
-            footerFront
-            footerBack
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          ></vue-flashcard>
+            header-front="Queston"
+            footer-front
+            footer-back
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
         </div>
         <div class="col-md-4 col-lg-4 col-sm-4">
           <vue-flashcard
             front="What happens when you press CTRL + Q?"
             back="undefined"
-            headerFront="Queston"
-            footerFront
-            footerBack
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          ></vue-flashcard>
+            header-front="Queston"
+            footer-front
+            footer-back
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
         </div>
       </div>
     </div>
@@ -50,47 +50,47 @@
           <vue-flashcard
             front="What does CTRL + V do?"
             back="Pastes what the user copied"
-            headerFront="Queston"
-            footerFront
-            footerBack
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          ></vue-flashcard>
+            header-front="Queston"
+            footer-front
+            footer-back
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
           <vue-flashcard
             front="What does CTRL + V do?"
             back="Pastes what the user copied"
-            headerFront="Queston"
-            footerFront
-            footerBack
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          ></vue-flashcard>
+            header-front="Queston"
+            footer-front
+            footer-back
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
           <vue-flashcard
             front="What does CTRL + V do?"
             back="Pastes what the user copied"
-            headerFront="Queston"
-            footerFront
-            footerBack
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          ></vue-flashcard>
+            header-front="Queston"
+            footer-front
+            footer-back
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
           <vue-flashcard
             front="What does CTRL + V do?"
             back="Pastes what the user copied"
-            headerFront="Queston"
-            footerFront
-            footerBack
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          ></vue-flashcard>
+            header-front="Queston"
+            footer-front
+            footer-back
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
         </div>
       </div>
     </div>

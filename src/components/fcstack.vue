@@ -3,13 +3,18 @@
     <div class="row">
       <div class="col-md-4 col-lg-4 col-sm-4">
         <v-card class="cardComp">
-          <div class="cardTop"></div>
+          <div class="cardTop" />
           <v-card-title>Adobe Premier</v-card-title>
           <v-card-subtitle>Lorem Ipsum</v-card-subtitle>
           <v-card-actions>
-            <v-btn color="#00beff" class="white--text" link to="/flashcardad"
-              >Flashcards</v-btn
+            <v-btn
+              color="#00beff"
+              class="white--text"
+              link
+              to="/flashcardad"
             >
+              Flashcards
+            </v-btn>
           </v-card-actions>
         </v-card>
       </div>

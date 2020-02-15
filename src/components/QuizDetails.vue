@@ -2,7 +2,9 @@
   <v-container>
     <v-row class="d-flex justify-center">
       <v-col cols="8">
-        <h2 class="pt-12">Quiz Overview</h2>
+        <h2 class="pt-12">
+          Quiz Overview
+        </h2>
         <v-divider />
         <div class="d-flex justify-space-between pt-4">
           <p>
@@ -24,7 +26,13 @@
         </p>
         <p>{{ details[3].instructions }}</p>
         <center>
-          <v-btn color="green" class="mt-8" to="/quizzes/quiz">Take Quiz</v-btn>
+          <v-btn
+            color="green"
+            class="mt-8"
+            to="/quizzes/quiz"
+          >
+            Take Quiz
+          </v-btn>
         </center>
       </v-col>
     </v-row>

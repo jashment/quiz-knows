@@ -1,7 +1,14 @@
 <template>
   <div>
     <v-card>
-      <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
+      <v-navigation-drawer
+        class="navDrawer"
+        expand-on-hover
+        permanent
+        clipped
+        floating
+        app
+      >
         <template v-slot:prepend>
           <v-list>
             <v-list-item>
@@ -12,9 +19,14 @@
               </v-list-item-avatar>
             </v-list-item>
 
-            <v-list-item link two-line>
+            <v-list-item
+              link
+              two-line
+            >
               <v-list-item-content>
-                <v-list-item-title class="title">Grant Shoop</v-list-item-title>
+                <v-list-item-title class="title">
+                  Grant Shoop
+                </v-list-item-title>
                 <v-list-item-subtitle>grantshoop@gmail.com</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
@@ -24,65 +36,95 @@
           </v-list>
         </template>
 
-        <v-divider></v-divider>
+        <v-divider />
         <v-list nav>
-          <v-list-item link to="/register">
+          <v-list-item
+            link
+            to="/register"
+          >
             <v-list-item-icon>
               <v-icon>mdi-account-plus-outline</v-icon>
-              <v-icon></v-icon>
+              <v-icon />
             </v-list-item-icon>
             <v-list-item-title>Register</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/login">
+          <v-list-item
+            link
+            to="/login"
+          >
             <v-list-item-icon>
               <v-icon>mdi-login</v-icon>
-              <v-icon></v-icon>
+              <v-icon />
             </v-list-item-icon>
             <v-list-item-title>Login</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/cardlayout">
+          <v-list-item
+            link
+            to="/cardlayout"
+          >
             <v-list-item-icon>
               <v-icon>mdi-brain</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Quizzes</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/logger">
+          <v-list-item
+            link
+            to="/logger"
+          >
             <v-list-item-icon>
               <v-icon>mdi-keyboard-outline</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Logger</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/grades">
+          <v-list-item
+            link
+            to="/grades"
+          >
             <v-list-item-icon>
               <v-icon>mdi-percent</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Grades</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/tests">
+          <v-list-item
+            link
+            to="/tests"
+          >
             <v-list-item-icon>
               <v-icon>mdi-file-document-edit</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Tests</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/teacher/create-quiz">
+          <v-list-item
+            link
+            to="/teacher/create-quiz"
+          >
             <v-list-item-icon>
               <v-icon>mdi-plus</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Create Quiz</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/teacher/students">
+          <v-list-item
+            link
+            to="/teacher/students"
+          >
             <v-list-item-icon>
               <v-icon>mdi-account-multiple-check</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Students</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/settings">
+          <v-list-item
+            link
+            to="/settings"
+          >
             <v-list-item-icon>
               <v-icon>mdi-settings</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Settings</v-list-item-title>
           </v-list-item>
-          <v-list-item link to="/flashcards">
+          <v-list-item
+            link
+            to="/flashcards"
+          >
             <v-list-item-icon>
               <v-icon>mdi-card-text</v-icon>
             </v-list-item-icon>
@@ -91,7 +133,7 @@
         </v-list>
       </v-navigation-drawer>
     </v-card>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 <script>

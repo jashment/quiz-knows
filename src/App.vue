@@ -1,11 +1,14 @@
 <template>
   <v-app>
-    <v-app-bar app clipped-left>
+    <v-app-bar
+      app
+      clipped-left
+    >
       <v-toolbar-title class="headline text-uppercase">
         <span>Cinema</span>
         <span class="font-weight-light">Portal</span>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer />
       <v-toolbar-items>
         <button
           class="navbar-toggler"
@@ -16,28 +19,46 @@
           aria-expanded="false"
           aria-label
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" />
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto"></ul>
+        <div
+          id="navbarSupportedContent"
+          class="collapse navbar-collapse"
+        >
+          <ul class="navbar-nav mr-auto" />
           <ul class="navbar-nav ml-auto">
             <template v-if="user.loggedIn">
-              <div class="nav-item">{{user.data.displayName}}</div>
+              <div class="nav-item">
+                {{ user.data.displayName }}
+              </div>
               <li class="nav-item">
                 <v-btn outlined="true">
-                  <a class="nav-link" @click.prevent="signOut">Sign out</a>
+                  <a
+                    class="nav-link"
+                    @click.prevent="signOut"
+                  >Sign out</a>
                 </v-btn>
               </li>
             </template>
             <template v-else>
               <li class="nav-item">
                 <v-btn outlined="true">
-                  <router-link to="login" class="nav-link">Login</router-link>
+                  <router-link
+                    to="login"
+                    class="nav-link"
+                  >
+                    Login
+                  </router-link>
                 </v-btn>
               </li>
               <li class="nav-item">
                 <v-btn outlined="true">
-                  <router-link to="register" class="nav-link">Register</router-link>
+                  <router-link
+                    to="register"
+                    class="nav-link"
+                  >
+                    Register
+                  </router-link>
                 </v-btn>
               </li>
             </template>
@@ -47,7 +68,7 @@
     </v-app-bar>
     <v-content>
       <app-home>
-        <router-view></router-view>
+        <router-view />
       </app-home>
       <!-- <Logger /> -->
       <!-- <Login /> -->
@@ -56,15 +77,15 @@
 </template>
 
 <script>
-import Home from './components/Home'
-import { mapGetters } from 'vuex'
-import firebase from 'firebase'
+import Home from "./components/Home";
+import { mapGetters } from "vuex";
+import firebase from "firebase";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     // Card,
-    appHome: Home,
+    appHome: Home
     // Logger,
     // Login,
   },
@@ -73,8 +94,8 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      user: 'user',
-    }),
+      user: "user"
+    })
   },
   methods: {
     signOut() {
@@ -83,12 +104,12 @@ export default {
         .signOut()
         .then(() => {
           this.$router.replace({
-            name: 'home',
-          })
-        })
-    },
-  },
-}
+            name: "home"
+          });
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>
