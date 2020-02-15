@@ -4,14 +4,29 @@
     <!-- <center><router-link to="/cardlayout">Checkout Cards</router-link></center> -->
     <v-container>
       <v-row>
-        <v-col v-for="quiz in quizzes" :key="quiz" cols="12" sm="4">
-          <v-card elevation="6" class="cardComp">
-            <div class="cardTop"></div>
+        <v-col
+          v-for="quiz in quizzes"
+          :key="quiz"
+          cols="12"
+          sm="4"
+        >
+          <v-card
+            elevation="6"
+            class="cardComp"
+          >
+            <div class="cardTop" />
             <v-card-title>{{ quiz.name }}</v-card-title>
-            <v-card-subtitle
-              >Take quiz to improve score and time</v-card-subtitle>
+            <v-card-subtitle>
+              Take quiz to improve score and time
+            </v-card-subtitle>
             <v-card-actions>
-              <v-btn color="#00beff" class="white--text" to="/quizzes/quiz-details">View Quiz</v-btn>
+              <v-btn
+                color="#00beff"
+                class="white--text"
+                to="/quizzes/quiz-details"
+              >
+                View Quiz
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -23,8 +38,7 @@
 <script>
 export default {
   name: 'App',
-  components: {
-  },
+  components: {},
   data: () => ({
     quizzes: [
       { name: 'Adobe Premiere' },

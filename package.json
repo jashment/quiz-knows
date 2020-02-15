@@ -10,11 +10,13 @@
   "dependencies": {
     "@mdi/font": "^4.5.95",
     "core-js": "^3.1.2",
+    "firebase": "^7.6.2",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-flashcard": "^1.1.6",
     "vue-router": "^3.1.5",
-    "vuetify": "^2.1.0"
+    "vuetify": "^2.1.0",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
@@ -25,7 +27,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^5.2.3",
     "prettier": "^1.18.2",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",

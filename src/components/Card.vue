@@ -1,10 +1,15 @@
 <template>
   <v-card class="cardComp">
-    <div class="cardTop"></div>
-    <v-card-title>{{Quizzes}}</v-card-title>
+    <div class="cardTop" />
+    <v-card-title>{{ Quizzes }}</v-card-title>
     <v-card-subtitle>Take quizzes to improve score and time</v-card-subtitle>
     <v-card-actions>
-      <v-btn color="#00beff" class="white--text">View Quiz</v-btn>
+      <v-btn
+        color="#00beff"
+        class="white--text"
+      >
+        View Quiz
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>

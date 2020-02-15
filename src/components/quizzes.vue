@@ -1,32 +1,14 @@
 <template>
-<div>
-
-<h1>Quizzes</h1>
-
-</div>
+  <div>
+    <h1>Quizzes</h1>
+  </div>
 </template>
 
-
-
-
-
-<script>
-
-
-
-
-</script>
-
-
-
+<script></script>
 
 <style scoped>
-
 h1 {
-    text-align: center;
-    margin-top: 250px;
+  text-align: center;
+  margin-top: 250px;
 }
-
-
-
 </style>
