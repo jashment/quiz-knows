@@ -3,12 +3,12 @@
     <div class="row mt-5">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <h3 class="text-center">Adobe Premier: macOS</h3>
+        <h3 class="text-center">Adobe Premier: Windows</h3>
       </div>
       <div class="col-md-3">
         <v-card-actions>
-          <v-btn color="#00beff" class="white--text" link to="/flashcardsap2"
-            >Windows</v-btn
+          <v-btn color="#00beff" class="white--text" link to="/flashcardsap"
+            >mac/OS</v-btn
           >
           <v-btn color="#00beff" class="white--text" link to="/flashcards"
             >Back</v-btn
@@ -21,7 +21,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to start a project?"
-            back="Opt + Cmd + N"
+            back="Ctrl + Alt + N"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -37,7 +37,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to start a Sequence?"
-            back="Cmd + N"
+            back="Ctrl + N"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -53,7 +53,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to select BIN?"
-            back="Cmd + /"
+            back="Ctrl + /"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -71,7 +71,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Open a Project?"
-            back="Cmd + O"
+            back="Ctrl + O"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -87,7 +87,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Close a Project?"
-            back="Shift + Cmd + W"
+            back="Ctrl + Shift + W"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -103,7 +103,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to close a file??"
-            back="Cmd + W"
+            back="Ctrl + W"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -121,7 +121,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to undo?"
-            back="Cmd + Z"
+            back="Ctrl + Z"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -137,7 +137,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Redo?"
-            back="Shift + Cmd + Z"
+            back="Ctrl + Shift + Z"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -153,7 +153,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Cut?"
-            back="Cmd + X"
+            back="Ctrl + X"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -171,7 +171,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Copy?"
-            back="Cmd + C"
+            back="Ctrl + C"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -187,7 +187,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Paste?"
-            back="Cmd + V"
+            back="Ctrl + V"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -203,7 +203,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Paste Insert?"
-            back="Shift + Cmd + V"
+            back="Ctrl + Shift + V"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -221,7 +221,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Make a Subclip?"
-            back="Cmd + U"
+            back="Ctrl + U"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -271,7 +271,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to adjust the Speed/Duration?"
-            back="Cmd + R"
+            back="Ctrl + R"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -287,7 +287,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to enable a clip?"
-            back="Shift + Cmd + E"
+            back="Shift + E"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -303,7 +303,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Link a clip?"
-            back="Cmd + L"
+            back="Ctrl + L"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -321,7 +321,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to group clips?"
-            back="Cmd + G"
+            back="Ctrl + G"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -337,7 +337,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to ungroup clips?"
-            back="Shift + Cmd + G"
+            back="Ctrl + Shift + G"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -403,7 +403,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Apply a video transition?"
-            back="Cmd + D"
+            back="Ctrl + D"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -421,7 +421,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Reset to a Saved Layout?"
-            back="Opt + Shift + 0"
+            back="Alt + Shift + 0"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -503,7 +503,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Show/Hide Tracks?"
-            back="Opt + Cmd + T"
+            back="Ctrl + Alt + T"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -521,7 +521,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Loop through audio tracks?"
-            back="Cmd + L"
+            back="Ctrl + L"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -587,7 +587,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to create a new text layer?"
-            back="Cmd + T"
+            back="Ctrl + T"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -603,7 +603,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Bring to Front?"
-            back="Cmd + Shift + ]"
+            back="Ctrl + Shift + ]"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -621,7 +621,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Bring Forward a graphic?"
-            back="Cmd + ]"
+            back="Ctrl + ]"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -637,8 +637,8 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to Send a graphic Backward?"
-            back="Cmd + ["
-            headerFront="Queston"
+            back="Ctrl + ["
+            headerFront="Question"
             footerFront=""
             footerBack=""
             colorFront="#424242"
@@ -653,7 +653,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke Clear a Selection in graphics panel?"
-            back="delete"
+            back="backspace"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -703,7 +703,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to delete in the history panel?"
-            back="delete"
+            back="backspace"
             headerFront="Question"
             footerFront=""
             footerBack=""
@@ -753,7 +753,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke to insert a copyright symbol?"
-            back="Opt + Shift + Cmd + C"
+            back="Ctrl + Alt + Shift + C"
             headerFront="Queston"
             footerFront=""
             footerBack=""
@@ -771,7 +771,7 @@
         <p>
           <vue-flashcard
             front="What is the keystroke Insert a Registered Symbol?"
-            back="Opt + Shift + Cmd + R"
+            back="Ctrl + Alt + Shift + R"
             headerFront="Question"
             footerFront=""
             footerBack=""
