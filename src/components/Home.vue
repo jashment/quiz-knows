@@ -40,26 +40,6 @@
         <v-list nav>
           <v-list-item
             link
-            to="/register"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-account-plus-outline</v-icon>
-              <v-icon />
-            </v-list-item-icon>
-            <v-list-item-title>Register</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/login"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-login</v-icon>
-              <v-icon />
-            </v-list-item-icon>
-            <v-list-item-title>Login</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
             to="/cardlayout"
           >
             <v-list-item-icon>
@@ -138,13 +118,13 @@
 </template>
 <script>
 export default {
-  name: 'App',
+  name: "App",
   components: {
     // Card,,
     // Logger,
     // Login,
-  },
-}
+  }
+};
 </script>
 <style scoped>
 .navDrawer {
