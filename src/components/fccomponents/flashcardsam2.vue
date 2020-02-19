@@ -8,7 +8,7 @@
       <div class="col-md-3">
         <v-card-actions>
           <v-btn color="#00beff" class="white--text" link to="/flashcardsam1"
-            >Windows</v-btn
+            >mac/os</v-btn
           >
           <v-btn color="#00beff" class="white--text" link to="/flashcards"
             >Back</v-btn
@@ -16,7 +16,7 @@
         </v-card-actions>
       </div>
     </div>
-  <div class="row mt-0 mb-0">
+    <div class="row mt-0 mb-0">
       <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
         <p>
           <vue-flashcard
