@@ -7,8 +7,12 @@ import settings from './components/settings'
 import cardlayout from './components/cardlayout'
 import flashcards from './components/fcstack'
 import logger from './components/Logger'
+import Register from './components/Register'
 import createQuiz from './components/teacher/CreateQuiz'
 import Students from './components/teacher/Students'
+import Login from './components/Login'
+import QuizDetails from './components/QuizDetails'
+import QuizPage from './components/QuizPage'
 
 // list of flashcards //
 import flashcardsap from './components/fccomponents/flashcards'
@@ -25,6 +29,8 @@ export const routes = [
   { path: '/grades', component: grades },
   { path: '/tests', component: tests },
   { path: '/quizzes', component: quizzes },
+  { path: '/quizzes/quiz-details', component: QuizDetails },
+  { path: '/quizzes/quiz', component: QuizPage },
   { path: '/settings', component: settings },
   { path: '/cardlayout', component: cardlayout },
   { path: '/flashcards', component: flashcards },
@@ -35,6 +41,8 @@ export const routes = [
   { path: '/flashcardsam1', component: flashcardsam1 },
   { path: '/flashcardsam2', component: flashcardsam2 },
   { path: '/logger', component: logger },
+  { path: '/register', component: Register },
   { path: '/teacher/create-quiz', component: createQuiz },
   { path: '/teacher/students', component: Students },
+  { path: '/login', component: Login },
 ]

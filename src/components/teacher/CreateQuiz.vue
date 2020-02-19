@@ -1,6 +1,8 @@
 <template>
   <v-container class="text-center">
-    <h1 class="text-center py-12 font-weight-light">Create New Quiz</h1>
+    <h1 class="text-center py-12 font-weight-light">
+      Create New Quiz
+    </h1>
     <v-data-table
       :headers="headers"
       :items="questions"
@@ -10,13 +12,26 @@
       <template v-slot:top>
         <v-toolbar flat>
           <v-toolbar-title>Premeire Quiz</v-toolbar-title>
-          <v-divider class="mx-4" inset vertical></v-divider>
-          <v-spacer></v-spacer>
-          <v-dialog v-model="dialog" max-width="500px">
+          <v-divider
+            class="mx-4"
+            inset
+            vertical
+          />
+          <v-spacer />
+          <v-dialog
+            v-model="dialog"
+            max-width="500px"
+            persistent
+          >
             <template v-slot:activator="{ on }">
-              <v-btn color="primary" dark class="mb-2" v-on="on"
-                >New Question</v-btn
+              <v-btn
+                color="green"
+                dark
+                class="mb-2"
+                v-on="on"
               >
+                New Question
+              </v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -26,60 +41,100 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="12" md="12">
+                    <v-col
+                      cols="12"
+                      sm="12"
+                      md="12"
+                    >
                       <v-text-field
                         v-model="editedItem.name"
                         label="Question"
-                      ></v-text-field>
-                    </v-col> 
+                      />
+                    </v-col>
                   </v-row>
                   <v-row>
-                      <v-col class="text-center pb-0">
-                        <p>Enter keys separated by a comma. (example: cmd, shift, t)
-                        </p>
-                      </v-col>
-                    </v-row>
+                    <v-col class="text-center pb-0">
+                      <p>
+                        Enter keys separated by a comma. (example: cmd, shift,
+                        t)
+                      </p>
+                    </v-col>
+                  </v-row>
                   <v-row>
-                    <v-col cols="12" sm="6" md="6">
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="6"
+                    >
                       <v-text-field
                         v-model="editedItem.macOS"
                         label="macOS Shortcut"
-                      ></v-text-field>
+                      />
                     </v-col>
-                    <v-col cols="12" sm="6" md="6">
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="6"
+                    >
                       <v-text-field
                         v-model="editedItem.windows"
                         label="Windows Shortcut"
-                      ></v-text-field>
+                      />
                     </v-col>
                   </v-row>
-                    
-                 
                 </v-container>
               </v-card-text>
 
               <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-                <v-btn color="blue darken-1" text @click="save">Save</v-btn>
+                <v-spacer />
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="close"
+                >
+                  Cancel
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  @click="save"
+                >
+                  Save
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
         </v-toolbar>
       </template>
       <template v-slot:item.action="{ item }">
-        <v-icon small class="mr-5 title" @click="editItem(item)" color="blue">
+        <v-icon
+          small
+          class="mr-5 title"
+          color="blue"
+          @click="editItem(item)"
+        >
           mdi-pencil-outline
         </v-icon>
-        <v-icon small class="title" @click="deleteItem(item)" color="red">
+        <v-icon
+          small
+          class="title"
+          color="red"
+          @click="deleteItem(item)"
+        >
           mdi-trash-can-outline
         </v-icon>
       </template>
       <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">Reset</v-btn>
+        <v-btn
+          color="primary"
+          @click="initialize"
+        >
+          Reset
+        </v-btn>
       </template>
     </v-data-table>
-    <v-btn class="primary mb-12">Save Quiz</v-btn>
+    <v-btn class="primary mb-12">
+      Save Quiz
+    </v-btn>
   </v-container>
 </template>
 
@@ -88,7 +143,7 @@ export default {
   data: () => ({
     dialog: false,
     headers: [
-      { text: 'Question', align: 'left', sortable: false, value: 'name',},
+      { text: 'Question', align: 'left', sortable: false, value: 'name' },
       { text: 'macOS', value: 'macOS', sortable: false },
       { text: 'Windows', value: 'windows', sortable: false },
       { text: 'Actions', value: 'action', sortable: false },

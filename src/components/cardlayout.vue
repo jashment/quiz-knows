@@ -1,8 +1,14 @@
 <template>
   <div>
+    <h1>Cards</h1>
     <v-container>
       <v-row>
-        <v-col v-for="n in 9" :key="n" cols="12" sm="4">
+        <v-col
+          v-for="n in 9"
+          :key="n"
+          cols="12"
+          sm="4"
+        >
           <Card />
         </v-col>
       </v-row>

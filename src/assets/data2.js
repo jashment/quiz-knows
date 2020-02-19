@@ -1,17 +1,21 @@
+
+
 export const data = [
-  headers = [
+  // eslint-disable-next-line no-undef
+  (headers = [
     {
       text: 'Attempts',
       align: 'left',
       sortable: false,
-      value: 'name'
+      value: 'name',
     },
-      { text: 'Date', value: 'Date' },
-      { text: 'Score', value: 'Score' },
-      { text: 'Out of', value: 'OutOf' },
-      { text: 'Time', value: 'Time' },
-  ],
-  attempts = [
+    { text: 'Date', value: 'Date' },
+    { text: 'Score', value: 'Score' },
+    { text: 'Out of', value: 'OutOf' },
+    { text: 'Time', value: 'Time' },
+  ]),
+  // eslint-disable-next-line no-undef
+  (attempts = [
     {
       name: 'Attempt 1',
       Date: '1/25/2020',
@@ -40,5 +44,5 @@ export const data = [
       OutOf: 50,
       Time: '5 minutes',
     },
-  ],
+  ]),
 ]
