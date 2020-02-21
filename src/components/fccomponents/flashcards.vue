@@ -17,12 +17,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to start a project?"
           back="Opt + Cmd + N"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -33,12 +33,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to start a Sequence?"
           back="Cmd + N"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -49,12 +49,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to select BIN?"
           back="Cmd + /"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -67,7 +67,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to Open a Project?"
@@ -83,12 +83,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Close a Project?"
           back="Shift + Cmd + W"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -99,12 +99,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to close a file??"
           back="Cmd + W"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -117,12 +117,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to undo?"
           back="Cmd + Z"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -133,12 +133,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Redo?"
           back="Shift + Cmd + Z"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -149,12 +149,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Cut?"
           back="Cmd + X"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -167,7 +167,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to Copy?"
@@ -183,7 +183,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Paste?"
@@ -199,7 +199,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Paste Insert?"
@@ -217,12 +217,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to Make a Subclip?"
           back="Cmd + U"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -233,12 +233,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to clip audio channels?"
           back="Shift + G"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -249,7 +249,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke adjust the gain?"
@@ -267,7 +267,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to adjust the Speed/Duration?"
@@ -283,7 +283,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to enable a clip?"
@@ -299,7 +299,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Link a clip?"
@@ -317,12 +317,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to group clips?"
           back="Cmd + G"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -333,12 +333,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to ungroup clips?"
           back="Shift + Cmd + G"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -349,12 +349,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke Render Effects in the work area?"
           back="Enter"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -367,7 +367,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke match the frame?"
@@ -383,7 +383,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke reverse the match frame?"
@@ -399,7 +399,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Apply a video transition?"
@@ -417,12 +417,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to Reset to a Saved Layout?"
           back="Opt + Shift + 0"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -433,12 +433,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to open the Audio Clip Mixer?"
           back="Shift + 9"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -449,12 +449,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke open the Audio Track Mixer?"
           back="Shift + 6"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -467,7 +467,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to open the Effect Controls?"
@@ -483,12 +483,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to open Timelines?"
           back="Shift + 3"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -499,12 +499,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Show/Hide Tracks?"
           back="Opt + Cmd + T"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -517,12 +517,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to Loop through audio tracks?"
           back="Cmd + L"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -533,12 +533,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Record Video?"
           back="V"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -549,12 +549,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Record Audio?"
           back="A"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -567,7 +567,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to Remove a selected effect?"
@@ -583,7 +583,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to create a new text layer?"
@@ -599,7 +599,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Bring to Front?"
@@ -617,12 +617,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to Bring Forward a graphic?"
           back="Cmd + ]"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -633,12 +633,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Send a graphic Backward?"
           back="Cmd + ["
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -649,7 +649,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke Clear a Selection in graphics panel?"
@@ -667,7 +667,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to step backward on the history panel?"
@@ -683,7 +683,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to step forward on the history panel?"
@@ -699,7 +699,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to delete in the history panel?"
@@ -717,12 +717,12 @@ Back
     </div>
   </div>
   <div class="row mt-0 mb-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0 mb-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
       <p>
         <vue-flashcard
           front="What is the keystroke to open the Arc Tool?"
           back="A"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -733,12 +733,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to open the eclipse tool?"
           back="E"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -749,12 +749,12 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to insert a copyright symbol?"
           back="Opt + Shift + Cmd + C"
-          headerFront="Queston"
+          headerFront="Question"
           footerFront=""
           footerBack=""
           colorFront="#424242"
@@ -767,7 +767,7 @@ Back
     </div>
   </div>
   <div class="row mt-0">
-    <div class="col-md-4 col-lg-4 col-sm-4 mt-0">
+    <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
       <p>
         <vue-flashcard
           front="What is the keystroke Insert a Registered Symbol?"
@@ -783,7 +783,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Open in Source Monitor?"
@@ -799,7 +799,7 @@ Back
         </vue-flashcard>
       </p>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4">
+    <div class="col-md-12 col-lg-12 col-sm-12">
       <p>
         <vue-flashcard
           front="What is the keystroke to Select the Directory List?"
@@ -841,5 +841,7 @@ export default {
 .row {
   margin-top: 0;
   margin-bottom: 0 !important;
+  max-width: 500px;
+  margin: auto;
 }
 </style>
