@@ -11,6 +11,8 @@ import createQuiz from './components/teacher/CreateQuiz'
 import Students from './components/teacher/Students'
 import QuizDetails from './components/QuizDetails'
 import QuizPage from './components/QuizPage'
+import Quiz from './components/Quiz'
+import QuizResults from './components/QuizResults'
 
 export const routes = [
   { path: '/dashboard', component: dashboard },
@@ -18,7 +20,10 @@ export const routes = [
   { path: '/grades', component: grades },
   { path: '/quizzes', component: quizzes },
   { path: '/quizzes/quiz-details', component: QuizDetails},
-  { path: '/quizzes/quiz', component: QuizPage},
+  { path: '/quizzes/quiz', component: QuizPage, children: [
+      { path: '/quizzes/quiz', component: Quiz },
+      { path: '/quizzes/quiz/results', component: QuizResults },
+  ]},
   { path: '/settings', component: settings },
   { path: '/cardlayout', component: cardlayout },
   { path: '/flashcards', component: flashcards },
