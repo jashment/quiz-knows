@@ -119,7 +119,17 @@ export default {
             })
             .then(moreData => {
               alert(`User ${moreData} created!`)
+              firebase.database().ref('users/').push({
+                uid: data.user.uid
+              }).set({
+                name: this.form.name,
+                email: this.form.email,
+                role: 'newUser'
+              })
             })
+            history.push('/')
+            console.log(data)
+
         })
         .catch(err => {
           this.error = err.message
