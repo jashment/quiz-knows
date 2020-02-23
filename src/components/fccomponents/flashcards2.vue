@@ -4,7 +4,7 @@
       <div class="col-md-3" />
       <div class="col-md-6">
         <h3 class="text-center">
-          Adobe Premier: macOS
+          Adobe Premier: Windows
         </h3>
       </div>
       <div class="col-md-3">
@@ -13,9 +13,9 @@
             color="#00beff"
             class="white--text"
             link
-            to="/flashcardsap2"
+            to="/flashcardsap"
           >
-            Windows
+            mac/OS
           </v-btn>
           <v-btn
             color="#00beff"
@@ -28,16 +28,14 @@
         </v-card-actions>
       </div>
     </div>
-
-
     <div class="embed">
       <div class="row mt-0 mb-0">
         <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
           <p>
             <vue-flashcard
               front="What is the keystroke to start a project?"
-              back="Opt + Cmd + N"
-              header-front="Question"
+              back="Ctrl + Alt + N"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -51,8 +49,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to start a Sequence?"
-              back="Cmd + N"
-              header-front="Question"
+              back="Ctrl + N"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -66,8 +64,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to select BIN?"
-              back="Cmd + /"
-              header-front="Question"
+              back="Ctrl + /"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -83,7 +81,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Open a Project?"
-              back="Cmd + O"
+              back="Ctrl + O"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -98,8 +96,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Close a Project?"
-              back="Shift + Cmd + W"
-              header-front="Question"
+              back="Ctrl + Shift + W"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -113,8 +111,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to close a file??"
-              back="Cmd + W"
-              header-front="Question"
+              back="Ctrl + W"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -130,8 +128,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to undo?"
-              back="Cmd + Z"
-              header-front="Question"
+              back="Ctrl + Z"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -145,8 +143,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Redo?"
-              back="Shift + Cmd + Z"
-              header-front="Question"
+              back="Ctrl + Shift + Z"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -160,8 +158,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Cut?"
-              back="Cmd + X"
-              header-front="Question"
+              back="Ctrl + X"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -177,7 +175,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Copy?"
-              back="Cmd + C"
+              back="Ctrl + C"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -192,7 +190,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Paste?"
-              back="Cmd + V"
+              back="Ctrl + V"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -207,7 +205,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Paste Insert?"
-              back="Shift + Cmd + V"
+              back="Ctrl + Shift + V"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -224,8 +222,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Make a Subclip?"
-              back="Cmd + U"
-              header-front="Question"
+              back="Ctrl + U"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -240,7 +238,7 @@
             <vue-flashcard
               front="What is the keystroke to clip audio channels?"
               back="Shift + G"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -271,7 +269,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to adjust the Speed/Duration?"
-              back="Cmd + R"
+              back="Ctrl + R"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -286,7 +284,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to enable a clip?"
-              back="Shift + Cmd + E"
+              back="Shift + E"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -301,7 +299,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Link a clip?"
-              back="Cmd + L"
+              back="Ctrl + L"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -318,8 +316,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to group clips?"
-              back="Cmd + G"
-              header-front="Question"
+              back="Ctrl + G"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -333,8 +331,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to ungroup clips?"
-              back="Shift + Cmd + G"
-              header-front="Question"
+              back="Ctrl + Shift + G"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -349,7 +347,7 @@
             <vue-flashcard
               front="What is the keystroke Render Effects in the work area?"
               back="Enter"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -395,7 +393,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Apply a video transition?"
-              back="Cmd + D"
+              back="Ctrl + D"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -412,8 +410,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Reset to a Saved Layout?"
-              back="Opt + Shift + 0"
-              header-front="Question"
+              back="Alt + Shift + 0"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -428,7 +426,7 @@
             <vue-flashcard
               front="What is the keystroke to open the Audio Clip Mixer?"
               back="Shift + 9"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -443,7 +441,7 @@
             <vue-flashcard
               front="What is the keystroke open the Audio Track Mixer?"
               back="Shift + 6"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -475,7 +473,7 @@
             <vue-flashcard
               front="What is the keystroke to open Timelines?"
               back="Shift + 3"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -489,8 +487,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Show/Hide Tracks?"
-              back="Opt + Cmd + T"
-              header-front="Question"
+              back="Ctrl + Alt + T"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -506,8 +504,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Loop through audio tracks?"
-              back="Cmd + L"
-              header-front="Question"
+              back="Ctrl + L"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -522,7 +520,7 @@
             <vue-flashcard
               front="What is the keystroke to Record Video?"
               back="V"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -537,7 +535,7 @@
             <vue-flashcard
               front="What is the keystroke to Record Audio?"
               back="A"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -568,7 +566,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to create a new text layer?"
-              back="Cmd + T"
+              back="Ctrl + T"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -583,7 +581,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Bring to Front?"
-              back="Cmd + Shift + ]"
+              back="Ctrl + Shift + ]"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -600,8 +598,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Bring Forward a graphic?"
-              back="Cmd + ]"
-              header-front="Question"
+              back="Ctrl + ]"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -615,7 +613,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to Send a graphic Backward?"
-              back="Cmd + ["
+              back="Ctrl + ["
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -630,7 +628,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke Clear a Selection in graphics panel?"
-              back="delete"
+              back="backspace"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -677,7 +675,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to delete in the history panel?"
-              back="delete"
+              back="backspace"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -695,7 +693,7 @@
             <vue-flashcard
               front="What is the keystroke to open the Arc Tool?"
               back="A"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -710,7 +708,7 @@
             <vue-flashcard
               front="What is the keystroke to open the eclipse tool?"
               back="E"
-              header-front="Question"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -724,8 +722,8 @@
           <p>
             <vue-flashcard
               front="What is the keystroke to insert a copyright symbol?"
-              back="Opt + Shift + Cmd + C"
-              header-front="Question"
+              back="Ctrl + Alt + Shift + C"
+              header-front="Queston"
               footer-front=""
               footer-back=""
               color-front="#424242"
@@ -741,7 +739,7 @@
           <p>
             <vue-flashcard
               front="What is the keystroke Insert a Registered Symbol?"
-              back="Opt + Shift + Cmd + R"
+              back="Ctrl + Alt + Shift + R"
               header-front="Question"
               footer-front=""
               footer-back=""
@@ -795,7 +793,6 @@ export default {
 </script>
 
 <style scoped>
-
 body {
   overflow: hidden; /* Hide scrollbars */
 }
@@ -832,6 +829,4 @@ body {
 .embed::webkit-scrollbar {
   display: none;
 }
-
-
 </style>
