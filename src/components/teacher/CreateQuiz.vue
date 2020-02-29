@@ -227,6 +227,10 @@ export default {
       this.dialog = true
     },
 
+    saveQuiz() {
+      //save the quiz to the database
+    },
+
     deleteItem(item) {
       const index = this.questions.indexOf(item)
       confirm('Are you sure you want to delete this question?') &&
