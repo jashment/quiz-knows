@@ -11,23 +11,12 @@
       >
         <template v-slot:prepend>
           <v-list>
-            <v-list-item>
-              <v-list-item-avatar>
-                <!-- <v-img
-                  src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/27337022_10160041719275327_1001198401363381299_n.jpg?_nc_cat=108&_nc_oc=AQndJbRHtM5b8QeNPuoIq-xW0zAG2OIqKUDS3C4ZHVYohsN3InQBGUcn7RGU8xjKzIo&_nc_ht=scontent-sjc3-1.xx&oh=5f2a5c0d90b408024f2f1905d68f515e&oe=5E2FC739"
-                ></v-img>-->
-              </v-list-item-avatar>
-            </v-list-item>
-
-            <v-list-item
-              link
-              two-line
-            >
+            <v-list-item link two-line>
               <v-list-item-content>
                 <v-list-item-title class="title">
-                  Grant Shoop
+                  {{ user.name }}
                 </v-list-item-title>
-                <v-list-item-subtitle>grantshoop@gmail.com</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
                 <v-icon>mdi-menu-down</v-icon>
@@ -38,97 +27,12 @@
 
         <v-divider />
         <v-list nav>
-          <v-list-item
-            link
-            to="/register"
-          >
+          <v-list-item link :to="item.to" v-for="item in items" :key="item.to">
             <v-list-item-icon>
-              <v-icon>mdi-account-plus-outline</v-icon>
+              <v-icon>{{ item.icon }}</v-icon>
               <v-icon />
             </v-list-item-icon>
-            <v-list-item-title>Register</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/login"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-login</v-icon>
-              <v-icon />
-            </v-list-item-icon>
-            <v-list-item-title>Login</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/cardlayout"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-brain</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Quizzes</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/logger"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-keyboard-outline</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Logger</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/grades"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-percent</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Grades</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/tests"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-file-document-edit</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Tests</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/teacher/create-quiz"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-plus</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Create Quiz</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/teacher/students"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-account-multiple-check</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Students</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/settings"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-settings</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Settings</v-list-item-title>
-          </v-list-item>
-          <v-list-item
-            link
-            to="/flashcards"
-          >
-            <v-list-item-icon>
-              <v-icon>mdi-card-text</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Flashcards</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
@@ -138,13 +42,54 @@
 </template>
 <script>
 export default {
-  name: 'App',
-  components: {
-    // Card,,
-    // Logger,
-    // Login,
-  },
-}
+  name: "App",
+  data() {
+    return {
+      items: [
+        {
+          title: "Register",
+          icon: "mdi-account-plus-outline",
+          disabled: false,
+          to: "register"
+        },
+        { title: "Login", icon: "mdi-login", disabled: false, to: "login" },
+        { title: "Quizzes", icon: "mdi-brain", disabled: false, to: "/" },
+        {
+          title: "Grades",
+          icon: "mdi-percent",
+          disabled: false,
+          to: "/grades"
+        },
+        {
+          title: "Create Quiz",
+          icon: "mdi-plus",
+          disabled: false,
+          to: "/teacher/create-quiz"
+        },
+        {
+          title: "Students",
+          icon: "mdi-account-multiple-check",
+          disabled: false,
+          to: "/teacher/students"
+        },
+        {
+          title: "Settings",
+          icon: "mdi-settings",
+          disabled: false,
+          to: "/settings"
+        },
+        {
+          title: "Flashcards",
+          icon: "mdi-card-text",
+          disabled: false,
+          to: "/flashcards"
+        }
+      ],
+      user: { name: "Grant Shoop", email: "grant@gmail.com" },
+      right: null
+    };
+  }
+};
 </script>
 <style scoped>
 .navDrawer {

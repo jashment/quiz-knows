@@ -3,6 +3,7 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
+        resultsArr: [],
         user: {
             loggedIn: false,
             data: null

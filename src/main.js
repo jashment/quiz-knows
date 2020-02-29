@@ -8,8 +8,6 @@ import store from '../store'
 import * as firebase from 'firebase'
 import { firebaseConfig } from './firebase/credentials'
 
-import store from './store/store'
-
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
