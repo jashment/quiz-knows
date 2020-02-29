@@ -7,7 +7,7 @@
             <h1 class="display-1 py-5">
               Question {{ questions[currentPage].id }}
             </h1>
-            <label>{{ questions[currentPage].name }}</label>
+            <label>{{ questions[currentPage].question }}</label>
             <v-text-field
               type="text"
               v-on:keydown="logKey"
@@ -104,14 +104,14 @@ export default {
       input: this.$refs.input,
       questions: [
         {
-          name: 'How do you make an edit wherever your playhead is located?',
+          question: 'How do you make an edit wherever your playhead is located?',
           macOS: ['Cmd, K'],
           windows: '1',
           answer: '',
           id: 1,
         },
         {
-          name:
+          question:
             'Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box',
           macOS: ['M'],
           windows: '2',
@@ -119,7 +119,7 @@ export default {
           id: 2,
         },
         {
-          name:
+          question:
             'What key do you press to locate a source clip from within your timeline?',
           macOS: ['F'],
           windows: '3',
@@ -127,35 +127,35 @@ export default {
           id: 3,
         },
         // {
-        //   name: 'What keys bring up the Export Media dialog box?',
+        //   question: 'What keys bring up the Export Media dialog box?',
         //   macOS: ['Cmd, M'],
         //   windows: '4',
         //   answer: '',
         //   id: 4,
         // },
         // {
-        //   name: 'What key is for making In point on a clip?',
+        //   question: 'What key is for making In point on a clip?',
         //   macOS: ['I'],
         //   windows: '5',
         //   answer: '',
         //   id: 5,
         // },
         // {
-        //   name: 'What key is for making Out point on a clip?',
+        //   question: 'What key is for making Out point on a clip?',
         //   macOS: ['O'],
         //   windows: '6',
         //   answer: '',
         //   id: 6,
         // },
         // {
-        //   name: 'What key makes your video playback at a faster speed?',
+        //   question: 'What key makes your video playback at a faster speed?',
         //   macOS: ['L'],
         //   windows: '7',
         //   answer: '',
         //   id: 7,
         // },
         // {
-        //   name: 'What key makes your video playback at a faster speed?',
+        //   question: 'What key makes your video playback at a faster speed?',
         //   macOS: ['L'],
         //   windows: '7',
         //   answer: '',
