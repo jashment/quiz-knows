@@ -4,7 +4,7 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">
-            Login
+            Register
           </div>
           <div class="card-body">
             <div
@@ -17,6 +17,26 @@
               action="#"
               @submit.prevent="submit"
             >
+              <div class="form-group row">
+                <label
+                  for="name"
+                  class="col-md-4 col-form-label text-md-right"
+                >Name</label>
+
+                <div class="col-md-6">
+                  <v-text-field
+                    id="name"
+                    v-model="form.name"
+                    type="name"
+                    class="form-control"
+                    name="name"
+                    value
+                    required
+                    autofocus
+                  />
+                </div>
+              </div>
+
               <div class="form-group row">
                 <label
                   for="email"
@@ -48,7 +68,7 @@
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="form-control text-black"
+                    class="form-control"
                     name="password"
                     required
                   />
@@ -57,12 +77,12 @@
 
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
-                  <button
+                  <v-btn
                     type="submit"
                     class="btn btn-primary"
                   >
-                    Login
-                  </button>
+                    Register
+                  </v-btn>
                 </div>
               </div>
             </form>
@@ -80,9 +100,9 @@ export default {
   data() {
     return {
       form: {
+        name: '',
         email: '',
         password: '',
-        uid: null,
       },
       error: null,
     }
@@ -91,9 +111,15 @@ export default {
     submit() {
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(() => {
-          this.$router.replace('cardlayout')
+        .createUserWithEmailAndPassword(this.form.email, this.form.password)
+        .then(data => {
+          data.user
+            .updateProfile({
+              displayName: this.form.name,
+            })
+            .then(moreData => {
+              alert(`User ${moreData} created!`)
+            })
         })
         .catch(err => {
           this.error = err.message
