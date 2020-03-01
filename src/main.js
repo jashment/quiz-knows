@@ -8,6 +8,7 @@ import store from '../store'
 import * as firebase from 'firebase'
 import { firebaseConfig } from './firebase/credentials'
 
+Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 firebase.initializeApp(firebaseConfig)
