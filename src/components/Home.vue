@@ -18,7 +18,7 @@
 
         <v-divider />
         <v-list nav>
-          <v-list-item link :to="item.to" v-for="item in items" :key="item.to">
+          <v-list-item v-for="item in items" :key="item.to" link :to="item.to">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
               <v-icon />
@@ -41,9 +41,9 @@ export default {
           title: "Register",
           icon: "mdi-account-plus-outline",
           disabled: false,
-          to: "register"
+          to: "/register"
         },
-        { title: "Login", icon: "mdi-login", disabled: false, to: "login" },
+        { title: "Login", icon: "mdi-login", disabled: false, to: "/login" },
         { title: "Quizzes", icon: "mdi-brain", disabled: false, to: "/" },
         {
           title: "Grades",

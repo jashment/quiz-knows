@@ -56,12 +56,12 @@
                 </div>
               </div>
 
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                 <label
                   for="role"
                   class="col-md-4 col-form-label text-md-right"
-                >Student or Teacher?</label>
-                <select
+                >Student or Teacher?</label> -->
+                <!-- <select
                   v-model="form.role"
                   class="form-control"
                 >
@@ -81,7 +81,7 @@
                   >
                     Teacher
                   </option>
-                </select>
+                </select> -->
                 <!-- <div class="col-md-6">
                   <v-text-field
                     id="role"
@@ -92,8 +92,8 @@
                     value
                     required
                   />
-                </div> -->
-              </div>
+                </div>
+              </div> -->
 
               <div class="form-group row">
                 <label
@@ -140,7 +140,7 @@ export default {
       form: {
         name: '',
         email: '',
-        role: '',
+        // role: '',
         password: '',
       },
       error: null,
@@ -152,22 +152,24 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
         .then(data => {
+          console.log(data)
           data.user
             .updateProfile({
               displayName: this.form.name,
             })
             .then(moreData => {
-              alert(`User ${moreData.displayName} created!`)
-              firebase.database().ref('users/').push({
-                uid: data.user.uid
-              }).set({
-                name: this.form.name,
-                email: this.form.email,
-                role: this.form.role
-              })
+              console.log(moreData)
+              // alert(`User ${moreData} created!`)
+              // firebase.database().ref('users/').push({
+              //   uid: moreData.user.uid
+              // }).set({
+              //   name: this.form.name,
+              //   email: this.form.email,
+              //   // role: this.form.role
+              // })
             })
-            this.$router.replace('cardlayout')
-            console.log(data)
+            // this.$router.replace('cardlayout')
+            // console.log(data)
 
         })
         .catch(err => {
