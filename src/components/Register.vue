@@ -52,11 +52,12 @@
                     name="email"
                     value
                     required
+                    autofocus
                   />
                 </div>
               </div>
 
-              <!-- <div class="form-group row">
+                            <!-- <div class="form-group row">
                 <label
                   for="role"
                   class="col-md-4 col-form-label text-md-right"
@@ -140,7 +141,6 @@ export default {
       form: {
         name: '',
         email: '',
-        // role: '',
         password: '',
       },
       error: null,
@@ -152,24 +152,22 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.form.email, this.form.password)
         .then(data => {
-          console.log(data)
           data.user
             .updateProfile({
               displayName: this.form.name,
             })
             .then(moreData => {
-              console.log(moreData)
-              // alert(`User ${moreData} created!`)
-              // firebase.database().ref('users/').push({
-              //   uid: moreData.user.uid
-              // }).set({
-              //   name: this.form.name,
-              //   email: this.form.email,
-              //   // role: this.form.role
-              // })
+              alert(`User ${moreData} created!`)
+              firebase.database().ref('users/').push({
+                uid: data.user.uid
+              }).set({
+                name: this.form.name,
+                email: this.form.email,
+                role: 'newUser'
+              })
             })
-            // this.$router.replace('cardlayout')
-            // console.log(data)
+            this.$router.replace('cardlayout')
+            console.log(data)
 
         })
         .catch(err => {
