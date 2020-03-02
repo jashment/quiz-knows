@@ -80,69 +80,9 @@
 </template>
 
 <script>
+
 export default {
-  data() {
-    return {
-      pressedKey: '',
-      infoArray: [],
-      currentPage: 0,
-      userAnswers: [],
-      results: [],
-      endTest: false,
-      questions: [
-        {
-          name: 'How do you make an edit wherever your playhead is located?',
-          macOS: ['Cmd, K'],
-          windows: 'a',
-          answer: '',
-          id: 1,
-        },
-        {
-          name:
-            'Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box',
-          macOS: ['M'],
-          windows: 'a,b',
-          answer: '',
-          id: 2,
-        },
-        {
-          name:
-            'What key do you press to locate a source clip from within your timeline?',
-          macOS: ['F'],
-          windows: 'a',
-          answer: '',
-          id: 3,
-        },
-        {
-          name: 'What keys bring up the Export Media dialog box?',
-          macOS: ['Cmd, M'],
-          windows: 'a',
-          answer: '',
-          id: 4,
-        },
-        {
-          name: 'What key is for making In point on a clip?',
-          macOS: ['I'],
-          windows: 'a',
-          answer: '',
-          id: 5,
-        },
-        {
-          name: 'What key is for making Out point on a clip?',
-          macOS: ['O'],
-          windows: 'a',
-          answer: '',
-          id: 6,
-        },
-        {
-          name: 'What key makes your video playback at a faster speed?',
-          macOS: ['L'],
-          windows: '',
-          answer: '',
-          id: 7,
-        },
-      ],
-    }
+  components: {
   },
   mounted() {
     window.addEventListener('keypress', e => {
@@ -188,10 +128,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.loggerDiv {
-  /* text-align: center; */
-  width: 80%;
-  margin: auto;
-}
-</style>
+<style></style>
