@@ -33,13 +33,14 @@
                   large
                 >Clear</v-btn
               >
+              <!--  submitQuestion(answerArr, question)-->
               <v-btn
                 v-if="this.currentPage !== this.questions.length - 1"
                 color="green"
                 large
                 @click=" 
-                  currentPage++
-                  submitQuestion(answerArr)
+                addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id)
+                currentPage++                  
                 "
                 elevation="4"
                 >Next</v-btn
@@ -48,7 +49,7 @@
                 v-if="this.currentPage == this.questions.length - 1"
                 color="primary"
                 large
-                @click="submitQuiz(answerArr)"
+                @click="addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id)"
                 >Submit Quiz</v-btn
               >
               <!-- to="/quizzes/quiz/results" -->
@@ -73,14 +74,16 @@
       </v-col> -->
       <v-col cols="4" class="ml-auto">
           Correct Answers
-          <v-card v-for="card in 5" :key="card" class="my-5" height="100px">
-              correct
+          <v-card v-for="corrects in correct" :key="corrects.question" class="my-5" height="100px">
+              <v-card-title class="title">{{corrects.question}}</v-card-title>
+              <v-card-content>{{corrects.answer}}</v-card-content>
           </v-card>
       </v-col>
       <v-col cols="4" class="mr-auto">
           Incorrect Answers
-          <v-card v-for="card in 5" :key="card" class="my-5" height="100px">
-              incorrect
+          <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5" height="100px">
+              {{wrongs.question}}
+              {{wrongs.answer}}
           </v-card>
       </v-col>
     </v-row>
@@ -94,9 +97,10 @@ export default {
       pressedKey: '',
       infoArray: [],
       currentPage: 0,
-      quizzing: true,
       userAnswers: [],
       results: [],
+      correct: [],
+      wrong: [],
       endTest: false,
       answerSet: new Set(),
       empty: new Set(),
@@ -165,6 +169,35 @@ export default {
     }
   },
   methods: {
+    addAnswer(answer, question, id){
+      //if correct push to correct array
+      if(id < this.questions.length){
+          if (this.questions[id-1].windows === answer) {
+          //push question, id from original question, answer?
+          this.correct.push({"question": question, "answer": answer})
+          console.log(this.correct)
+          this.answerArr = []
+          this.answerSet.clear()
+        }
+        //if wrong push to wrong array
+        else {
+          //push question, id from original question, answer?
+          this.wrong.push({"question": question, "answer": answer})
+          console.log(this.wrong)
+          this.answerArr = []        
+          this.answerSet.clear()
+        }
+      }
+      else this.endTest = true;
+      
+
+      //don't forget to submit the last answer as well
+      // set quiz to false to transition to results
+      // send results to the database
+      // score, time length, attempt
+    },
+
+
     addInput(input) {
       this.answerArr.push(input)
     },
@@ -184,21 +217,30 @@ export default {
             else {              
               this.answerSet.add(event.key)
               this.addInput(event.key)
-            }
-            
+            }            
           }
         }        
       }
     },    
-    submitQuestion(answer) {
+    submitQuestion(answer, question) {
       //take mac or pc in to evaluate the array
       this.userAnswers.push(answer)
+
+      if (answer === question) {
+        this.correct.push({"question": question, "answer": answer})
+      }
+      else {
+        this.wrong.push(this.question, answer)
+      }
+      console.log('Right ' + this.correct + 'Wrong ' + this.wrong)
+
+
     //   this.$store.state.results.push("This is where it works")
       this.answerArr = []
       this.answerSet.clear()
     //   console.log(this.userAnswers)
     },
-    clearArray: function() {
+    clearArray: function() { 
       this.answerSet.clear(
       )
       this.answerArr = []
@@ -207,15 +249,16 @@ export default {
       this.userAnswers.push(lastValue)
       for (let i = 0; i < this.questions.length; i++) {
         if(this.userAnswers[i] == this.questions[i].windows) {
-        //   this.results.push(true)
+          this.results.push(true)
+          // this.correct.push(this.userAnswers)
           this.$store.state.resultsArr.push("true")
         }else {
-            // this.results.push(false)
+            this.results.push(false)
+            // this.incorrect.push(this.userAnswers)
             this.$store.state.resultsArr.push("false")
         }
       }
       this.endTest = true
-      this.quizzing = false
     },
   },
   mounted() {
