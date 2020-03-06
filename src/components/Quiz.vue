@@ -39,7 +39,7 @@
                 color="green"
                 large
                 @click=" 
-                addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id)
+                addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows)
                 currentPage++                  
                 "
                 elevation="4"
@@ -67,23 +67,31 @@
         </v-pagination>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <h2 class="text-center">Here are the results of your quiz</h2>
+        <!-- <p>Score: {{ corrects.length }} / {{ calculateScore(this.corrects += this.wrongs) }}</p> -->
+        <p>Time: </p>
+      </v-col>
+    </v-row>
     <v-row v-if="endTest == true">
       <!-- <v-col>
         Results:
         {{ this.$store.state.resultsArr }}
       </v-col> -->
-      <v-col cols="4" class="ml-auto">
-          Correct Answers
-          <v-card v-for="corrects in correct" :key="corrects.question" class="my-5" height="100px">
+      <v-col cols="6" class="ml-auto">
+          <h2 class="text-center green--text">Correct Answers</h2>
+          <v-card v-for="corrects in correct" :key="corrects.question" class="my-5 py-4 px-4">
               <v-card-title class="title">{{corrects.question}}</v-card-title>
-              <v-card-content>{{corrects.answer}}</v-card-content>
+              <v-card-text class="ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text>
           </v-card>
       </v-col>
-      <v-col cols="4" class="mr-auto">
-          Incorrect Answers
-          <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5" height="100px">
-              {{wrongs.question}}
-              {{wrongs.answer}}
+      <v-col cols="6" class="mr-auto">
+          <h2 class="text-center red--text">Incorrect Answers</h2>
+          <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5 py-4 px-4">
+              <v-card-title class="title">{{wrongs.question}}</v-card-title>
+              <v-card-text class="ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text>
+              <v-card-text class="ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text>
           </v-card>
       </v-col>
     </v-row>
@@ -169,12 +177,12 @@ export default {
     }
   },
   methods: {
-    addAnswer(answer, question, id){
+    addAnswer(answer, question, id, correctAnswer){
       //if correct push to correct array
       if(id < this.questions.length){
           if (this.questions[id-1].windows === answer) {
           //push question, id from original question, answer?
-          this.correct.push({"question": question, "answer": answer})
+          this.correct.push({"question": question, "answer": answer,})
           console.log(this.correct)
           this.answerArr = []
           this.answerSet.clear()
@@ -182,22 +190,36 @@ export default {
         //if wrong push to wrong array
         else {
           //push question, id from original question, answer?
-          this.wrong.push({"question": question, "answer": answer})
+          this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
           console.log(this.wrong)
           this.answerArr = []        
           this.answerSet.clear()
         }
       }
-      else this.endTest = true;
-      
 
+      else {
+        if (this.questions[id-1].windows === answer) {
+          //push question, id from original question, answer?
+          this.correct.push({"question": question, "answer": answer,})
+          console.log(this.correct)
+          this.answerArr = []
+          this.answerSet.clear()
+        }
+        //if wrong push to wrong array
+        else {
+          //push question, id from original question, answer?
+          this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
+          console.log(this.wrong)
+          this.answerArr = []        
+          this.answerSet.clear()
+        }
+        this.endTest = true;
+      }
       //don't forget to submit the last answer as well
       // set quiz to false to transition to results
       // send results to the database
       // score, time length, attempt
     },
-
-
     addInput(input) {
       this.answerArr.push(input)
     },
@@ -276,5 +298,8 @@ export default {
 .loggerDiv {
   width: 80%;
   margin: auto;
+}
+.v-card__text, .v-card__title {
+  word-break: normal;
 }
 </style>
