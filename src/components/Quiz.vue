@@ -49,7 +49,8 @@
                 v-if="this.currentPage == this.questions.length - 1"
                 color="primary"
                 large
-                @click="addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id)"
+                @click="addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id)
+                end()"
                 >Submit Quiz</v-btn
               >
               <!-- to="/quizzes/quiz/results" -->
@@ -67,11 +68,11 @@
         </v-pagination>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row v-if="endTest == true">
       <v-col>
         <h2 class="text-center">Here are the results of your quiz</h2>
         <!-- <p>Score: {{ corrects.length }} / {{ calculateScore(this.corrects += this.wrongs) }}</p> -->
-        <p>Time: </p>
+        <p>Time: {{this.seconds}} seconds</p>
       </v-col>
     </v-row>
     <v-row v-if="endTest == true">
@@ -103,6 +104,9 @@ export default {
   data() {
     return {
       pressedKey: '',
+      startTime: null,
+      endTime: null,
+      seconds: null,
       infoArray: [],
       currentPage: 0,
       userAnswers: [],
@@ -196,11 +200,10 @@ export default {
           this.answerSet.clear()
         }
       }
-
       else {
         if (this.questions[id-1].windows === answer) {
           //push question, id from original question, answer?
-          this.correct.push({"question": question, "answer": answer,})
+          this.correct.push({"question": question, "answer": answer})
           console.log(this.correct)
           this.answerArr = []
           this.answerSet.clear()
@@ -208,26 +211,31 @@ export default {
         //if wrong push to wrong array
         else {
           //push question, id from original question, answer?
+          // ********correct answer is not getting to this point *********
           this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
-          console.log(this.wrong)
+          console.log(`Correct: ${correctAnswer}`)
           this.answerArr = []        
           this.answerSet.clear()
         }
         this.endTest = true;
       }
-      //don't forget to submit the last answer as well
-      // set quiz to false to transition to results
       // send results to the database
       // score, time length, attempt
     },
     addInput(input) {
       this.answerArr.push(input)
     },
+    end(){
+      this.endTime = new Date()
+      let timeDiff = this.endTime - this.startTime
+      timeDiff /= 1000
+
+      this.seconds = Math.round(timeDiff)
+    },
     logKey: function(event) {
       event.preventDefault()
       if (event.key != 'Backspace') {
         if (this.answerSet.size < 4) {
-          // console.log(event)
           if (this.answerSet.has(event.key)) {
             return 
           }
@@ -244,52 +252,21 @@ export default {
         }        
       }
     },    
-    submitQuestion(answer, question) {
-      //take mac or pc in to evaluate the array
-      this.userAnswers.push(answer)
-
-      if (answer === question) {
-        this.correct.push({"question": question, "answer": answer})
-      }
-      else {
-        this.wrong.push(this.question, answer)
-      }
-      console.log('Right ' + this.correct + 'Wrong ' + this.wrong)
-
-
-    //   this.$store.state.results.push("This is where it works")
-      this.answerArr = []
-      this.answerSet.clear()
-    //   console.log(this.userAnswers)
-    },
     clearArray: function() { 
       this.answerSet.clear(
       )
       this.answerArr = []
     },
-    submitQuiz(lastValue) {
-      this.userAnswers.push(lastValue)
-      for (let i = 0; i < this.questions.length; i++) {
-        if(this.userAnswers[i] == this.questions[i].windows) {
-          this.results.push(true)
-          // this.correct.push(this.userAnswers)
-          this.$store.state.resultsArr.push("true")
-        }else {
-            this.results.push(false)
-            // this.incorrect.push(this.userAnswers)
-            this.$store.state.resultsArr.push("false")
-        }
-      }
-      this.endTest = true
-    },
   },
   mounted() {
+    this.startTime = new Date()
     this.$refs.input.focus();
     window.addEventListener('keypress', e => {
       e.preventDefault()
       String.fromCharCode(e.keyCode)
       this.logKey(e.key)
     })
+    
   },
 }
 </script>

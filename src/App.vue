@@ -32,7 +32,7 @@
                 {{ user.data.displayName }}
               </div>
               <li class="nav-item">
-                <v-btn outlined="true">
+                <v-btn outlined>
                   <a
                     class="nav-link"
                     @click.prevent="signOut"
@@ -42,7 +42,7 @@
             </template>
             <template v-else>
               <li class="nav-item">
-                <v-btn outlined="true">
+                <v-btn outlined>
                   <router-link
                     to="login"
                     class="nav-link"
@@ -52,7 +52,7 @@
                 </v-btn>
               </li>
               <li class="nav-item">
-                <v-btn outlined="true">
+                <v-btn outlined>
                   <router-link
                     to="register"
                     class="nav-link"
