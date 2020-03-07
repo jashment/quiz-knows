@@ -25,13 +25,13 @@
                     elevation="6"
                   >
                     {{ answerArr[i].toUpperCase() }}
-                  </v-card>                
+                  </v-card>
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
-              <v-btn @click="clearArray" class="error" elevation="4"
+              <v-btn @click="clearArray" class="red" elevation="4"
                   large
-                >Clear</v-btn
+                >Clear Answer</v-btn
               >
               <!--  submitQuestion(answerArr, question)-->
               <v-btn
@@ -49,7 +49,7 @@
                 v-if="this.currentPage == this.questions.length - 1"
                 color="primary"
                 large
-                @click="addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id)
+                @click="addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows)
                 end()"
                 >Submit Quiz</v-btn
               >
@@ -68,31 +68,43 @@
         </v-pagination>
       </v-col>
     </v-row>
-    <v-row v-if="endTest == true">
+    <v-card class="ml-auto mr-auto" width="50%">
+      <v-row v-if="endTest == true" class="d-flex flex-column">
       <v-col>
-        <h2 class="text-center">Here are the results of your quiz</h2>
-        <!-- <p>Score: {{ corrects.length }} / {{ calculateScore(this.corrects += this.wrongs) }}</p> -->
-        <p>Time: {{this.seconds}} seconds</p>
+        <h2 class="text-center">Here are the results of your quiz</h2>        
       </v-col>
+      <v-row>
+        <v-col class="text-center" width="50%">
+          <p>Time: {{this.seconds}} seconds</p>
+          <p>Score: {{Math.trunc((this.correct.length / (this.correct.length + this.wrong.length)) * 100)}}%</p>
+          <v-container width="300px">
+            <v-progress-linear 
+              height="25px" 
+              :value="(this.correct.length / (this.correct.length + this.wrong.length)) * 100">
+              {{this.correct.length}}/{{this.correct.length + this.wrong.length}}
+            </v-progress-linear>
+          </v-container>            
+        </v-col>
+      </v-row>
     </v-row>
+    </v-card>
+    
     <v-row v-if="endTest == true">
-      <!-- <v-col>
-        Results:
-        {{ this.$store.state.resultsArr }}
-      </v-col> -->
       <v-col cols="6" class="ml-auto">
           <h2 class="text-center green--text">Correct Answers</h2>
           <v-card v-for="corrects in correct" :key="corrects.question" class="my-5 py-4 px-4">
-              <v-card-title class="title">{{corrects.question}}</v-card-title>
-              <v-card-text class="ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text>
+              <v-card-title class="display font-weight-light">{{corrects.question}}</v-card-title>
+              <v-divider dark />
+              <v-card-text class="green--text ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text>
           </v-card>
       </v-col>
       <v-col cols="6" class="mr-auto">
           <h2 class="text-center red--text">Incorrect Answers</h2>
           <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5 py-4 px-4">
-              <v-card-title class="title">{{wrongs.question}}</v-card-title>
-              <v-card-text class="ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text>
-              <v-card-text class="ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text>
+              <v-card-title class="display font-weight-light">{{wrongs.question}}</v-card-title>
+              <v-divider dark />
+              <v-card-text class="red--text ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text>
+              <v-card-text class="green--text ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text>
           </v-card>
       </v-col>
     </v-row>
@@ -142,13 +154,13 @@ export default {
           answer: '',
           id: 3,
         },
-        // {
-        //   question: 'What keys bring up the Export Media dialog box?',
-        //   macOS: ['Cmd, M'],
-        //   windows: '4',
-        //   answer: '',
-        //   id: 4,
-        // },
+        {
+          question: 'What keys bring up the Export Media dialog box?',
+          macOS: ['Cmd, M'],
+          windows: '4',
+          answer: '',
+          id: 4,
+        },
         // {
         //   question: 'What key is for making In point on a clip?',
         //   macOS: ['I'],
@@ -198,27 +210,18 @@ export default {
           console.log(this.wrong)
           this.answerArr = []        
           this.answerSet.clear()
-        }
+        }        
       }
-      else {
+      else if (id === this.questions.length){
         if (this.questions[id-1].windows === answer) {
-          //push question, id from original question, answer?
-          this.correct.push({"question": question, "answer": answer})
-          console.log(this.correct)
-          this.answerArr = []
-          this.answerSet.clear()
-        }
-        //if wrong push to wrong array
+          this.correct.push({"question": question, "answer": answer,})
+        }        
         else {
-          //push question, id from original question, answer?
-          // ********correct answer is not getting to this point *********
           this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
-          console.log(`Correct: ${correctAnswer}`)
-          this.answerArr = []        
-          this.answerSet.clear()
-        }
+          }
         this.endTest = true;
       }
+      // console.log(`id: ${id} questions: ${this.questions.length}`)
       // send results to the database
       // score, time length, attempt
     },
