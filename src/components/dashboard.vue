@@ -6,7 +6,7 @@
       <v-row>
         <v-col
           v-for="quiz in quizzes"
-          :key="quiz"
+          :key="quiz.name"
           cols="12"
           sm="4"
         >

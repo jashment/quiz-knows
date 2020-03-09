@@ -29,37 +29,30 @@
                   Select input to type in answer
                 </p>
               </v-col>
-              <v-col
-                v-for="(info, i) in answerArr"
-                :key="info"
-                cols="3"
-              >
-                <v-card
-                  class="text-center pa-6"
-                  color="grey black--text"
-                  elevation="6"
-                >
-                  {{ answerArr[i].toUpperCase() }}
-                </v-card>                
+              <v-col v-for="(info, i) in answerArr" :key="info" cols="3">
+                    <v-card
+                    class="text-center pa-6"
+                    color="grey black--text"
+                    elevation="6"
+                  >
+                    {{ answerArr[i].toUpperCase() }}
+                  </v-card>
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
-              <v-btn
-                class="error"
-                elevation="4"
-                large
-                @click="clearArray"
+              <v-btn @click="clearArray" class="red" elevation="4"
+                  large
+                >Clear Answer</v-btn
               >
-                Clear
-              </v-btn>
+              <!--  submitQuestion(answerArr, question)-->
               <v-btn
                 v-if="this.currentPage !== this.questions.length - 1"
                 color="green"
                 large
                 elevation="4"
                 @click=" 
-                  currentPage++
-                  submitQuestion(answerArr)
+                addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows)
+                currentPage++                  
                 "
               >
                 Next
@@ -68,10 +61,10 @@
                 v-if="this.currentPage == this.questions.length - 1"
                 color="primary"
                 large
-                @click="submitQuiz(answerArr)"
+                @click="addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows)
+                end()"
+                >Submit Quiz</v-btn
               >
-                Submit Quiz
-              </v-btn>
               <!-- to="/quizzes/quiz/results" -->
             </div>
           </div>
@@ -86,38 +79,44 @@
         />
       </v-col>
     </v-row>
-    <v-row v-if="endTest == true">
-      <!-- <v-col>
-        Results:
-        {{ this.$store.state.resultsArr }}
-      </v-col> -->
-      <v-col
-        cols="4"
-        class="ml-auto"
-      >
-        Correct Answers
-        <v-card
-          v-for="card in 5"
-          :key="card"
-          class="my-5"
-          height="100px"
-        >
-          correct
-        </v-card>
+    <v-card class="ml-auto mr-auto" width="50%">
+      <v-row v-if="endTest == true" class="d-flex flex-column">
+      <v-col>
+        <h2 class="text-center">Here are the results of your quiz</h2>        
       </v-col>
-      <v-col
-        cols="4"
-        class="mr-auto"
-      >
-        Incorrect Answers
-        <v-card
-          v-for="card in 5"
-          :key="card"
-          class="my-5"
-          height="100px"
-        >
-          incorrect
-        </v-card>
+      <v-row>
+        <v-col class="text-center" width="50%">
+          <p>Time: {{this.seconds}} seconds</p>
+          <p>Score: {{Math.trunc((this.correct.length / (this.correct.length + this.wrong.length)) * 100)}}%</p>
+          <v-container width="300px">
+            <v-progress-linear 
+              height="25px" 
+              :value="(this.correct.length / (this.correct.length + this.wrong.length)) * 100">
+              {{this.correct.length}}/{{this.correct.length + this.wrong.length}}
+            </v-progress-linear>
+          </v-container>            
+        </v-col>
+      </v-row>
+    </v-row>
+    </v-card>
+    
+    <v-row v-if="endTest == true">
+      <v-col cols="6" class="ml-auto">
+          <h2 class="text-center green--text">Correct Answers</h2>
+          <v-card v-for="corrects in correct" :key="corrects.question" class="my-5 py-4 px-4">
+              <v-card-title class="display font-weight-light">{{corrects.question}}</v-card-title>
+              <v-divider dark />
+              <v-card-text class="green--text ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text>
+          </v-card>
+      </v-col>
+      <v-col cols="6" class="mr-auto">
+          <h2 class="text-center red--text">Incorrect Answers</h2>
+          <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5 py-4 px-4">
+              <v-card-title class="display font-weight-light">{{wrongs.question}}</v-card-title>
+              <v-divider dark />
+              <v-card-text class="red--text ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text>
+              <v-card-text class="green--text ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text>
+          </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -128,11 +127,15 @@ export default {
   data() {
     return {
       pressedKey: '',
+      startTime: null,
+      endTime: null,
+      seconds: null,
       infoArray: [],
       currentPage: 0,
-      quizzing: true,
       userAnswers: [],
       results: [],
+      correct: [],
+      wrong: [],
       endTest: false,
       answerSet: new Set(),
       empty: new Set(),
@@ -162,13 +165,13 @@ export default {
           answer: '',
           id: 3,
         },
-        // {
-        //   question: 'What keys bring up the Export Media dialog box?',
-        //   macOS: ['Cmd, M'],
-        //   windows: '4',
-        //   answer: '',
-        //   id: 4,
-        // },
+        {
+          question: 'What keys bring up the Export Media dialog box?',
+          macOS: ['Cmd, M'],
+          windows: '4',
+          answer: '',
+          id: 4,
+        },
         // {
         //   question: 'What key is for making In point on a clip?',
         //   macOS: ['I'],
@@ -200,23 +203,53 @@ export default {
       ],
     }
   },
-  mounted() {
-    this.$refs.input.focus();
-    window.addEventListener('keypress', e => {
-      e.preventDefault()
-      String.fromCharCode(e.keyCode)
-      this.logKey(e.key)
-    })
-  },
   methods: {
+    addAnswer(answer, question, id, correctAnswer){
+      //if correct push to correct array
+      if(id < this.questions.length){
+          if (this.questions[id-1].windows === answer) {
+          //push question, id from original question, answer?
+          this.correct.push({"question": question, "answer": answer,})
+          console.log(this.correct)
+          this.answerArr = []
+          this.answerSet.clear()
+        }
+        //if wrong push to wrong array
+        else {
+          //push question, id from original question, answer?
+          this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
+          console.log(this.wrong)
+          this.answerArr = []        
+          this.answerSet.clear()
+        }        
+      }
+      else if (id === this.questions.length){
+        if (this.questions[id-1].windows === answer) {
+          this.correct.push({"question": question, "answer": answer,})
+        }        
+        else {
+          this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
+          }
+        this.endTest = true;
+      }
+      // console.log(`id: ${id} questions: ${this.questions.length}`)
+      // send results to the database
+      // score, time length, attempt
+    },
     addInput(input) {
       this.answerArr.push(input)
+    },
+    end(){
+      this.endTime = new Date()
+      let timeDiff = this.endTime - this.startTime
+      timeDiff /= 1000
+
+      this.seconds = Math.round(timeDiff)
     },
     logKey: function(event) {
       event.preventDefault()
       if (event.key != 'Backspace') {
         if (this.answerSet.size < 4) {
-          // console.log(event)
           if (this.answerSet.has(event.key)) {
             return 
           }
@@ -228,39 +261,26 @@ export default {
             else {              
               this.answerSet.add(event.key)
               this.addInput(event.key)
-            }
-            
+            }            
           }
         }        
       }
     },    
-    submitQuestion(answer) {
-      //take mac or pc in to evaluate the array
-      this.userAnswers.push(answer)
-    //   this.$store.state.results.push("This is where it works")
-      this.answerArr = []
-      this.answerSet.clear()
-    //   console.log(this.userAnswers)
-    },
-    clearArray: function() {
+    clearArray: function() { 
       this.answerSet.clear(
       )
       this.answerArr = []
     },
-    submitQuiz(lastValue) {
-      this.userAnswers.push(lastValue)
-      for (let i = 0; i < this.questions.length; i++) {
-        if(this.userAnswers[i] == this.questions[i].windows) {
-        //   this.results.push(true)
-          this.$store.state.resultsArr.push("true")
-        }else {
-            // this.results.push(false)
-            this.$store.state.resultsArr.push("false")
-        }
-      }
-      this.endTest = true
-      this.quizzing = false
-    },
+  },
+  mounted() {
+    this.startTime = new Date()
+    this.$refs.input.focus();
+    window.addEventListener('keypress', e => {
+      e.preventDefault()
+      String.fromCharCode(e.keyCode)
+      this.logKey(e.key)
+    })
+    
   },
 }
 </script>
@@ -269,5 +289,8 @@ export default {
 .loggerDiv {
   width: 80%;
   margin: auto;
+}
+.v-card__text, .v-card__title {
+  word-break: normal;
 }
 </style>

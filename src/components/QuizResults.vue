@@ -1,10 +1,7 @@
 <template>
   <div class="text-center mt-12">
-    <v-btn @click="test">
-      Test
-    </v-btn>
-    <!-- {{this.$store.state.resultsArr}} -->
-    {{ this.$store.state.resultsArr }}
+      <v-btn @click="test">Test</v-btn>
+      {{ this.$store.state.resultsArr }}
   </div>
 </template>
 

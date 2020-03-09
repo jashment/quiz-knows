@@ -6,7 +6,7 @@
     <v-data-table
       :headers="headers"
       :items="students"
-      sort-desc="approval"
+      :sort-desc="[true, false]"
       sort-by="approval"
       class="elevation-3 mx-12 my-12"
     >
@@ -206,7 +206,7 @@ export default {
       // if (approval === true) return 'red'
       // else if (approval === false) return 'orange'
       // else return 'green'
-      console.log(approve)
+      // console.log(approve)
       return approve ? 'green' : 'red'
     },
     getApproved(approval) {
