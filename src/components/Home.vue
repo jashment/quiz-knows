@@ -1,21 +1,12 @@
 <template>
   <div>
     <v-card>
-      <v-navigation-drawer
-        class="navDrawer"
-        expand-on-hover
-        permanent
-        clipped
-        floating
-        app
-      >
+      <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
         <template v-slot:prepend>
           <v-list>
             <v-list-item link two-line>
               <v-list-item-content>
-                <v-list-item-title class="title">
-                  {{ user.name }}
-                </v-list-item-title>
+                <v-list-item-title class="title">{{ user.name }}</v-list-item-title>
                 <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
@@ -27,7 +18,7 @@
 
         <v-divider />
         <v-list nav>
-          <v-list-item link :to="item.to" v-for="item in items" :key="item.to">
+          <v-list-item v-for="item in items" :key="item.to" link :to="item.to">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
               <v-icon />
@@ -50,9 +41,9 @@ export default {
           title: "Register",
           icon: "mdi-account-plus-outline",
           disabled: false,
-          to: "register"
+          to: "/register"
         },
-        { title: "Login", icon: "mdi-login", disabled: false, to: "login" },
+        { title: "Login", icon: "mdi-login", disabled: false, to: "/login" },
         { title: "Quizzes", icon: "mdi-brain", disabled: false, to: "/" },
         {
           title: "Grades",

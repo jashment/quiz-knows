@@ -1,56 +1,77 @@
 <template>
   <v-container>
-    <v-row v-if="endTest === false" class="d-flex justify-center">
+    <v-row
+      v-if="endTest === false"
+      class="d-flex justify-center"
+    >
       <v-col cols="8">
-        <v-card  class="mt-12 d-flex" height="450px">
+        <v-card
+          class="mt-12 d-flex"
+          height="450px"
+        >
           <div class="loggerDiv">
             <h1 class="display-1 py-5">
               Question {{ questions[currentPage].id }}
             </h1>
             <label>{{ questions[currentPage].question }}</label>
             <v-text-field
-              type="text"
-              v-on:keydown="logKey"
-              v-model="pressedKey"
               ref="input"
+              v-model="pressedKey"
+              type="text"
+              @keydown="logKey"
             />
             <v-row>
-              <v-col v-if="answerArr.length == 0" class="py-7">
-                <p class="text-center">Select input to type in answer</p>
+              <v-col
+                v-if="answerArr.length == 0"
+                class="py-7"
+              >
+                <p class="text-center">
+                  Select input to type in answer
+                </p>
               </v-col>
-              <v-col v-for="(info, i) in answerArr" :key="info" cols="3">
-                    <v-card
-                    class="text-center pa-6"
-                    color="grey black--text"
-                    elevation="6"
-                  >
-                    {{ answerArr[i].toUpperCase() }}
-                  </v-card>                
+              <v-col
+                v-for="(info, i) in answerArr"
+                :key="info"
+                cols="3"
+              >
+                <v-card
+                  class="text-center pa-6"
+                  color="grey black--text"
+                  elevation="6"
+                >
+                  {{ answerArr[i].toUpperCase() }}
+                </v-card>                
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
-              <v-btn @click="clearArray" class="error" elevation="4"
-                  large
-                >Clear</v-btn
+              <v-btn
+                class="error"
+                elevation="4"
+                large
+                @click="clearArray"
               >
+                Clear
+              </v-btn>
               <v-btn
                 v-if="this.currentPage !== this.questions.length - 1"
                 color="green"
                 large
+                elevation="4"
                 @click=" 
                   currentPage++
                   submitQuestion(answerArr)
                 "
-                elevation="4"
-                >Next</v-btn
               >
+                Next
+              </v-btn>
               <v-btn
                 v-if="this.currentPage == this.questions.length - 1"
                 color="primary"
                 large
                 @click="submitQuiz(answerArr)"
-                >Submit Quiz</v-btn
               >
+                Submit Quiz
+              </v-btn>
               <!-- to="/quizzes/quiz/results" -->
             </div>
           </div>
@@ -62,8 +83,7 @@
           disabled
           class="pt-9"
           circle
-        >
-        </v-pagination>
+        />
       </v-col>
     </v-row>
     <v-row v-if="endTest == true">
@@ -71,17 +91,33 @@
         Results:
         {{ this.$store.state.resultsArr }}
       </v-col> -->
-      <v-col cols="4" class="ml-auto">
-          Correct Answers
-          <v-card v-for="card in 5" :key="card" class="my-5" height="100px">
-              correct
-          </v-card>
+      <v-col
+        cols="4"
+        class="ml-auto"
+      >
+        Correct Answers
+        <v-card
+          v-for="card in 5"
+          :key="card"
+          class="my-5"
+          height="100px"
+        >
+          correct
+        </v-card>
       </v-col>
-      <v-col cols="4" class="mr-auto">
-          Incorrect Answers
-          <v-card v-for="card in 5" :key="card" class="my-5" height="100px">
-              incorrect
-          </v-card>
+      <v-col
+        cols="4"
+        class="mr-auto"
+      >
+        Incorrect Answers
+        <v-card
+          v-for="card in 5"
+          :key="card"
+          class="my-5"
+          height="100px"
+        >
+          incorrect
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -164,6 +200,14 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.$refs.input.focus();
+    window.addEventListener('keypress', e => {
+      e.preventDefault()
+      String.fromCharCode(e.keyCode)
+      this.logKey(e.key)
+    })
+  },
   methods: {
     addInput(input) {
       this.answerArr.push(input)
@@ -217,14 +261,6 @@ export default {
       this.endTest = true
       this.quizzing = false
     },
-  },
-  mounted() {
-    this.$refs.input.focus();
-    window.addEventListener('keypress', e => {
-      e.preventDefault()
-      String.fromCharCode(e.keyCode)
-      this.logKey(e.key)
-    })
   },
 }
 </script>

@@ -57,6 +57,45 @@
                 </div>
               </div>
 
+                            <!-- <div class="form-group row">
+                <label
+                  for="role"
+                  class="col-md-4 col-form-label text-md-right"
+                >Student or Teacher?</label> -->
+                <!-- <select
+                  v-model="form.role"
+                  class="form-control"
+                >
+                  <option
+                    id="student"
+                    type="radio"
+                    name="student"
+                    :value="student"
+                  >
+                    Student
+                  </option>
+                  <option
+                    id="teacher"
+                    type="radio"
+                    name="teacher"
+                    :value="teacher"
+                  >
+                    Teacher
+                  </option>
+                </select> -->
+                <!-- <div class="col-md-6">
+                  <v-text-field
+                    id="role"
+                    v-model="form.role"
+                    type="text"
+                    class="form-control"
+                    name="role"
+                    value
+                    required
+                  />
+                </div>
+              </div> -->
+
               <div class="form-group row">
                 <label
                   for="password"
@@ -119,7 +158,17 @@ export default {
             })
             .then(moreData => {
               alert(`User ${moreData} created!`)
+              firebase.database().ref('users/').push({
+                uid: data.user.uid
+              }).set({
+                name: this.form.name,
+                email: this.form.email,
+                role: 'newUser'
+              })
             })
+            this.$router.replace('cardlayout')
+            console.log(data)
+
         })
         .catch(err => {
           this.error = err.message
