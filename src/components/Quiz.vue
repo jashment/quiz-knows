@@ -1,22 +1,33 @@
 <template>
   <v-container>
-    <v-row v-if="endTest === false" class="d-flex justify-center">
+    <v-row
+      v-if="endTest === false"
+      class="d-flex justify-center"
+    >
       <v-col cols="8">
-        <v-card  class="mt-12 d-flex" height="450px">
+        <v-card
+          class="mt-12 d-flex"
+          height="450px"
+        >
           <div class="loggerDiv">
             <h1 class="display-1 py-5">
               Question {{ questions[currentPage].id }}
             </h1>
             <label>{{ questions[currentPage].question }}</label>
             <v-text-field
-              type="text"
-              v-on:keydown="logKey"
-              v-model="pressedKey"
               ref="input"
+              v-model="pressedKey"
+              type="text"
+              @keydown="logKey"
             />
             <v-row>
-              <v-col v-if="answerArr.length == 0" class="py-7">
-                <p class="text-center">Select input to type in answer</p>
+              <v-col
+                v-if="answerArr.length == 0"
+                class="py-7"
+              >
+                <p class="text-center">
+                  Select input to type in answer
+                </p>
               </v-col>
               <v-col v-for="(info, i) in answerArr" :key="info" cols="3">
                     <v-card
@@ -38,13 +49,14 @@
                 v-if="this.currentPage !== this.questions.length - 1"
                 color="green"
                 large
+                elevation="4"
                 @click=" 
                 addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows)
                 currentPage++                  
                 "
-                elevation="4"
-                >Next</v-btn
               >
+                Next
+              </v-btn>
               <v-btn
                 v-if="this.currentPage == this.questions.length - 1"
                 color="primary"
@@ -64,8 +76,7 @@
           disabled
           class="pt-9"
           circle
-        >
-        </v-pagination>
+        />
       </v-col>
     </v-row>
     <v-card class="ml-auto mr-auto" width="50%">
