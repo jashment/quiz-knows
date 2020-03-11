@@ -37,13 +37,13 @@ export default {
   data() {
     return {
       items: [
-        {
-          title: "Register",
-          icon: "mdi-account-plus-outline",
-          disabled: false,
-          to: "/register"
-        },
-        { title: "Login", icon: "mdi-login", disabled: false, to: "/login" },
+        // {
+        //   title: "Register",
+        //   icon: "mdi-account-plus-outline",
+        //   disabled: false,
+        //   to: "/register"
+        // },
+        // { title: "Login", icon: "mdi-login", disabled: false, to: "/login" },
         { title: "Quizzes", icon: "mdi-brain", disabled: false, to: "/" },
         {
           title: "Grades",
@@ -62,12 +62,6 @@ export default {
           icon: "mdi-account-multiple-check",
           disabled: false,
           to: "/teacher/students"
-        },
-        {
-          title: "Settings",
-          icon: "mdi-settings",
-          disabled: false,
-          to: "/settings"
         },
         {
           title: "Flashcards",
