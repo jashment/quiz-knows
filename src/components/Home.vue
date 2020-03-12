@@ -63,6 +63,7 @@ export default {
           disabled: false,
           to: "/teacher/students"
         },
+
         {
           title: "Flashcards",
           icon: "mdi-card-text",
@@ -96,4 +97,14 @@ export default {
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14ced2', endColorstr='#63b1e3',GradientType=0 ); /* IE6-9 */
 }
+
+.v-list-item__title, .theme--dark.v-icon  {
+color: #424242;
+}
+
+.v-list .v-list-item--active {
+  color: #949494;
+}
+
+
 </style>
