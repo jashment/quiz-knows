@@ -1,3 +1,4 @@
+
 <template>
   <v-container>
     <v-row
@@ -51,7 +52,9 @@
                 large
                 elevation="4"
                 @click=" 
-                addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows)
+                addAnswer(answerArr, questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows.map(e => {
+                  e.answer
+                }))
                 currentPage++                  
                 "
               >
@@ -61,7 +64,9 @@
                 v-if="this.currentPage == this.questions.length - 1"
                 color="primary"
                 large
-                @click="addAnswer(answerArr[0], questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows)
+                @click="addAnswer(answerArr, questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows.map(e => {
+                  e.answer
+                }))
                 end()"
                 >Submit Quiz</v-btn
               >
@@ -106,7 +111,10 @@
           <v-card v-for="corrects in correct" :key="corrects.question" class="my-5 py-4 px-4">
               <v-card-title class="display font-weight-light">{{corrects.question}}</v-card-title>
               <v-divider dark />
-              <v-card-text class="green--text ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text>
+              <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text> -->
+              <v-card-text class="green--text ml-8 headline font-weight-light">
+                Your Answer: <span v-for="ans in corrects.answer" :key="ans.i">{{ans.answer}}</span>
+              </v-card-text>
           </v-card>
       </v-col>
       <v-col cols="6" class="mr-auto">
@@ -114,8 +122,14 @@
           <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5 py-4 px-4">
               <v-card-title class="display font-weight-light">{{wrongs.question}}</v-card-title>
               <v-divider dark />
-              <v-card-text class="red--text ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text>
-              <v-card-text class="green--text ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text>
+              <!-- <v-card-text class="red--text ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text> -->
+              <v-card-text class="red--text ml-8 headline font-weight-light">
+                Your Answer: <span v-for="ans in wrongs.answer" :key="ans">{{ans}} </span>
+              </v-card-text>
+              <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text> -->
+              <v-card-text class="green--text ml-8 headline font-weight-light">
+                Correct Answer: <span v-for="ans in wrongs.correctAnswer" :key="ans">{{ans}} </span>
+              </v-card-text>
           </v-card>
       </v-col>
     </v-row>
@@ -145,72 +159,53 @@ export default {
         {
           question: 'How do you make an edit wherever your playhead is located?',
           macOS: ['Cmd, K'],
-          windows: '1',
+          windows: [
+            {answer: "1"},
+            {answer: "2"},
+            {answer: "3"},
+          ],
           answer: '',
           id: 1,
         },
-        {
-          question:
-            'Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box',
-          macOS: ['M'],
-          windows: '2',
-          answer: '',
-          id: 2,
-        },
-        {
-          question:
-            'What key do you press to locate a source clip from within your timeline?',
-          macOS: ['F'],
-          windows: '3',
-          answer: '',
-          id: 3,
-        },
-        {
-          question: 'What keys bring up the Export Media dialog box?',
-          macOS: ['Cmd, M'],
-          windows: '4',
-          answer: '',
-          id: 4,
-        },
         // {
-        //   question: 'What key is for making In point on a clip?',
-        //   macOS: ['I'],
-        //   windows: '5',
+        //   question:
+        //     'Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box',
+        //   macOS: ['M'],
+        //   windows: [
+        //     {answer: "1"},
+        //     {answer: "2"},
+        //     {answer: "3"},
+        //   ],
         //   answer: '',
-        //   id: 5,
+        //   id: 2,
         // },
         // {
-        //   question: 'What key is for making Out point on a clip?',
-        //   macOS: ['O'],
-        //   windows: '6',
+        //   question:
+        //     'What key do you press to locate a source clip from within your timeline?',
+        //   macOS: ['F'],
+        //   windows: '3',
         //   answer: '',
-        //   id: 6,
+        //   id: 3,
         // },
         // {
-        //   question: 'What key makes your video playback at a faster speed?',
-        //   macOS: ['L'],
-        //   windows: '7',
+        //   question: 'What keys bring up the Export Media dialog box?',
+        //   macOS: ['Cmd, M'],
+        //   windows: '4',
         //   answer: '',
-        //   id: 7,
-        // },
-        // {
-        //   question: 'What key makes your video playback at a faster speed?',
-        //   macOS: ['L'],
-        //   windows: '7',
-        //   answer: '',
-        //   id: 8,
+        //   id: 4,
         // },
       ],
     }
   },
   methods: {
     addAnswer(answer, question, id, correctAnswer){
+      // Object.entries(answer)
       //if correct push to correct array
       if(id < this.questions.length){
           if (this.questions[id-1].windows === answer) {
           //push question, id from original question, answer?
           this.correct.push({"question": question, "answer": answer,})
-          console.log(this.correct)
+          // console.log(this.correct)
           this.answerArr = []
           this.answerSet.clear()
         }
@@ -218,14 +213,15 @@ export default {
         else {
           //push question, id from original question, answer?
           this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
-          console.log(this.wrong)
+          // console.log(this.wrong)
           this.answerArr = []        
           this.answerSet.clear()
         }        
       }
       else if (id === this.questions.length){
+        console.log(`${this.questions[0].windows[0].answer} | ${answer}`)
         if (this.questions[id-1].windows === answer) {
-          this.correct.push({"question": question, "answer": answer,})
+          this.correct.push({"question": question, "answer": answer})
         }        
         else {
           this.wrong.push({"question": question, "answer": answer, "correctAnswer": correctAnswer})
@@ -243,7 +239,6 @@ export default {
       this.endTime = new Date()
       let timeDiff = this.endTime - this.startTime
       timeDiff /= 1000
-
       this.seconds = Math.round(timeDiff)
     },
     logKey: function(event) {
