@@ -27,12 +27,24 @@
         >
           <ul class="navbar-nav mr-auto" />
           <ul class="navbar-nav ml-auto">
-            <template v-if="user.loggedIn">
+            <template v-if="user.loggedIn"> 
+       <v-tooltip bottom>
+      <template v-slot:activator="{ on }">
+        <span v-on="on">
+   <router-link to="/settings">
+           <v-avatar color="blue" size="38">
+      <span class="white--text headline">{{ user.data.image }}</span>
+ </v-avatar>
+    </router-link> 
+      </span>
+      </template>
+      <span>Profile Settings</span>
+    </v-tooltip>
               <div class="nav-item">
-                {{ user.data.displayName }}
+                {{ user.data.displayName }} 
               </div>
               <li class="nav-item">
-                <v-btn outlined>
+                <v-btn text>
                   <a
                     class="nav-link"
                     @click.prevent="signOut"
@@ -42,9 +54,9 @@
             </template>
             <template v-else>
               <li class="nav-item">
-                <v-btn outlined>
+                <v-btn text>
                   <router-link
-                    to="login"
+                    to="/login"
                     class="nav-link"
                   >
                     Login
@@ -52,9 +64,9 @@
                 </v-btn>
               </li>
               <li class="nav-item">
-                <v-btn outlined>
+                <v-btn text>
                   <router-link
-                    to="register"
+                    to="/register"
                     class="nav-link"
                   >
                     Register
