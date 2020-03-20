@@ -1,0 +1,14 @@
+{
+    "quizzes": [
+        {
+          "details": [
+            { "name": "test" },
+            { "description": "test" },
+            { "software": "test" }
+          ],
+          "questions": [
+            { "question": "test", "answer": "test" }
+          ]
+        }
+    ] 
+}
