@@ -3,16 +3,35 @@
     <h1 class="text-center py-12 font-weight-light">
       Create New Quiz
     </h1>
+    <v-row>
+      <v-col cols="6" class="mx-auto">
+        <v-card class="pa-10 elevation-8">
+          <p class="title">Quiz Details</p>
+          <v-text-field 
+            label="Quiz Title" 
+            placeholder="premiere practice" 
+            v-model="quiz.details.title"></v-text-field>
+          <v-text-field 
+            label="Software" 
+            placeholder="ex: adobe premiere" 
+            v-model="quiz.details.software"></v-text-field>
+          <v-textarea 
+            clearable label="ex: Quiz Description" 
+            rows="3" 
+            placeholder="ex: Use shortcut keys from the Adobe Premiere program to answer the quiz questions." 
+            v-model="quiz.details.description"></v-textarea>
+        </v-card>
+        
+      </v-col>
+    </v-row>
     <v-data-table
       :headers="headers"
-      :items="questions"
+      :items="this.quiz.questions"
       sort-by="macOS"
-      class="elevation-1 mx-12 my-12"
+      class="elevation-8 mx-12 my-12"
     >
       <template v-slot:top>
         <v-toolbar flat>
-          <v-toolbar-title>Premeire Quiz</v-toolbar-title>
-          <v-divider class="mx-4" inset vertical />
           <v-spacer />
           <v-dialog v-model="dialog" max-width="500px" persistent>
             <template v-slot:activator="{ on }">
@@ -29,8 +48,9 @@
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="12" md="12">
-                      <v-text-field
+                      <v-textarea
                         v-model="editedItem.name"
+                        dense
                         label="Question"
                       />
                     </v-col>
@@ -82,9 +102,10 @@
         </v-icon>
       </template>
       <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">
+        <p>Add new question to see them here</p>
+        <!-- <v-btn color="primary" @click="initialize">
           Reset
-        </v-btn>
+        </v-btn> -->
       </template>
     </v-data-table>
     <v-btn class="primary mb-12" @click="saveQuiz">
@@ -94,13 +115,13 @@
 </template>
 
 <script>
-import firebase from "firebase";
+// import firebase from "firebase";
 
 export default {
   data: () => ({
     dialog: false,
     headers: [
-      { text: "Question", align: "left", sortable: false, value: "name" },
+      { text: "Question", align: "left", sortable: false, value: "question" },
       { text: "macOS", value: "macOS", sortable: false },
       { text: "Windows", value: "windows", sortable: false },
       { text: "Actions", value: "action", sortable: false }
@@ -117,15 +138,16 @@ export default {
       macOS: "",
       windows: ""
     },
-    quiz: [
+    quiz: 
       {
         details: {
-          description: "test",
-          software: "Premeiere"
+          title: "",
+          description: "",
+          software: ""
         },
-        questions: [{ question: "thequestion", answer: "theanswer" }]
+        questions: [
+        ]
       }
-    ]
   }),
 
   computed: {
@@ -147,15 +169,16 @@ export default {
   methods: {
     saveQuiz() {
       console.log(this.quiz);
-      firebase
-        .database()
-        .ref("quizzes/")
-        .set({
-          quiz: this.quiz
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      // firebase
+      //   .database()
+      //   .ref("quizzes/")
+      //   .set({
+      //     quiz: this.quiz
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
+      //   console.log(firebase.data)
     },
     initialize() {
       this.questions = [
@@ -223,7 +246,7 @@ export default {
       if (this.editedIndex > -1) {
         Object.assign(this.questions[this.editedIndex], this.editedItem);
       } else {
-        this.questions.push(this.editedItem);
+        this.quiz.questions.push(this.editedItem);
       }
       this.close();
     }
