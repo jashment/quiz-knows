@@ -262,8 +262,7 @@ export default {
       }
     },    
     clearArray: function() { 
-      this.answerSet.clear(
-      )
+      this.answerSet.clear()
       this.answerArr = []
     },
   },

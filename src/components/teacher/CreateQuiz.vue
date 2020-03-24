@@ -67,6 +67,7 @@
                     <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         v-model="editedItem.macOS"
+                        @keydown="logKey"
                         label="macOS Shortcut"
                       />
                     </v-col>
@@ -102,9 +103,8 @@
         </v-icon>
       </template>
       <template v-slot:no-data>
-        <v-btn color="primary" @click="initialize">
-          Reset
-        </v-btn>
+        <p>You currently have no questions in this quiz</p>
+        <p>Add New Question to begin building quiz</p>
       </template>
     </v-data-table>
     <v-btn class="primary mb-12" @click="saveQuiz">
@@ -119,6 +119,7 @@
 export default {
   data: () => ({
     dialog: false,
+    keystroke: [],
     headers: [
       { text: "Question", align: "left", sortable: false, value: "question" },
       { text: "macOS", value: "macOS", sortable: false },
@@ -129,13 +130,13 @@ export default {
     editedIndex: -1,
     editedItem: {
       question: "",
-      macOS: "",
-      windows: ""
+      macOS: [],
+      windows: []
     },
     defaultItem: {
       question: "",
-      macOS: "",
-      windows: ""
+      macOS: [],
+      windows: []
     },
     quiz: 
       {
@@ -145,7 +146,7 @@ export default {
           software: ""
         },
         questions: [
-          { question: "test", macOS: "test", windows: "test" },
+          // { question: "test", macOS: ["test"], windows: [] },
         ]
       }
   }),
@@ -167,25 +168,35 @@ export default {
   },
 
   methods: {
+    logKey: function(event) {
+      event.preventDefault()
+      this.keystroke.push(event.key)
+      this.editedItem.macOS = this.keystroke
+      console.log(this.keystroke)
+      console.log(event.key)
+    },
     saveQuiz() {
-      console.log(this.quiz.details );
-      console.log(this.quiz.questions);
-      // firebase
-      //   .database()
-      //   .ref("quizzes/")
-      //   .set({
-      //     quiz: this.quiz
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-      //   console.log(firebase.data)
+      console.log( this.quiz.details );
+      console.log( this.quiz.questions );
+      /*
+      firebase
+        .database()
+        .ref("quizzes/")
+        .set({
+          quiz: this.quiz
+        })
+        .catch(err => {
+          console.log(err);
+        });
+        console.log(firebase.data)
+      */
     },
     initialize() {
     },
 
     editItem(item) {
       this.editedIndex = this.quiz.questions.indexOf(item);
+      this.editedItem.macOS = this.keystroke
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
@@ -196,18 +207,19 @@ export default {
         this.quiz.questions.splice(index, 1);
     },
 
-    close() {
+    close() {      
       this.dialog = false;
       setTimeout(() => {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       }, 300);
+      this.keystroke = []
     },
 
     save() {
+      // this.editedItem.macOS = this.keystroke
       if (this.editedIndex > -1) {
         Object.assign(this.quiz.questions[this.editedIndex], this.editedItem);
-        // CHANGED THIS     ^
       } else {
         this.quiz.questions.push(this.editedItem);
       }
