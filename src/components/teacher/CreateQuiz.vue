@@ -8,20 +8,20 @@
         <v-card class="pa-10 elevation-8">
           <p class="title">Quiz Details</p>
           <v-text-field 
-            label="Quiz Title" 
+            clearable label="Quiz Title" 
             placeholder="premiere practice" 
             v-model="quiz.details.title"></v-text-field>
           <v-text-field 
-            label="Software" 
+            clearable label="Software" 
             placeholder="ex: adobe premiere" 
             v-model="quiz.details.software"></v-text-field>
           <v-textarea 
-            clearable label="ex: Quiz Description" 
+            clearable label="Quiz Description" 
             rows="3" 
-            placeholder="ex: Use shortcut keys from the Adobe Premiere program to answer the quiz questions." 
+            placeholder="example: Use shortcut keys from the Adobe Premiere program to answer the quiz questions." 
             v-model="quiz.details.description"></v-textarea>
         </v-card>
-        
+
       </v-col>
     </v-row>
     <v-data-table
@@ -49,30 +49,27 @@
                   <v-row>
                     <v-col cols="12" sm="12" md="12">
                       <v-textarea
-                        v-model="editedItem.name"
+                        v-model="editedItem.question"
                         dense
+                        clearable
                         label="Question"
                       />
                     </v-col>
                   </v-row>
                   <v-row>
-                    <v-col class="text-center pb-0">
-                      <p>
-                        Enter keys separated by a comma. (example: cmd, shift,
-                        t)
-                      </p>
-                    </v-col>
                   </v-row>
                   <v-row>
                     <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         v-model="editedItem.macOS"
+                        @keydown="logKey"
                         label="macOS Shortcut"
                       />
                     </v-col>
                     <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         v-model="editedItem.windows"
+                        @keydown="logKeyW"
                         label="Windows Shortcut"
                       />
                     </v-col>
@@ -102,10 +99,8 @@
         </v-icon>
       </template>
       <template v-slot:no-data>
-        <p>Add new question to see them here</p>
-        <!-- <v-btn color="primary" @click="initialize">
-          Reset
-        </v-btn> -->
+        <p>You currently have no questions in this quiz</p>
+        <p>Add New Question to begin building quiz</p>
       </template>
     </v-data-table>
     <v-btn class="primary mb-12" @click="saveQuiz">
@@ -120,6 +115,8 @@
 export default {
   data: () => ({
     dialog: false,
+    keystrokeMac: [],
+    keystrokeWin: [],
     headers: [
       { text: "Question", align: "left", sortable: false, value: "question" },
       { text: "macOS", value: "macOS", sortable: false },
@@ -129,14 +126,14 @@ export default {
     questions: [],
     editedIndex: -1,
     editedItem: {
-      name: "",
-      macOS: "",
-      windows: ""
+      question: "",
+      macOS: [],
+      windows: []
     },
     defaultItem: {
-      name: "",
-      macOS: "",
-      windows: ""
+      question: "",
+      macOS: [],
+      windows: []
     },
     quiz: 
       {
@@ -146,6 +143,7 @@ export default {
           software: ""
         },
         questions: [
+          // { question: "test", macOS: ["test"], windows: [] },
         ]
       }
   }),
@@ -167,84 +165,88 @@ export default {
   },
 
   methods: {
+    logKey: function(event) {
+      event.preventDefault()
+      if (event.key != 'Backspace'){
+        if (event.key === ' ') {
+          this.keystrokeMac.push(event.code)
+        }
+        else {
+          this.keystrokeMac.push(event.key)
+        }
+      }
+      else if (event.key === 'Backspace') {
+        this.keystrokeMac.pop()
+      }
+      this.editedItem.macOS = this.keystrokeMac
+      console.log(this.keystrokeMac)
+      console.log(event.key)
+    },
+    logKeyW: function(event) {
+      event.preventDefault()
+      if (event.key != 'Backspace'){
+        if (event.key === ' ') {
+          this.keystrokeWin.push(event.code)
+        }
+        else {
+          this.keystrokeWin.push(event.key)
+        }
+      }
+      else if (event.key === 'Backspace') {
+        this.keystrokeWin.pop()
+      }
+      this.editedItem.windows = this.keystrokeWin
+      console.log(this.keystrokeWin)
+      console.log(event.key)
+    },
     saveQuiz() {
-      console.log(this.quiz);
-      // firebase
-      //   .database()
-      //   .ref("quizzes/")
-      //   .set({
-      //     quiz: this.quiz
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-      //   console.log(firebase.data)
+      // console.log( this.quiz.details );
+      // console.log( this.quiz.questions );
+      console.log(this.quiz)
+      /*
+      firebase
+        .database()
+        .ref("quizzes/")
+        .set({
+          quiz: this.quiz
+        })
+        .catch(err => {
+          console.log(err);
+        });
+        console.log(firebase.data)
+      */
     },
     initialize() {
-      this.questions = [
-        {
-          name: "How do you make an edit wherever your playhead is located?",
-          macOS: "Cmd, K",
-          windows: "Ctrl, K"
-        },
-        {
-          name:
-            "Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box",
-          macOS: "M",
-          windows: "M"
-        },
-        {
-          name:
-            "What key do you press to locate a source clip from within your timeline?",
-          macOS: "F",
-          windows: "F"
-        },
-        {
-          name: "What keys bring up the Export Media dialog box?",
-          macOS: "Cmd, M",
-          windows: "Ctrl, M"
-        },
-        {
-          name: "What key is for making In point on a clip?",
-          macOS: "I",
-          windows: "I"
-        },
-        {
-          name: "What key is for making Out point on a clip?",
-          macOS: "O",
-          windows: "O"
-        },
-        {
-          name: "What key makes your video playback at a faster speed?",
-          macOS: "L",
-          windows: "L"
-        }
-      ];
     },
 
     editItem(item) {
-      this.editedIndex = this.questions.indexOf(item);
+      this.editedIndex = this.quiz.questions.indexOf(item);
+      this.editedItem.macOS = this.keystrokeMac
+      this.editedItem.windows = this.keystrokeWin
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
 
     deleteItem(item) {
-      const index = this.questions.indexOf(item);
+      const index = this.quiz.questions.indexOf(item);
       confirm("Are you sure you want to delete this question?") &&
-        this.questions.splice(index, 1);
+        this.quiz.questions.splice(index, 1);
     },
 
-    close() {
+    close() {      
       this.dialog = false;
       setTimeout(() => {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       }, 300);
+      this.keystrokeMac = []
+      this.keystrokeWin = []
     },
 
     save() {
+      // this.editedItem.macOS = this.keystroke
       if (this.editedIndex > -1) {
-        Object.assign(this.questions[this.editedIndex], this.editedItem);
+        Object.assign(this.quiz.questions[this.editedIndex], this.editedItem);
       } else {
         this.quiz.questions.push(this.editedItem);
       }
