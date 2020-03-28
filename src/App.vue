@@ -28,18 +28,21 @@
           <ul class="navbar-nav mr-auto" />
           <ul class="navbar-nav ml-auto">
             <template v-if="user.loggedIn"> 
-       <v-tooltip bottom>
-      <template v-slot:activator="{ on }">
-        <span v-on="on">
-   <router-link to="/settings">
-           <v-avatar color="blue" size="38">
-      <span class="white--text headline">{{ user.data.image }}</span>
- </v-avatar>
-    </router-link> 
-      </span>
-      </template>
-      <span>Profile Settings</span>
-    </v-tooltip>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <span v-on="on">
+                    <router-link to="/settings">
+                      <v-avatar
+                        color="blue"
+                        size="38"
+                      >
+                        <span class="white--text headline">{{ user.data.image }}</span>
+                      </v-avatar>
+                    </router-link> 
+                  </span>
+                </template>
+                <span>Profile Settings</span>
+              </v-tooltip>
               <div class="nav-item">
                 {{ user.data.displayName }} 
               </div>

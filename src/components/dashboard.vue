@@ -4,8 +4,16 @@
     <!-- <center><router-link to="/cardlayout">Checkout Cards</router-link></center> -->
     <v-container>
       <v-row>
-        <v-col v-for="quiz in quizzes" :key="quiz.name" cols="12" sm="4">
-          <v-card elevation="6" class="cardComp">
+        <v-col
+          v-for="quiz in quizzes"
+          :key="quiz.name"
+          cols="12"
+          sm="4"
+        >
+          <v-card
+            elevation="6"
+            class="cardComp"
+          >
             <div class="cardTop" />
             <v-card-title>{{ quiz.name }}</v-card-title>
             <v-card-subtitle>
@@ -24,11 +32,19 @@
         </v-col>
       </v-row>
       <!-- v-if="account === teacher" -->
-      <v-divider class="my-8 elevation-12"/>
+      <v-divider class="my-8 elevation-12" />
       <v-row>
         <v-col cols="4">
-          <v-card to="teacher/create-quiz" elevation="6" class="mb-12">
-            <center><v-icon class="plus mt-8">mdi-plus</v-icon></center>
+          <v-card
+            to="teacher/create-quiz"
+            elevation="6"
+            class="mb-12"
+          >
+            <center>
+              <v-icon class="plus mt-8">
+                mdi-plus
+              </v-icon>
+            </center>
             <v-card-title>Add New Quiz</v-card-title>
             <v-card-subtitle>
               Add a new quiz to list of available quizzes

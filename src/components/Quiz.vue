@@ -30,21 +30,29 @@
                   Select input to type in answer
                 </p>
               </v-col>
-              <v-col v-for="(info, i) in answerArr" :key="info" cols="3">
-                    <v-card
-                    class="text-center pa-6"
-                    color="grey black--text"
-                    elevation="6"
-                  >
-                    {{ answerArr[i].toUpperCase() }}
-                  </v-card>
+              <v-col
+                v-for="(info, i) in answerArr"
+                :key="info"
+                cols="3"
+              >
+                <v-card
+                  class="text-center pa-6"
+                  color="grey black--text"
+                  elevation="6"
+                >
+                  {{ answerArr[i].toUpperCase() }}
+                </v-card>
               </v-col>
             </v-row>
             <div class="d-flex justify-space-around py-8">
-              <v-btn @click="clearArray" class="red" elevation="4"
-                  large
-                >Clear Answer</v-btn
+              <v-btn
+                class="red"
+                elevation="4"
+                large
+                @click="clearArray"
               >
+                Clear Answer
+              </v-btn>
               <!--  submitQuestion(answerArr, question)-->
               <v-btn
                 v-if="this.currentPage !== this.questions.length - 1"
@@ -52,10 +60,10 @@
                 large
                 elevation="4"
                 @click=" 
-                addAnswer(answerArr, questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows.map(e => {
-                  e.answer
-                }))
-                currentPage++                  
+                  addAnswer(answerArr, questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows.map(e => {
+                    e.answer
+                  }))
+                  currentPage++                  
                 "
               >
                 Next
@@ -65,11 +73,12 @@
                 color="primary"
                 large
                 @click="addAnswer(answerArr, questions[currentPage].question, questions[currentPage].id, questions[currentPage].windows.map(e => {
-                  e.answer
-                }))
-                end()"
-                >Submit Quiz</v-btn
+                          e.answer
+                        }))
+                        end()"
               >
+                Submit Quiz
+              </v-btn>
               <!-- to="/quizzes/quiz/results" -->
             </div>
           </div>
@@ -84,53 +93,96 @@
         />
       </v-col>
     </v-row>
-    <v-card class="ml-auto mr-auto" width="50%">
-      <v-row v-if="endTest == true" class="d-flex flex-column">
-      <v-col>
-        <h2 class="text-center">Here are the results of your quiz</h2>        
-      </v-col>
-      <v-row>
-        <v-col class="text-center" width="50%">
-          <p>Time: {{this.seconds}} seconds</p>
-          <p>Score: {{Math.trunc((this.correct.length / (this.correct.length + this.wrong.length)) * 100)}}%</p>
-          <v-container width="300px">
-            <v-progress-linear 
-              height="25px" 
-              :value="(this.correct.length / (this.correct.length + this.wrong.length)) * 100">
-              {{this.correct.length}}/{{this.correct.length + this.wrong.length}}
-            </v-progress-linear>
-          </v-container>            
+    <v-card
+      class="ml-auto mr-auto"
+      width="50%"
+    >
+      <v-row
+        v-if="endTest == true"
+        class="d-flex flex-column"
+      >
+        <v-col>
+          <h2 class="text-center">
+            Here are the results of your quiz
+          </h2>        
         </v-col>
+        <v-row>
+          <v-col
+            class="text-center"
+            width="50%"
+          >
+            <p>Time: {{ this.seconds }} seconds</p>
+            <p>Score: {{ Math.trunc((this.correct.length / (this.correct.length + this.wrong.length)) * 100) }}%</p>
+            <v-container width="300px">
+              <v-progress-linear 
+                height="25px" 
+                :value="(this.correct.length / (this.correct.length + this.wrong.length)) * 100"
+              >
+                {{ this.correct.length }}/{{ this.correct.length + this.wrong.length }}
+              </v-progress-linear>
+            </v-container>            
+          </v-col>
+        </v-row>
       </v-row>
-    </v-row>
     </v-card>
     
     <v-row v-if="endTest == true">
-      <v-col cols="6" class="ml-auto">
-          <h2 class="text-center green--text">Correct Answers</h2>
-          <v-card v-for="corrects in correct" :key="corrects.question" class="my-5 py-4 px-4">
-              <v-card-title class="display font-weight-light">{{corrects.question}}</v-card-title>
-              <v-divider dark />
-              <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text> -->
-              <v-card-text class="green--text ml-8 headline font-weight-light">
-                Your Answer: <span v-for="ans in corrects.answer" :key="ans.i">{{ans.answer}}</span>
-              </v-card-text>
-          </v-card>
+      <v-col
+        cols="6"
+        class="ml-auto"
+      >
+        <h2 class="text-center green--text">
+          Correct Answers
+        </h2>
+        <v-card
+          v-for="corrects in correct"
+          :key="corrects.question"
+          class="my-5 py-4 px-4"
+        >
+          <v-card-title class="display font-weight-light">
+            {{ corrects.question }}
+          </v-card-title>
+          <v-divider dark />
+          <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text> -->
+          <v-card-text class="green--text ml-8 headline font-weight-light">
+            Your Answer: <span
+              v-for="ans in corrects.answer"
+              :key="ans.i"
+            >{{ ans.answer }}</span>
+          </v-card-text>
+        </v-card>
       </v-col>
-      <v-col cols="6" class="mr-auto">
-          <h2 class="text-center red--text">Incorrect Answers</h2>
-          <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5 py-4 px-4">
-              <v-card-title class="display font-weight-light">{{wrongs.question}}</v-card-title>
-              <v-divider dark />
-              <!-- <v-card-text class="red--text ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text> -->
-              <v-card-text class="red--text ml-8 headline font-weight-light">
-                Your Answer: <span v-for="ans in wrongs.answer" :key="ans">{{ans}} </span>
-              </v-card-text>
-              <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text> -->
-              <v-card-text class="green--text ml-8 headline font-weight-light">
-                Correct Answer: <span v-for="ans in wrongs.correctAnswer" :key="ans">{{ans}} </span>
-              </v-card-text>
-          </v-card>
+      <v-col
+        cols="6"
+        class="mr-auto"
+      >
+        <h2 class="text-center red--text">
+          Incorrect Answers
+        </h2>
+        <v-card
+          v-for="wrongs in wrong"
+          :key="wrongs.question"
+          class="my-5 py-4 px-4"
+        >
+          <v-card-title class="display font-weight-light">
+            {{ wrongs.question }}
+          </v-card-title>
+          <v-divider dark />
+          <!-- <v-card-text class="red--text ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text> -->
+          <v-card-text class="red--text ml-8 headline font-weight-light">
+            Your Answer: <span
+              v-for="ans in wrongs.answer"
+              :key="ans"
+            >{{ ans }} </span>
+          </v-card-text>
+          <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text> -->
+          <v-card-text class="green--text ml-8 headline font-weight-light">
+            Correct Answer: <span
+              v-for="ans in wrongs.correctAnswer"
+              :key="ans"
+            >{{ ans }} </span>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -196,6 +248,16 @@ export default {
         // },
       ],
     }
+  },
+  mounted() {
+    this.startTime = new Date()
+    this.$refs.input.focus();
+    window.addEventListener('keypress', e => {
+      e.preventDefault()
+      String.fromCharCode(e.keyCode)
+      this.logKey(e.key)
+    })
+    
   },
   methods: {
     addAnswer(answer, question, id, correctAnswer){
@@ -265,16 +327,6 @@ export default {
       this.answerSet.clear()
       this.answerArr = []
     },
-  },
-  mounted() {
-    this.startTime = new Date()
-    this.$refs.input.focus();
-    window.addEventListener('keypress', e => {
-      e.preventDefault()
-      String.fromCharCode(e.keyCode)
-      this.logKey(e.key)
-    })
-    
   },
 }
 </script>
