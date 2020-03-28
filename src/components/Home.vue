@@ -2,20 +2,6 @@
   <div>
     <v-card>
       <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
-        <template v-slot:prepend>
-          <v-list>
-            <v-list-item link two-line>
-              <v-list-item-content>
-                <v-list-item-title class="title">{{ user.name }}</v-list-item-title>
-                <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
-              </v-list-item-content>
-              <v-list-item-action>
-                <v-icon>mdi-menu-down</v-icon>
-              </v-list-item-action>
-            </v-list-item>
-          </v-list>
-        </template>
-
         <v-divider />
         <v-list nav>
           <v-list-item v-for="item in items" :key="item.to" link :to="item.to">
