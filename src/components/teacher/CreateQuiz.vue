@@ -108,12 +108,10 @@ export default {
     // questions: [],
     editedIndex: -1,
     editedItem: {
-      name: "",
       macOS: "",
       windows: ""
     },
     defaultItem: {
-      name: "",
       macOS: "",
       windows: ""
     },
@@ -145,7 +143,6 @@ export default {
 
   methods: {
     saveQuiz() {
-      console.log(this.quiz);
       firebase
         .database()
         .ref("quizzes/")
@@ -154,7 +151,8 @@ export default {
         .catch(err => {
           console.log(err);
         });
-      // console.log(firebase.data)
+      alert("Quiz Created!");
+      this.$router.replace("/");
     },
     initialize() {
       this.questions = [
@@ -224,7 +222,6 @@ export default {
       } else {
         this.quiz.questions.push(this.editedItem);
       }
-      alert("Quiz Created!");
       this.close();
     }
   }
