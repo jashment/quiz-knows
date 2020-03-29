@@ -4,24 +4,34 @@
       Create New Quiz
     </h1>
     <v-row>
-      <v-col cols="6" class="mx-auto">
+      <v-col
+        cols="6"
+        class="mx-auto"
+      >
         <v-card class="pa-10 elevation-8">
-          <p class="title">Quiz Details</p>
+          <p class="title">
+            Quiz Details
+          </p>
           <v-text-field 
-            clearable label="Quiz Title" 
-            placeholder="premiere practice" 
-            v-model="quiz.details.title"></v-text-field>
+            v-model="quiz.details.title"
+            clearable 
+            label="Quiz Title" 
+            placeholder="premiere practice"
+          />
           <v-text-field 
-            clearable label="Software" 
-            placeholder="ex: adobe premiere" 
-            v-model="quiz.details.software"></v-text-field>
+            v-model="quiz.details.software"
+            clearable 
+            label="Software" 
+            placeholder="ex: adobe premiere"
+          />
           <v-textarea 
-            clearable label="Quiz Description" 
+            v-model="quiz.details.description"
+            clearable 
+            label="Quiz Description" 
             rows="3" 
-            placeholder="example: Use shortcut keys from the Adobe Premiere program to answer the quiz questions." 
-            v-model="quiz.details.description"></v-textarea>
+            placeholder="example: Use shortcut keys from the Adobe Premiere program to answer the quiz questions."
+          />
         </v-card>
-
       </v-col>
     </v-row>
     <v-data-table
@@ -33,9 +43,18 @@
       <template v-slot:top>
         <v-toolbar flat>
           <v-spacer />
-          <v-dialog v-model="dialog" max-width="500px" persistent>
+          <v-dialog
+            v-model="dialog"
+            max-width="500px"
+            persistent
+          >
             <template v-slot:activator="{ on }">
-              <v-btn color="green" dark class="mb-2" v-on="on">
+              <v-btn
+                color="green"
+                dark
+                class="mb-2"
+                v-on="on"
+              >
                 New Question
               </v-btn>
             </template>
@@ -47,7 +66,11 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col cols="12" sm="12" md="12">
+                    <v-col
+                      cols="12"
+                      sm="12"
+                      md="12"
+                    >
                       <v-textarea
                         v-model="editedItem.question"
                         dense
@@ -56,21 +79,28 @@
                       />
                     </v-col>
                   </v-row>
+                  <v-row />
                   <v-row>
-                  </v-row>
-                  <v-row>
-                    <v-col cols="12" sm="6" md="6">
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="6"
+                    >
                       <v-text-field
                         v-model="editedItem.macOS"
-                        @keydown="logKey"
                         label="macOS Shortcut"
+                        @keydown="logKey"
                       />
                     </v-col>
-                    <v-col cols="12" sm="6" md="6">
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="6"
+                    >
                       <v-text-field
                         v-model="editedItem.windows"
-                        @keydown="logKeyW"
                         label="Windows Shortcut"
+                        @keydown="logKeyW"
                       />
                     </v-col>
                   </v-row>
@@ -79,10 +109,17 @@
 
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="blue darken-1" text @click="close">
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="close"
+                >
                   Cancel
                 </v-btn>
-                <v-btn color="blue darken-1" @click="save">
+                <v-btn
+                  color="blue darken-1"
+                  @click="save"
+                >
                   Save
                 </v-btn>
               </v-card-actions>
@@ -91,10 +128,20 @@
         </v-toolbar>
       </template>
       <template v-slot:item.action="{ item }">
-        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)">
+        <v-icon
+          small
+          class="mr-5 title"
+          color="blue"
+          @click="editItem(item)"
+        >
           mdi-pencil-outline
         </v-icon>
-        <v-icon small class="title" color="red" @click="deleteItem(item)">
+        <v-icon
+          small
+          class="title"
+          color="red"
+          @click="deleteItem(item)"
+        >
           mdi-trash-can-outline
         </v-icon>
       </template>
@@ -103,7 +150,10 @@
         <p>Add New Question to begin building quiz</p>
       </template>
     </v-data-table>
-    <v-btn class="primary mb-12" @click="saveQuiz">
+    <v-btn
+      class="primary mb-12"
+      @click="saveQuiz"
+    >
       Save Quiz
     </v-btn>
   </v-container>

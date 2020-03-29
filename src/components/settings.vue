@@ -1,63 +1,70 @@
 <template>
   <div>
     <div class="container">
-
       <div class="row mb-5">
         <div class="col-md-12 mb-0 pb-0 ml-3">
-     <v-avatar color="indigo" size="120">
-      <v-icon dark>mdi-account</v-icon>
-    </v-avatar>
+          <v-avatar
+            color="indigo"
+            size="120"
+          >
+            <v-icon dark>
+              mdi-account
+            </v-icon>
+          </v-avatar>
         </div>
-           <div class="col-md-12 mt-0 pt-0">
-   <v-dialog
-        v-model="dialog3"
-        width="500"
-      >
-        <template v-slot:activator="{ on }">
-          <v-btn text small color="primary"
+        <div class="col-md-12 mt-0 pt-0">
+          <v-dialog
+            v-model="dialog3"
+            width="500"
+          >
+            <template v-slot:activator="{ on }">
+              <v-btn
+                text
+                small
+                color="primary"
           
-            v-on="on"
-          >
-           Change Photo
-          </v-btn>
-        </template>
+                v-on="on"
+              >
+                Change Photo
+              </v-btn>
+            </template>
 
-        <v-card>
-          <v-card-title
-            class="headline"
-            style="background-color: #109199;"
-            primary-title
-          >
-            Change Photo
-          </v-card-title>
+            <v-card>
+              <v-card-title
+                class="headline"
+                style="background-color: #109199;"
+                primary-title
+              >
+                Change Photo
+              </v-card-title>
 
-          <v-card-text>
-            <v-row>
-              <v-col>(insert file upload here): <textarea /></v-col>
-            </v-row>
-          </v-card-text>
-          <v-divider />
+              <v-card-text>
+                <v-row>
+                  <v-col>(insert file upload here): <textarea /></v-col>
+                </v-row>
+              </v-card-text>
+              <v-divider />
 
-          <v-card-actions>
-             <v-btn
-              color="primary"
-              text
-              @click="dialog3 = false"
-            >
-              Cancel
-            </v-btn>
-            <v-spacer />
-            <v-btn
-              color="primary"
-              text
-              @click="dialog3 = false"
-            >
-              Set Image
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-           </div>
+              <v-card-actions>
+                <v-btn
+                  color="primary"
+                  text
+                  @click="dialog3 = false"
+                >
+                  Cancel
+                </v-btn>
+                <v-spacer />
+                <v-btn
+                  color="primary"
+                  text
+                  @click="dialog3 = false"
+                >
+                  Set Image
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </div>
       </div>
 
       <h3>Full Name:</h3>
@@ -67,7 +74,7 @@
       <h3>Operating System:</h3>
       <!-- <v-btn>Edit Settings</v-btn> -->
 
-       <v-dialog
+      <v-dialog
         v-model="dialog2"
         width="500"
       >
@@ -76,7 +83,7 @@
           
             v-on="on"
           >
-           Change Password
+            Change Password
           </v-btn>
         </template>
 
@@ -105,7 +112,7 @@
           <v-divider />
 
           <v-card-actions>
-             <v-btn
+            <v-btn
               color="primary"
               text
               @click="dialog2 = false"
@@ -182,7 +189,7 @@
           <v-divider />
 
           <v-card-actions>
-             <v-btn
+            <v-btn
               color="primary"
               text
               @click="dialog = false"

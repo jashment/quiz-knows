@@ -28,23 +28,26 @@
           <ul class="navbar-nav mr-auto" />
           <ul class="navbar-nav ml-auto">
             <template v-if="user.loggedIn"> 
-       <v-tooltip bottom>
-      <template v-slot:activator="{ on }">
-        <span v-on="on">
-   <router-link to="/settings">
-           <v-avatar color="blue" size="38">
-      <span class="white--text headline">{{ user.data.image }}</span>
- </v-avatar>
-    </router-link> 
-      </span>
-      </template>
-      <span>Profile Settings</span>
-    </v-tooltip>
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <span v-on="on">
+                    <router-link to="/settings">
+                      <v-avatar
+                        color="blue"
+                        size="38"
+                      >
+                        <span class="white--text headline">{{ user.data.image }}</span>
+                      </v-avatar>
+                    </router-link> 
+                  </span>
+                </template>
+                <span>Profile Settings</span>
+              </v-tooltip>
               <div class="nav-item">
                 {{ user.data.displayName }} 
               </div>
               <li class="nav-item">
-                <v-btn text>
+                <v-btn outlined>
                   <a
                     class="nav-link"
                     @click.prevent="signOut"
@@ -54,7 +57,7 @@
             </template>
             <template v-else>
               <li class="nav-item">
-                <v-btn text>
+                <v-btn outlined>
                   <router-link
                     to="/login"
                     class="nav-link"
@@ -64,7 +67,7 @@
                 </v-btn>
               </li>
               <li class="nav-item">
-                <v-btn text>
+                <v-btn outlined>
                   <router-link
                     to="/register"
                     class="nav-link"
@@ -115,9 +118,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace({
-            name: "home"
-          });
+          this.$router.replace('/register');
         });
     }
   }
@@ -139,5 +140,9 @@ h1 {
   list-style-type: none;
   display: inline-block;
   padding: 0.75rem 0.25rem;
+}
+
+button.v-btn a {
+  text-decoration: none;
 }
 </style>

@@ -1,10 +1,22 @@
 <template>
   <div>
     <v-card>
-      <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
+      <v-navigation-drawer
+        class="navDrawer"
+        expand-on-hover
+        permanent
+        clipped
+        floating
+        app
+      >
         <v-divider />
         <v-list nav>
-          <v-list-item v-for="item in items" :key="item.to" link :to="item.to">
+          <v-list-item
+            v-for="item in items"
+            :key="item.to"
+            link
+            :to="item.to"
+          >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
               <v-icon />
