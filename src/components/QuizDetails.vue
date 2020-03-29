@@ -26,11 +26,7 @@
         </p>
         <p>{{ details[3].instructions }}</p>
         <center>
-          <v-btn
-            color="green"
-            class="mt-8"
-            to="/quizzes/quiz"
-          >
+          <v-btn color="green" class="mt-8" to="/quizzes/quiz">
             Take Quiz
           </v-btn>
         </center>
@@ -43,17 +39,17 @@
 export default {
   data: () => ({
     details: [
-      { program: 'Adobe Premiere' },
-      { os: 'Mac OS' },
+      { program: "Adobe Premiere" },
+      { os: "Mac OS" },
       { questions: 25 },
       {
         instructions: `Use shortcut keys from the Adobe Premiere program to answer the quiz
             questions. Try to improve your score and time, as you can take the quiz as many 
-            times as you would like`,
-      },
-    ],
-  }),
-}
+            times as you would like`
+      }
+    ]
+  })
+};
 </script>
 
 <style>

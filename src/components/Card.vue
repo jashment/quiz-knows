@@ -4,10 +4,7 @@
     <v-card-title>{{ Quizzes }}</v-card-title>
     <v-card-subtitle>Take quizzes to improve score and time</v-card-subtitle>
     <v-card-actions>
-      <v-btn
-        color="#00beff"
-        class="white--text"
-      >
+      <v-btn color="#00beff" class="white--text">
         View Quiz
       </v-btn>
     </v-card-actions>
@@ -15,7 +12,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>

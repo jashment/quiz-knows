@@ -224,6 +224,7 @@ export default {
       } else {
         this.quiz.questions.push(this.editedItem);
       }
+      alert("Quiz Created!");
       this.close();
     }
   }

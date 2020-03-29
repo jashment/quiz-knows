@@ -9,14 +9,12 @@
 
 <script>
 export default {
-    methods: {
-        test() {
-            console.log(this.$store.state.resultsArr)
-        }
+  methods: {
+    test() {
+      console.log(this.$store.state.resultsArr);
     }
-}
+  }
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

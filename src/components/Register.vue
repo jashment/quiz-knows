@@ -7,21 +7,14 @@
             Register
           </div>
           <div class="card-body">
-            <div
-              v-if="error"
-              class="alert alert-danger"
-            >
+            <div v-if="error" class="alert alert-danger">
               {{ error }}
             </div>
-            <form
-              action="#"
-              @submit.prevent="submit"
-            >
+            <form action="#" @submit.prevent="submit">
               <div class="form-group row">
-                <label
-                  for="name"
-                  class="col-md-4 col-form-label text-md-right"
-                >Name</label>
+                <label for="name" class="col-md-4 col-form-label text-md-right"
+                  >Name</label
+                >
 
                 <div class="col-md-6">
                   <v-text-field
@@ -39,16 +32,15 @@
               </div>
 
               <div class="form-group row">
-                <label
-                  for="email"
-                  class="col-md-4 col-form-label text-md-right"
-                >Email</label>
+                <label for="email" class="col-md-4 col-form-label text-md-right"
+                  >Email</label
+                >
 
                 <div class="col-md-6">
                   <v-text-field
                     id="email"
                     v-model="form.email"
-                    :rules="emailRules" 
+                    :rules="emailRules"
                     type="email"
                     class="form-control"
                     name="email"
@@ -59,10 +51,9 @@
               </div>
 
               <div class="form-group row">
-                <label
-                  for="uvid"
-                  class="col-md-4 col-form-label text-md-right"
-                >UVU ID</label>
+                <label for="uvid" class="col-md-4 col-form-label text-md-right"
+                  >UVU ID</label
+                >
 
                 <div class="col-md-6">
                   <v-text-field
@@ -79,10 +70,9 @@
               </div>
 
               <div class="form-group row">
-                <label
-                  for="role"
-                  class="col-md-4 col-form-label text-md-right"
-                >Role</label>
+                <label for="role" class="col-md-4 col-form-label text-md-right"
+                  >Role</label
+                >
                 <label for="">Student</label>
                 <input
                   id="student"
@@ -91,7 +81,7 @@
                   type="radio"
                   name="roleRadio"
                   value="Student"
-                >
+                />
                 <label for="">Teacher</label>
                 <input
                   id="teacher"
@@ -99,14 +89,15 @@
                   type="radio"
                   name="roleRadio"
                   value="Teacher"
-                >
+                />
               </div>
 
               <div class="form-group row">
                 <label
                   for="password"
                   class="col-md-4 col-form-label text-md-right"
-                >Password</label>
+                  >Password</label
+                >
 
                 <div class="col-md-6">
                   <v-text-field
@@ -123,10 +114,7 @@
 
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
-                  <v-btn
-                    type="submit"
-                    class="btn btn-primary"
-                  >
+                  <v-btn type="submit" class="btn btn-primary">
                     Register
                   </v-btn>
                 </div>
@@ -140,34 +128,34 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-import {required, email, minLength} from 'vuelidate/lib/validators'
+import firebase from "firebase";
+import { required, email, minLength } from "vuelidate/lib/validators";
 
 export default {
   data() {
     return {
       form: {
-        name: '',
-        email: '',
-        uvid: '',
-        role: '',
-        password: '',
+        name: "",
+        email: "",
+        uvid: "",
+        role: "",
+        password: ""
       },
       error: null,
       emailRules: [
-            v => !!v || 'E-mail is required',
-            v => /.+@.+/.test(v) || 'E-mail must be valid'
-            ],
+        v => !!v || "E-mail is required",
+        v => /.+@.+/.test(v) || "E-mail must be valid"
+      ],
       rules: {
-                required: value => !!value || 'Password is Required.',
-                min: v => v.length >= 8 || 'Min 8 characters',
-                emailMatch: () => ('The email and password you entered don\'t match'),
-                idMin: v => v.length >= 8 || 'Must have 8 characters',
-            },
-            nameRules: {
-                required: value => !!value || 'Name is Required.'
-            }
-    }
+        required: value => !!value || "Password is Required.",
+        min: v => v.length >= 8 || "Min 8 characters",
+        emailMatch: () => "The email and password you entered don't match",
+        idMin: v => v.length >= 8 || "Must have 8 characters"
+      },
+      nameRules: {
+        required: value => !!value || "Name is Required."
+      }
+    };
   },
   methods: {
     submit() {
@@ -177,47 +165,50 @@ export default {
         .then(data => {
           data.user
             .updateProfile({
-              displayName: this.form.name,
+              displayName: this.form.name
             })
             .then(moreData => {
-              alert(`User ${moreData} created!`)
-              firebase.database().ref('users/').push({
-                uid: data.user.uid
-              }).set({
-                name: this.form.name,
-                email: this.form.email,
-                uvid: this.form.uvid,
-                role: this.form.role,
-              })
-            })
-            this.$router.replace('/')
-
+              alert(`User ${moreData} created!`);
+              firebase
+                .database()
+                .ref("users/")
+                .push({
+                  uid: data.user.uid
+                })
+                .set({
+                  name: this.form.name,
+                  email: this.form.email,
+                  uvid: this.form.uvid,
+                  role: this.form.role
+                });
+            });
+          this.$router.replace("/");
         })
         .catch(err => {
-          this.error = err.message
-        })
-    },
+          this.error = err.message;
+        });
+    }
   },
   validations: {
-        email: {
-            required,
-            email
-        },
-        password: {
-            required,
-            minLen: minLength(6)
-        },
-        name: {
-            required
-        }
+    email: {
+      required,
+      email
+    },
+    password: {
+      required,
+      minLen: minLength(6)
+    },
+    name: {
+      required
     }
-}
+  }
+};
 </script>
 <style scoped>
-  label {
-    padding: 10px;
-  }
-  input {
-    margin: auto 0;
-  }
+label {
+  padding: 10px;
+}
+input {
+  margin: auto 0;
+}
 </style>

@@ -1,9 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      clipped-left
-    >
+    <v-app-bar app clipped-left>
       <v-toolbar-title class="headline text-uppercase">
         <span>Cinema</span>
         <span class="font-weight-light">Portal</span>
@@ -21,57 +18,44 @@
         >
           <span class="navbar-toggler-icon" />
         </button>
-        <div
-          id="navbarSupportedContent"
-          class="collapse navbar-collapse"
-        >
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
           <ul class="navbar-nav mr-auto" />
           <ul class="navbar-nav ml-auto">
-            <template v-if="user.loggedIn"> 
+            <template v-if="user.loggedIn">
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
                     <router-link to="/settings">
-                      <v-avatar
-                        color="blue"
-                        size="38"
-                      >
-                        <span class="white--text headline">{{ user.data.image }}</span>
+                      <v-avatar color="blue" size="38">
+                        <span class="white--text headline">{{
+                          user.data.image
+                        }}</span>
                       </v-avatar>
-                    </router-link> 
+                    </router-link>
                   </span>
                 </template>
                 <span>Profile Settings</span>
               </v-tooltip>
               <div class="nav-item">
-                {{ user.data.displayName }} 
+                {{ user.data.displayName }}
               </div>
               <li class="nav-item">
                 <v-btn outlined>
-                  <a
-                    class="nav-link"
-                    @click.prevent="signOut"
-                  >Sign out</a>
+                  <a class="nav-link" @click.prevent="signOut">Sign out</a>
                 </v-btn>
               </li>
             </template>
             <template v-else>
               <li class="nav-item">
                 <v-btn outlined>
-                  <router-link
-                    to="/login"
-                    class="nav-link"
-                  >
+                  <router-link to="/login" class="nav-link">
                     Login
                   </router-link>
                 </v-btn>
               </li>
               <li class="nav-item">
                 <v-btn outlined>
-                  <router-link
-                    to="/register"
-                    class="nav-link"
-                  >
+                  <router-link to="/register" class="nav-link">
                     Register
                   </router-link>
                 </v-btn>
@@ -118,7 +102,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace('/register');
+          this.$router.replace("/register");
         });
     }
   }
