@@ -47,7 +47,7 @@
                 {{ user.data.displayName }} 
               </div>
               <li class="nav-item">
-                <v-btn text>
+                <v-btn outlined>
                   <a
                     class="nav-link"
                     @click.prevent="signOut"
@@ -57,7 +57,7 @@
             </template>
             <template v-else>
               <li class="nav-item">
-                <v-btn text>
+                <v-btn outlined>
                   <router-link
                     to="/login"
                     class="nav-link"
@@ -67,7 +67,7 @@
                 </v-btn>
               </li>
               <li class="nav-item">
-                <v-btn text>
+                <v-btn outlined>
                   <router-link
                     to="/register"
                     class="nav-link"
@@ -118,9 +118,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace({
-            name: "home"
-          });
+          this.$router.replace('/register');
         });
     }
   }
@@ -142,5 +140,9 @@ h1 {
   list-style-type: none;
   display: inline-block;
   padding: 0.75rem 0.25rem;
+}
+
+button.v-btn a {
+  text-decoration: none;
 }
 </style>

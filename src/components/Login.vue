@@ -57,12 +57,13 @@
 
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
-                  <button
+                  <v-btn
                     type="submit"
                     class="btn btn-primary"
+                    outlined
                   >
                     Login
-                  </button>
+                  </v-btn>
                 </div>
               </div>
             </form>
@@ -93,7 +94,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(() => {
-          this.$router.replace('cardlayout')
+          this.$router.replace('/')
         })
         .catch(err => {
           this.error = err.message
