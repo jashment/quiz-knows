@@ -28,6 +28,7 @@
                     id="name"
                     v-model="form.name"
                     type="name"
+                    :rules="[nameRules.required]"
                     class="form-control"
                     name="name"
                     value
@@ -47,54 +48,59 @@
                   <v-text-field
                     id="email"
                     v-model="form.email"
+                    :rules="emailRules" 
                     type="email"
                     class="form-control"
                     name="email"
                     value
                     required
-                    autofocus
                   />
                 </div>
               </div>
 
-                            <!-- <div class="form-group row">
+              <div class="form-group row">
                 <label
-                  for="role"
+                  for="uvid"
                   class="col-md-4 col-form-label text-md-right"
-                >Student or Teacher?</label> -->
-                <!-- <select
-                  v-model="form.role"
-                  class="form-control"
-                >
-                  <option
-                    id="student"
-                    type="radio"
-                    name="student"
-                    :value="student"
-                  >
-                    Student
-                  </option>
-                  <option
-                    id="teacher"
-                    type="radio"
-                    name="teacher"
-                    :value="teacher"
-                  >
-                    Teacher
-                  </option>
-                </select> -->
-                <!-- <div class="col-md-6">
+                >UVU ID</label>
+
+                <div class="col-md-6">
                   <v-text-field
-                    id="role"
-                    v-model="form.role"
+                    id="uvid"
+                    v-model="form.uvid"
                     type="text"
+                    :rules="[rules.idMin]"
                     class="form-control"
-                    name="role"
+                    name="uvid"
                     value
                     required
                   />
                 </div>
-              </div> -->
+              </div>
+
+              <div class="form-group row">
+                <label
+                  for="role"
+                  class="col-md-4 col-form-label text-md-right"
+                >Role</label>
+                <label for="">Student</label>
+                <input
+                  id="student"
+                  v-model="form.role"
+                  checked
+                  type="radio"
+                  name="roleRadio"
+                  value="Student"
+                >
+                <label for="">Teacher</label>
+                <input
+                  id="teacher"
+                  v-model="form.role"
+                  type="radio"
+                  name="roleRadio"
+                  value="Teacher"
+                >
+              </div>
 
               <div class="form-group row">
                 <label
@@ -107,6 +113,7 @@
                     id="password"
                     v-model="form.password"
                     type="password"
+                    :rules="[rules.required, rules.min]"
                     class="form-control"
                     name="password"
                     required
@@ -134,6 +141,7 @@
 
 <script>
 import firebase from 'firebase'
+import {required, email, minLength} from 'vuelidate/lib/validators'
 
 export default {
   data() {
@@ -141,9 +149,24 @@ export default {
       form: {
         name: '',
         email: '',
+        uvid: '',
+        role: '',
         password: '',
       },
       error: null,
+      emailRules: [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+/.test(v) || 'E-mail must be valid'
+            ],
+      rules: {
+                required: value => !!value || 'Password is Required.',
+                min: v => v.length >= 8 || 'Min 8 characters',
+                emailMatch: () => ('The email and password you entered don\'t match'),
+                idMin: v => v.length >= 8 || 'Must have 8 characters',
+            },
+            nameRules: {
+                required: value => !!value || 'Name is Required.'
+            }
     }
   },
   methods: {
@@ -163,11 +186,11 @@ export default {
               }).set({
                 name: this.form.name,
                 email: this.form.email,
-                role: 'newUser'
+                uvid: this.form.uvid,
+                role: this.form.role,
               })
             })
-            this.$router.replace('cardlayout')
-            console.log(data)
+            this.$router.replace('/')
 
         })
         .catch(err => {
@@ -175,5 +198,26 @@ export default {
         })
     },
   },
+  validations: {
+        email: {
+            required,
+            email
+        },
+        password: {
+            required,
+            minLen: minLength(6)
+        },
+        name: {
+            required
+        }
+    }
 }
 </script>
+<style scoped>
+  label {
+    padding: 10px;
+  }
+  input {
+    margin: auto 0;
+  }
+</style>
