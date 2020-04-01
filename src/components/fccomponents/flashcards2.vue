@@ -9,20 +9,10 @@
       </div>
       <div class="col-md-3">
         <v-card-actions>
-          <v-btn
-            color="#00beff"
-            class="white--text"
-            link
-            to="/flashcardsap"
-          >
+          <v-btn color="#00beff" class="white--text" link to="/flashcardsap">
             mac/OS
           </v-btn>
-          <v-btn
-            color="#00beff"
-            class="white--text"
-            link
-            to="/flashcards"
-          >
+          <v-btn color="#00beff" class="white--text" link to="/flashcards">
             Back
           </v-btn>
         </v-card-actions>
@@ -786,10 +776,10 @@
 </template>
 
 <script>
-import vueFlashcard from 'vue-flashcard'
+import vueFlashcard from "vue-flashcard";
 export default {
-  components: { vueFlashcard },
-}
+  components: { vueFlashcard }
+};
 </script>
 
 <style scoped>
@@ -822,8 +812,8 @@ body {
 
 .embed {
   height: 75vh;
- overflow: auto;
- -ms-overflow-style: none;
+  overflow: auto;
+  -ms-overflow-style: none;
 }
 
 .embed::webkit-scrollbar {

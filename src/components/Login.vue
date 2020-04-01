@@ -7,21 +7,14 @@
             Login
           </div>
           <div class="card-body">
-            <div
-              v-if="error"
-              class="alert alert-danger"
-            >
+            <div v-if="error" class="alert alert-danger">
               {{ error }}
             </div>
-            <form
-              action="#"
-              @submit.prevent="submit"
-            >
+            <form action="#" @submit.prevent="submit">
               <div class="form-group row">
-                <label
-                  for="email"
-                  class="col-md-4 col-form-label text-md-right"
-                >Email</label>
+                <label for="email" class="col-md-4 col-form-label text-md-right"
+                  >Email</label
+                >
 
                 <div class="col-md-6">
                   <v-text-field
@@ -41,7 +34,8 @@
                 <label
                   for="password"
                   class="col-md-4 col-form-label text-md-right"
-                >Password</label>
+                  >Password</label
+                >
 
                 <div class="col-md-6">
                   <v-text-field
@@ -57,11 +51,7 @@
 
               <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
-                  <v-btn
-                    type="submit"
-                    class="btn btn-primary"
-                    outlined
-                  >
+                  <v-btn type="submit" class="btn btn-primary" outlined>
                     Login
                   </v-btn>
                 </div>
@@ -75,18 +65,18 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 
 export default {
   data() {
     return {
       form: {
-        email: '',
-        password: '',
-        uid: null,
+        email: "",
+        password: "",
+        uid: null
       },
-      error: null,
-    }
+      error: null
+    };
   },
   methods: {
     submit() {
@@ -94,12 +84,12 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(() => {
-          this.$router.replace('/')
+          this.$router.replace("/");
         })
         .catch(err => {
-          this.error = err.message
-        })
-    },
-  },
-}
+          this.error = err.message;
+        });
+    }
+  }
+};
 </script>

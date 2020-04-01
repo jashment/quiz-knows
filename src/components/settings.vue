@@ -3,28 +3,16 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-12 mb-0 pb-0 ml-3">
-          <v-avatar
-            color="indigo"
-            size="120"
-          >
+          <v-avatar color="indigo" size="120">
             <v-icon dark>
               mdi-account
             </v-icon>
           </v-avatar>
         </div>
         <div class="col-md-12 mt-0 pt-0">
-          <v-dialog
-            v-model="dialog3"
-            width="500"
-          >
+          <v-dialog v-model="dialog3" width="500">
             <template v-slot:activator="{ on }">
-              <v-btn
-                text
-                small
-                color="primary"
-          
-                v-on="on"
-              >
+              <v-btn text small color="primary" v-on="on">
                 Change Photo
               </v-btn>
             </template>
@@ -46,19 +34,11 @@
               <v-divider />
 
               <v-card-actions>
-                <v-btn
-                  color="primary"
-                  text
-                  @click="dialog3 = false"
-                >
+                <v-btn color="primary" text @click="dialog3 = false">
                   Cancel
                 </v-btn>
                 <v-spacer />
-                <v-btn
-                  color="primary"
-                  text
-                  @click="dialog3 = false"
-                >
+                <v-btn color="primary" text @click="dialog3 = false">
                   Set Image
                 </v-btn>
               </v-card-actions>
@@ -74,15 +54,9 @@
       <h3>Operating System:</h3>
       <!-- <v-btn>Edit Settings</v-btn> -->
 
-      <v-dialog
-        v-model="dialog2"
-        width="500"
-      >
+      <v-dialog v-model="dialog2" width="500">
         <template v-slot:activator="{ on }">
-          <v-btn
-          
-            v-on="on"
-          >
+          <v-btn v-on="on">
             Change Password
           </v-btn>
         </template>
@@ -100,10 +74,7 @@
             <v-row>
               <v-col>Current Password: <textarea /></v-col>
               <v-col>New Password: <textarea /></v-col>
-              <v-col
-                cols="12"
-                width="100"
-              >
+              <v-col cols="12" width="100">
                 Confirm New Password: <textarea />
               </v-col>
             </v-row>
@@ -112,37 +83,20 @@
           <v-divider />
 
           <v-card-actions>
-            <v-btn
-              color="primary"
-              text
-              @click="dialog2 = false"
-            >
+            <v-btn color="primary" text @click="dialog2 = false">
               Cancel
             </v-btn>
             <v-spacer />
-            <v-btn
-              color="primary"
-              text
-              @click="dialog2 = false"
-            >
+            <v-btn color="primary" text @click="dialog2 = false">
               Set New Password
             </v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
 
-
-
-    
-      <v-dialog
-        v-model="dialog"
-        width="500"
-      >
+      <v-dialog v-model="dialog" width="500">
         <template v-slot:activator="{ on }">
-          <v-btn
-          
-            v-on="on"
-          >
+          <v-btn v-on="on">
             Edit Settings
           </v-btn>
         </template>
@@ -160,12 +114,7 @@
             <v-row>
               <v-col>Full Name: <textarea /></v-col>
               <v-col>Display Name: <textarea /></v-col>
-              <v-col
-                cols="12"
-                width="100"
-              >
-                UVU Email: <textarea />
-              </v-col>
+              <v-col cols="12" width="100"> UVU Email: <textarea /> </v-col>
               <v-col cols="12">
                 <v-select
                   :items="courses"
@@ -176,12 +125,7 @@
                 />
               </v-col>
               <v-col>
-                <v-select
-                  :items="items"
-                  label="Operating System"
-                  dense
-                  solo
-                />
+                <v-select :items="items" label="Operating System" dense solo />
               </v-col>
             </v-row>
           </v-card-text>
@@ -189,19 +133,11 @@
           <v-divider />
 
           <v-card-actions>
-            <v-btn
-              color="primary"
-              text
-              @click="dialog = false"
-            >
+            <v-btn color="primary" text @click="dialog = false">
               Cancel
             </v-btn>
             <v-spacer />
-            <v-btn
-              color="primary"
-              text
-              @click="dialog = false"
-            >
+            <v-btn color="primary" text @click="dialog = false">
               Apply Changes
             </v-btn>
           </v-card-actions>
@@ -212,21 +148,17 @@
 </template>
 
 <script>
-
-  export default {
-    data () {
-      return {
-        dialog: false,
-        dialog2: false,
-        dialog3: false,
-         items: ['macOS', 'Windows'],
-          courses: [
-          'Insert classes here', 
-        ],
-      }
-    },
+export default {
+  data() {
+    return {
+      dialog: false,
+      dialog2: false,
+      dialog3: false,
+      items: ["macOS", "Windows"],
+      courses: ["Insert classes here"]
+    };
   }
-
+};
 </script>
 
 <style scoped>
@@ -259,5 +191,4 @@ textarea {
   border-radius: 7px;
   padding-left: 10px;
 }
-
 </style>
