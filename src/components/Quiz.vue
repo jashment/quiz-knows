@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row v-if="endTest === false" class="d-flex justify-center">
+    <v-row v-if="endTest === false && questions != null" class="d-flex justify-center">
       <v-col cols="8">
         <v-card class="mt-12 d-flex" height="450px">
           <div class="loggerDiv">
@@ -180,6 +180,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 
 export default {
   data() {
@@ -199,24 +200,42 @@ export default {
       empty: new Set(),
       answerArr: [],
       input: this.$refs.input,
-      questions: [
-        {
-          question: 'How do you make an edit wherever your playhead is located?',
-          macOS: ['Cmd, K'],
-          windows: [
-            {answer: "1"},
-            {answer: "2"},
-            {answer: "3"},
-          ],
-          answer: '',
-          id: 1,
-        },
-      ],
+      questions: null
+      // questions: [
+      //   {
+      //     question: 'How do you make an edit wherever your playhead is located?',
+      //     macOS: ['Cmd, K'],
+      //     windows: [
+      //       {answer: "1"},
+      //       {answer: "2"},
+      //       {answer: "3"},
+      //     ],
+      //     answer: '',
+      //     id: 1,
+      //   },
+      // ],
     }
   },
   mounted() {
+    console.log(this.$route.params.id)
+    
+    firebase
+      .database()
+      .ref(`quizzes/${this.$route.params.id}/questions`)
+      .once("value")
+      .then(snapshot => {
+        this.questions = snapshot.val()
+        if (snapshot.val() === []) {
+          console.log("empty")
+        }
+        console.log(snapshot.val());
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     this.startTime = new Date();
-    this.$refs.input.focus();
+    // this.$refs.input.focus();
     window.addEventListener('keypress', e => {
       e.preventDefault()
       String.fromCharCode(e.keyCode)

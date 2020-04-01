@@ -126,12 +126,12 @@ export default {
     questions: [],
     editedIndex: -1,
     editedItem: {
-      questions: "",
+      question: "",
       macOS: "",
       windows: ""
     },
     defaultItem: {
-      questions: "",
+      question: "",
       macOS: "",
       windows: ""
     },
@@ -172,7 +172,7 @@ export default {
           console.log(err);
         });
         this.snackbar = true
-      this.$router.replace("/");
+        setTimeout(() => { this.$router.replace("/") }, 1000);
     },
 
     logKey: function(event) {

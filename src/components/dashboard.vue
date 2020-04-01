@@ -27,7 +27,7 @@
               <v-btn
                 color="#00beff"
                 class="white--text"
-                to="/quizzes/quiz-details"
+                @click="startQuiz(i)"
               >
                 View Quiz
               </v-btn>
@@ -93,7 +93,6 @@ export default {
       .ref("quizzes/")
       .once("value")
       .then(snapshot => {
-        // console.log(snapshot.val());
         this.quizzes = snapshot.val();
       })
       .catch(err => {
@@ -101,6 +100,10 @@ export default {
       });
   },
   methods: {
+    startQuiz(quiz){
+      // console.log(quiz)
+      this.$router.replace("/quizzes/quiz-details/" + quiz)
+    },
     adjustQuiz(button, quizIndex) {
       console.log(`Btn: ${button}`)
       console.log(`QuizIndex: ${quizIndex}`)
