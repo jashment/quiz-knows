@@ -3,6 +3,15 @@
     <h1>Quizzes</h1>
     <v-container>
       <v-row>
+        <v-col v-if="this.quizzes === null" class="d-flex flex-column text-center">          
+          <v-progress-circular
+            :size="70"
+            class="mx-auto mb-7"
+            :width="7"
+            color="cyan"
+            indeterminate
+          ></v-progress-circular>Loading Courses
+        </v-col>
         <v-col
           v-for="quiz in quizzes"
           :key="quiz.i"
@@ -59,7 +68,7 @@ export default {
   name: "App",
   components: {},
   data: () => ({
-    quizzes: []
+    quizzes: null
   }),
   mounted() {
       firebase
