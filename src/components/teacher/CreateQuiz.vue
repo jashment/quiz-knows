@@ -1,5 +1,5 @@
 <template>
-  <v-container class="text-center">
+  <v-container class="text-center mb-12">
     <h1 class="text-center py-12 font-weight-light">Create New Quiz</h1>
     <v-row>
       <v-col cols="6" class="mx-auto">
@@ -27,6 +27,20 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-snackbar
+      v-model="snackbar"
+      color="success"
+      multi-line
+    >
+      {{ text }}
+      <v-btn
+        color="white"
+        text
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
     <v-data-table
       :headers="headers"
       :items="quiz.questions"
@@ -99,6 +113,8 @@ import firebase from "firebase";
 export default {
   data: () => ({
     dialog: false,
+    snackbar: false,
+    text: 'Quiz Added',
     keystrokeMac: [],
     keystrokeWin: [],
     headers: [
@@ -155,7 +171,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
-      alert("Quiz Created!");
+        this.snackbar = true
       this.$router.replace("/");
     },
 
@@ -173,8 +189,7 @@ export default {
         this.keystrokeMac.pop()
       }
       this.editedItem.macOS = this.keystrokeMac
-      console.log(`Mac: ${this.keystrokeMac}`)
-      // console.log(event.key)
+      // console.log(`Mac: ${this.keystrokeMac}`)
     },
     logKeyW: function(event) {
       event.preventDefault()
@@ -190,8 +205,7 @@ export default {
         this.keystrokeWin.pop()
       }
       this.editedItem.windows = this.keystrokeWin
-      console.log(`Win: ${this.keystrokeWin}`)
-      // console.log(event.key)
+      // console.log(`Win: ${this.keystrokeWin}`)
     },
 
     initialize(){},
