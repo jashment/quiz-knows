@@ -7,49 +7,30 @@
           </div> -->
           <v-card-title>Adobe Premier</v-card-title>
           <v-card-actions class="justify-center">
-            <v-btn
-              color="#00beff"
-              class="black--text"
-              link
-              to="/flashcardsap"
-            >
+            <v-btn color="#00beff" class="black--text" link to="/flashcardsap">
               Start Practice
             </v-btn>
           </v-card-actions>
         </v-card>
       </div>
       <div class="col-md-4 col-lg-4 col-sm-4">
-        <v-card
-          class="cardComp"
-        >
+        <v-card class="cardComp">
           <v-card-title>Davinci Resolve</v-card-title>
           <v-card-actions class="justify-center">
-            <v-btn
-              color="#00beff"
-              class="black--text"
-              link
-              to="/flashcardsdr1"
-            >
+            <v-btn color="#00beff" class="black--text" link to="/flashcardsdr1">
               Start Practice
             </v-btn>
           </v-card-actions>
         </v-card>
       </div>
       <div class="col-md-4 col-lg-4 col-sm-4">
-        <v-card
-          class="cardComp"
-        >
+        <v-card class="cardComp">
           <!-- <div class="cardTop">
              
           </div> -->
           <v-card-title>Avid Media</v-card-title>
           <v-card-actions class="justify-center">
-            <v-btn
-              color="#00beff"
-              class="black--text"
-              link
-              to="/flashcardsam1"
-            >
+            <v-btn color="#00beff" class="black--text" link to="/flashcardsam1">
               Start Practice
             </v-btn>
           </v-card-actions>
@@ -60,7 +41,7 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>
@@ -77,6 +58,4 @@ button {
 div.cardComp.v-card {
   border-radius: 15px;
 }
-
-
 </style>

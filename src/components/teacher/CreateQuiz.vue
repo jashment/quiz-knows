@@ -1,34 +1,27 @@
 <template>
   <v-container class="text-center">
-    <h1 class="text-center py-12 font-weight-light">
-      Create New Quiz
-    </h1>
+    <h1 class="text-center py-12 font-weight-light">Create New Quiz</h1>
     <v-row>
-      <v-col
-        cols="6"
-        class="mx-auto"
-      >
+      <v-col cols="6" class="mx-auto">
         <v-card class="pa-10 elevation-8">
-          <p class="title">
-            Quiz Details
-          </p>
-          <v-text-field 
+          <p class="title">Quiz Details</p>
+          <v-text-field
             v-model="quiz.details.title"
-            clearable 
-            label="Quiz Title" 
+            clearable
+            label="Quiz Title"
             placeholder="premiere practice"
           />
-          <v-text-field 
+          <v-text-field
             v-model="quiz.details.software"
-            clearable 
-            label="Software" 
+            clearable
+            label="Software"
             placeholder="ex: adobe premiere"
           />
-          <v-textarea 
+          <v-textarea
             v-model="quiz.details.description"
-            clearable 
-            label="Quiz Description" 
-            rows="3" 
+            clearable
+            label="Quiz Description"
+            rows="3"
             placeholder="example: Use shortcut keys from the Adobe Premiere program to answer the quiz questions."
           />
         </v-card>
@@ -36,27 +29,16 @@
     </v-row>
     <v-data-table
       :headers="headers"
-      :items="this.quiz.questions"
+      :items="quiz.questions"
       sort-by="macOS"
       class="elevation-8 mx-12 my-12"
     >
       <template v-slot:top>
         <v-toolbar flat>
           <v-spacer />
-          <v-dialog
-            v-model="dialog"
-            max-width="500px"
-            persistent
-          >
+          <v-dialog v-model="dialog" max-width="500px" persistent>
             <template v-slot:activator="{ on }">
-              <v-btn
-                color="green"
-                dark
-                class="mb-2"
-                v-on="on"
-              >
-                New Question
-              </v-btn>
+              <v-btn color="green" dark class="mb-2" v-on="on">New Question</v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -66,37 +48,20 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col
-                      cols="12"
-                      sm="12"
-                      md="12"
-                    >
-                      <v-textarea
-                        v-model="editedItem.question"
-                        dense
-                        clearable
-                        label="Question"
-                      />
+                    <v-col cols="12" sm="12" md="12">
+                      <v-textarea v-model="editedItem.question" dense clearable label="Question" />
                     </v-col>
                   </v-row>
                   <v-row />
                   <v-row>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                      md="6"
-                    >
+                    <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         v-model="editedItem.macOS"
                         label="macOS Shortcut"
                         @keydown="logKey"
                       />
                     </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                      md="6"
-                    >
+                    <v-col cols="12" sm="6" md="6">
                       <v-text-field
                         v-model="editedItem.windows"
                         label="Windows Shortcut"
@@ -109,93 +74,55 @@
 
               <v-card-actions>
                 <v-spacer />
-                <v-btn
-                  color="blue darken-1"
-                  text
-                  @click="close"
-                >
-                  Cancel
-                </v-btn>
-                <v-btn
-                  color="blue darken-1"
-                  @click="save"
-                >
-                  Save
-                </v-btn>
+                <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+                <v-btn color="blue darken-1" @click="save">Save</v-btn>
               </v-card-actions>
             </v-card>
           </v-dialog>
         </v-toolbar>
       </template>
       <template v-slot:item.action="{ item }">
-        <v-icon
-          small
-          class="mr-5 title"
-          color="blue"
-          @click="editItem(item)"
-        >
-          mdi-pencil-outline
-        </v-icon>
-        <v-icon
-          small
-          class="title"
-          color="red"
-          @click="deleteItem(item)"
-        >
-          mdi-trash-can-outline
-        </v-icon>
+        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)">mdi-pencil-outline</v-icon>
+        <v-icon small class="title" color="red" @click="deleteItem(item)">mdi-trash-can-outline</v-icon>
       </template>
       <template v-slot:no-data>
-        <p>You currently have no questions in this quiz</p>
-        <p>Add New Question to begin building quiz</p>
+        <p>Add new question to see them here</p>
       </template>
     </v-data-table>
-    <v-btn
-      class="primary mb-12"
-      @click="saveQuiz"
-    >
-      Save Quiz
-    </v-btn>
+    <v-btn class="primary mb-12" @click="saveQuiz">Save Quiz</v-btn>
   </v-container>
 </template>
 
 <script>
-// import firebase from "firebase";
+import firebase from "firebase";
 
 export default {
   data: () => ({
     dialog: false,
-    keystrokeMac: [],
-    keystrokeWin: [],
     headers: [
-      { text: "Question", align: "left", sortable: false, value: "question" },
+      { text: "Question", align: "start", sortable: false, value: "question" },
       { text: "macOS", value: "macOS", sortable: false },
       { text: "Windows", value: "windows", sortable: false },
       { text: "Actions", value: "action", sortable: false }
     ],
-    questions: [],
+    // questions: [],
     editedIndex: -1,
     editedItem: {
-      question: "",
-      macOS: [],
-      windows: []
+      macOS: "",
+      windows: ""
     },
     defaultItem: {
-      question: "",
-      macOS: [],
-      windows: []
+      macOS: "",
+      windows: ""
     },
-    quiz: 
-      {
-        details: {
-          title: "",
-          description: "",
-          software: ""
-        },
-        questions: [
-          // { question: "test", macOS: ["test"], windows: [] },
-        ]
-      }
+    quiz: {
+      details: {
+        title: "",
+        description: "",
+        software: ""
+      },
+      questions: []
+    }
   }),
 
   computed: {
@@ -215,64 +142,62 @@ export default {
   },
 
   methods: {
-    logKey: function(event) {
-      event.preventDefault()
-      if (event.key != 'Backspace'){
-        if (event.key === ' ') {
-          this.keystrokeMac.push(event.code)
-        }
-        else {
-          this.keystrokeMac.push(event.key)
-        }
-      }
-      else if (event.key === 'Backspace') {
-        this.keystrokeMac.pop()
-      }
-      this.editedItem.macOS = this.keystrokeMac
-      console.log(this.keystrokeMac)
-      console.log(event.key)
-    },
-    logKeyW: function(event) {
-      event.preventDefault()
-      if (event.key != 'Backspace'){
-        if (event.key === ' ') {
-          this.keystrokeWin.push(event.code)
-        }
-        else {
-          this.keystrokeWin.push(event.key)
-        }
-      }
-      else if (event.key === 'Backspace') {
-        this.keystrokeWin.pop()
-      }
-      this.editedItem.windows = this.keystrokeWin
-      console.log(this.keystrokeWin)
-      console.log(event.key)
-    },
     saveQuiz() {
-      // console.log( this.quiz.details );
-      // console.log( this.quiz.questions );
-      console.log(this.quiz)
-      /*
       firebase
         .database()
         .ref("quizzes/")
-        .set({
-          quiz: this.quiz
-        })
+        .child(this.quiz.details.title)
+        .set(this.quiz)
         .catch(err => {
           console.log(err);
         });
-        console.log(firebase.data)
-      */
+      alert("Quiz Created!");
+      this.$router.replace("/");
     },
     initialize() {
+      this.questions = [
+        {
+          name: "How do you make an edit wherever your playhead is located?",
+          macOS: "Cmd, K",
+          windows: "Ctrl, K"
+        },
+        {
+          name:
+            "Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box",
+          macOS: "M",
+          windows: "M"
+        },
+        {
+          name:
+            "What key do you press to locate a source clip from within your timeline?",
+          macOS: "F",
+          windows: "F"
+        },
+        {
+          name: "What keys bring up the Export Media dialog box?",
+          macOS: "Cmd, M",
+          windows: "Ctrl, M"
+        },
+        {
+          name: "What key is for making In point on a clip?",
+          macOS: "I",
+          windows: "I"
+        },
+        {
+          name: "What key is for making Out point on a clip?",
+          macOS: "O",
+          windows: "O"
+        },
+        {
+          name: "What key makes your video playback at a faster speed?",
+          macOS: "L",
+          windows: "L"
+        }
+      ];
     },
 
     editItem(item) {
       this.editedIndex = this.quiz.questions.indexOf(item);
-      this.editedItem.macOS = this.keystrokeMac
-      this.editedItem.windows = this.keystrokeWin
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
@@ -283,18 +208,15 @@ export default {
         this.quiz.questions.splice(index, 1);
     },
 
-    close() {      
+    close() {
       this.dialog = false;
       setTimeout(() => {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       }, 300);
-      this.keystrokeMac = []
-      this.keystrokeWin = []
     },
 
     save() {
-      // this.editedItem.macOS = this.keystroke
       if (this.editedIndex > -1) {
         Object.assign(this.quiz.questions[this.editedIndex], this.editedItem);
       } else {

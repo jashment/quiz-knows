@@ -11,12 +11,7 @@
       >
         <v-divider />
         <v-list nav>
-          <v-list-item
-            v-for="item in items"
-            :key="item.to"
-            link
-            :to="item.to"
-          >
+          <v-list-item v-for="item in items" :key="item.to" link :to="item.to">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
               <v-icon />
@@ -96,13 +91,12 @@ export default {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#14ced2', endColorstr='#63b1e3',GradientType=0 ); /* IE6-9 */
 }
 
-.v-list-item__title, .theme--dark.v-icon  {
-color: #424242;
+.v-list-item__title,
+.theme--dark.v-icon {
+  color: #424242;
 }
 
 .v-list .v-list-item--active {
   color: #949494;
 }
-
-
 </style>

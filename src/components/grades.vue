@@ -4,10 +4,7 @@
       Grades for {{ student.name }}
     </h1>
     <v-expansion-panels>
-      <v-expansion-panel
-        v-for="quiz in quizzes"
-        :key="quiz.index"
-      >
+      <v-expansion-panel v-for="quiz in quizzes" :key="quiz.index">
         <v-expansion-panel-header>{{ quiz.name }}</v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-data-table
@@ -29,57 +26,57 @@
 export default {
   data() {
     return {
-      student: { name: 'Coby Yates' },
+      student: { name: "Coby Yates" },
       headers: [
         {
-          text: 'Attempts',
-          align: 'left',
+          text: "Attempts",
+          align: "left",
           sortable: false,
-          value: 'name',
+          value: "name"
         },
-        { text: 'Date', value: 'Date' },
-        { text: 'Score', value: 'Score' },
-        { text: 'Out of', value: 'OutOf' },
-        { text: 'Time', value: 'Time' },
+        { text: "Date", value: "Date" },
+        { text: "Score", value: "Score" },
+        { text: "Out of", value: "OutOf" },
+        { text: "Time", value: "Time" }
       ],
       quizzes: [
-        { name: 'Adobe Premiere' },
-        { name: 'Avid Media Composer' },
-        { name: 'DaVinci Resolve' },
+        { name: "Adobe Premiere" },
+        { name: "Avid Media Composer" },
+        { name: "DaVinci Resolve" }
       ],
       attempts: [
         {
-          name: 'Attempt 1',
-          Date: '1/24/2020',
+          name: "Attempt 1",
+          Date: "1/24/2020",
           Score: 25,
           OutOf: 50,
-          Time: '5 minutes',
+          Time: "5 minutes"
         },
         {
-          name: 'Attempt 2',
-          Date: '1/25/2020',
+          name: "Attempt 2",
+          Date: "1/25/2020",
           Score: 35,
           OutOf: 50,
-          Time: '5 minutes',
+          Time: "5 minutes"
         },
         {
-          name: 'Attempt 3',
-          Date: '1/25/2020',
+          name: "Attempt 3",
+          Date: "1/25/2020",
           Score: 42,
           OutOf: 50,
-          Time: '5 minutes',
+          Time: "5 minutes"
         },
         {
-          name: 'Attempt 4',
-          Date: '1/25/2020',
+          name: "Attempt 4",
+          Date: "1/25/2020",
           Score: 50,
           OutOf: 50,
-          Time: '5 minutes',
-        },
-      ],
-    }
-  },
-}
+          Time: "5 minutes"
+        }
+      ]
+    };
+  }
+};
 </script>
 
 <style scoped></style>
