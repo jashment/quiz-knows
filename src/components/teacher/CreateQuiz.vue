@@ -99,19 +99,23 @@ import firebase from "firebase";
 export default {
   data: () => ({
     dialog: false,
+    keystrokeMac: [],
+    keystrokeWin: [],
     headers: [
       { text: "Question", align: "start", sortable: false, value: "question" },
       { text: "macOS", value: "macOS", sortable: false },
       { text: "Windows", value: "windows", sortable: false },
       { text: "Actions", value: "action", sortable: false }
     ],
-    // questions: [],
+    questions: [],
     editedIndex: -1,
     editedItem: {
+      questions: "",
       macOS: "",
       windows: ""
     },
     defaultItem: {
+      questions: "",
       macOS: "",
       windows: ""
     },
@@ -154,47 +158,43 @@ export default {
       alert("Quiz Created!");
       this.$router.replace("/");
     },
-    initialize() {
-      this.questions = [
-        {
-          name: "How do you make an edit wherever your playhead is located?",
-          macOS: "Cmd, K",
-          windows: "Ctrl, K"
-        },
-        {
-          name:
-            "Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box",
-          macOS: "M",
-          windows: "M"
-        },
-        {
-          name:
-            "What key do you press to locate a source clip from within your timeline?",
-          macOS: "F",
-          windows: "F"
-        },
-        {
-          name: "What keys bring up the Export Media dialog box?",
-          macOS: "Cmd, M",
-          windows: "Ctrl, M"
-        },
-        {
-          name: "What key is for making In point on a clip?",
-          macOS: "I",
-          windows: "I"
-        },
-        {
-          name: "What key is for making Out point on a clip?",
-          macOS: "O",
-          windows: "O"
-        },
-        {
-          name: "What key makes your video playback at a faster speed?",
-          macOS: "L",
-          windows: "L"
+
+    logKey: function(event) {
+      event.preventDefault()
+      if(event.key != 'Backspace'){
+        if (event.key === ' ') {
+          this.keystrokeMac.push(event.code)
         }
-      ];
+        else {
+          this.keystrokeMac.push(event.key)
+        }
+      }
+      else if (event.key === 'Backspace') {
+        this.keystrokeMac.pop()
+      }
+      this.editedItem.macOS = this.keystrokeMac
+      console.log(`Mac: ${this.keystrokeMac}`)
+      // console.log(event.key)
     },
+    logKeyW: function(event) {
+      event.preventDefault()
+      if (event.key != 'Backspace'){
+        if (event.key === ' ') {
+          this.keystrokeWin.push(event.code)
+        }
+        else {
+          this.keystrokeWin.push(event.key)
+        }
+      }
+      else if (event.key === 'Backspace') {
+        this.keystrokeWin.pop()
+      }
+      this.editedItem.windows = this.keystrokeWin
+      console.log(`Win: ${this.keystrokeWin}`)
+      // console.log(event.key)
+    },
+
+    initialize(){},
 
     editItem(item) {
       this.editedIndex = this.quiz.questions.indexOf(item);
@@ -214,6 +214,8 @@ export default {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       }, 300);
+      this.keystrokeMac = []
+      this.keystrokeWin = []
     },
 
     save() {
