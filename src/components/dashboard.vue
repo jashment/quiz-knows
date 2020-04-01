@@ -1,12 +1,11 @@
 <template>
   <div>
     <h1>Quizzes</h1>
-    <!-- <center><router-link to="/cardlayout">Checkout Cards</router-link></center> -->
     <v-container>
       <v-row>
         <v-col
           v-for="quiz in quizzes"
-          :key="quiz.name"
+          :key="quiz.i"
           cols="12"
           sm="4"
         >
@@ -15,7 +14,7 @@
             class="cardComp"
           >
             <div class="cardTop" />
-            <v-card-title>{{ quiz.name }}</v-card-title>
+            <v-card-title>{{ quiz.details.title }}</v-card-title>
             <v-card-subtitle>
               Take quiz to improve score and time
             </v-card-subtitle>
@@ -57,16 +56,28 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
+
 export default {
   name: "App",
   components: {},
   data: () => ({
-    quizzes: [
-      { name: "Adobe Premiere" },
-      { name: "Avid Media Composer" },
-      { name: "DaVinci Resolve" },
-    ]
-  })
+    quizzes: []
+  }),
+  mounted() {
+      firebase
+        .database()
+        .ref('quizzes/')
+        .once('value')
+        .then(snapshot => {
+          console.log(snapshot.val())
+          this.quizzes = snapshot.val()
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
 };
 </script>
 

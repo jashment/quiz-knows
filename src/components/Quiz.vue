@@ -189,6 +189,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -219,33 +220,6 @@ export default {
           answer: '',
           id: 1,
         },
-        // {
-        //   question:
-        //     'Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box',
-        //   macOS: ['M'],
-        //   windows: [
-        //     {answer: "1"},
-        //     {answer: "2"},
-        //     {answer: "3"},
-        //   ],
-        //   answer: '',
-        //   id: 2,
-        // },
-        // {
-        //   question:
-        //     'What key do you press to locate a source clip from within your timeline?',
-        //   macOS: ['F'],
-        //   windows: '3',
-        //   answer: '',
-        //   id: 3,
-        // },
-        // {
-        //   question: 'What keys bring up the Export Media dialog box?',
-        //   macOS: ['Cmd, M'],
-        //   windows: '4',
-        //   answer: '',
-        //   id: 4,
-        // },
       ],
     }
   },
@@ -257,7 +231,6 @@ export default {
       String.fromCharCode(e.keyCode)
       this.logKey(e.key)
     })
-    
   },
   methods: {
     addAnswer(answer, question, id, correctAnswer){
