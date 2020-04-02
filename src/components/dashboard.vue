@@ -1,13 +1,25 @@
 <template>
   <div>
     <h1>Quizzes</h1>
-    <!-- <center><router-link to="/cardlayout">Checkout Cards</router-link></center> -->
     <v-container>
       <v-row>
-        <v-col v-for="quiz in quizzes" :key="quiz.name" cols="12" sm="4">
+        <v-col
+          v-if="this.quizzes === null"
+          class="d-flex flex-column text-center"
+        >
+          <v-progress-circular
+            :size="70"
+            class="mx-auto mb-7"
+            :width="7"
+            color="cyan"
+            indeterminate
+          ></v-progress-circular
+          >Loading Courses
+        </v-col>
+        <v-col v-for="(quiz, i) in quizzes" :key="quiz.i" cols="12" sm="4">
           <v-card elevation="6" class="cardComp">
             <div class="cardTop" />
-            <v-card-title>{{ quiz.name }}</v-card-title>
+            <v-card-title>{{ quiz.details.title }}</v-card-title>
             <v-card-subtitle>
               Take quiz to improve score and time
             </v-card-subtitle>
@@ -15,10 +27,28 @@
               <v-btn
                 color="#00beff"
                 class="white--text"
-                to="/quizzes/quiz-details"
+                @click="startQuiz(i)"
               >
                 View Quiz
               </v-btn>
+              <v-spacer />
+              <!-- v-if="account === teacher" -->
+              <v-menu offset-y>
+                <template v-slot:activator="{ on }">
+                  <v-icon dark v-on="on">
+                    mdi-dots-vertical
+                  </v-icon>
+                </template>
+                <v-list>
+                  <v-list-item
+                    v-for="(item, index) in menu"
+                    :key="index"
+                    @click="adjustQuiz(index, i)"
+                  >
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -45,16 +75,55 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   name: "App",
   components: {},
   data: () => ({
-    quizzes: [
-      { name: "Adobe Premiere" },
-      { name: "Avid Media Composer" },
-      { name: "DaVinci Resolve" }
-    ]
-  })
+    quizzes: null,
+    menu: [
+      { title: "Edit Quiz" }, 
+      { title: "Delete Quiz"}
+      ]
+  }),
+  mounted() {
+    firebase
+      .database()
+      .ref("quizzes/")
+      .once("value")
+      .then(snapshot => {
+        this.quizzes = snapshot.val();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  methods: {
+    startQuiz(quiz){
+      // console.log(quiz)
+      this.$router.replace("/quizzes/quiz-details/" + quiz)
+    },
+    adjustQuiz(button, quizIndex) {
+      console.log(`Btn: ${button}`)
+      console.log(`QuizIndex: ${quizIndex}`)
+      if (button === 0) {
+        // Edit the quiz
+      }
+      else if (button === 1) {
+        // delete quiz 
+        firebase
+          .database()
+          .ref("quizzes/" + quizIndex)
+          .remove()
+          .catch(err => {
+            console.log(err);
+          });
+          this.$router.go()
+      }
+      
+    }
+  }
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="text-center">
+  <v-container class="text-center mb-12">
     <h1 class="text-center py-12 font-weight-light">Create New Quiz</h1>
     <v-row>
       <v-col cols="6" class="mx-auto">
@@ -27,6 +27,20 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-snackbar
+      v-model="snackbar"
+      color="success"
+      multi-line
+    >
+      {{ text }}
+      <v-btn
+        color="white"
+        text
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
     <v-data-table
       :headers="headers"
       :items="quiz.questions"
@@ -99,19 +113,25 @@ import firebase from "firebase";
 export default {
   data: () => ({
     dialog: false,
+    snackbar: false,
+    text: 'Quiz Added',
+    keystrokeMac: [],
+    keystrokeWin: [],
     headers: [
       { text: "Question", align: "start", sortable: false, value: "question" },
       { text: "macOS", value: "macOS", sortable: false },
       { text: "Windows", value: "windows", sortable: false },
       { text: "Actions", value: "action", sortable: false }
     ],
-    // questions: [],
+    questions: [],
     editedIndex: -1,
     editedItem: {
+      question: "",
       macOS: "",
       windows: ""
     },
     defaultItem: {
+      question: "",
       macOS: "",
       windows: ""
     },
@@ -151,50 +171,44 @@ export default {
         .catch(err => {
           console.log(err);
         });
-      alert("Quiz Created!");
-      this.$router.replace("/");
+        this.snackbar = true
+        setTimeout(() => { this.$router.replace("/") }, 1000);
     },
-    initialize() {
-      this.questions = [
-        {
-          name: "How do you make an edit wherever your playhead is located?",
-          macOS: "Cmd, K",
-          windows: "Ctrl, K"
-        },
-        {
-          name:
-            "Pressing ___ while your playhead is over an existing Marker will bring up the Marker dialog box",
-          macOS: "M",
-          windows: "M"
-        },
-        {
-          name:
-            "What key do you press to locate a source clip from within your timeline?",
-          macOS: "F",
-          windows: "F"
-        },
-        {
-          name: "What keys bring up the Export Media dialog box?",
-          macOS: "Cmd, M",
-          windows: "Ctrl, M"
-        },
-        {
-          name: "What key is for making In point on a clip?",
-          macOS: "I",
-          windows: "I"
-        },
-        {
-          name: "What key is for making Out point on a clip?",
-          macOS: "O",
-          windows: "O"
-        },
-        {
-          name: "What key makes your video playback at a faster speed?",
-          macOS: "L",
-          windows: "L"
+
+    logKey: function(event) {
+      event.preventDefault()
+      if(event.key != 'Backspace'){
+        if (event.key === ' ') {
+          this.keystrokeMac.push(event.code)
         }
-      ];
+        else {
+          this.keystrokeMac.push(event.key)
+        }
+      }
+      else if (event.key === 'Backspace') {
+        this.keystrokeMac.pop()
+      }
+      this.editedItem.macOS = this.keystrokeMac
+      // console.log(`Mac: ${this.keystrokeMac}`)
     },
+    logKeyW: function(event) {
+      event.preventDefault()
+      if (event.key != 'Backspace'){
+        if (event.key === ' ') {
+          this.keystrokeWin.push(event.code)
+        }
+        else {
+          this.keystrokeWin.push(event.key)
+        }
+      }
+      else if (event.key === 'Backspace') {
+        this.keystrokeWin.pop()
+      }
+      this.editedItem.windows = this.keystrokeWin
+      // console.log(`Win: ${this.keystrokeWin}`)
+    },
+
+    initialize(){},
 
     editItem(item) {
       this.editedIndex = this.quiz.questions.indexOf(item);
@@ -214,6 +228,8 @@ export default {
         this.editedItem = Object.assign({}, this.defaultItem);
         this.editedIndex = -1;
       }, 300);
+      this.keystrokeMac = []
+      this.keystrokeWin = []
     },
 
     save() {

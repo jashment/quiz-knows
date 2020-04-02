@@ -1,32 +1,32 @@
 <template>
   <v-container>
     <v-row class="d-flex justify-center">
-      <v-col cols="8">
+      <v-col v-if="this.details != null" cols="8">
         <h2 class="pt-12">
-          Quiz Overview
+          <span class="cyan--text">{{ this.$route.params.id }}</span> Overview
         </h2>
         <v-divider />
         <div class="d-flex justify-space-between pt-4">
           <p>
             <strong>Program:</strong>
-            {{ details[0].program }}
+            {{ details.details.software }}
           </p>
           <p>
             <strong>Operating System:</strong>
-            {{ details[1].os }}
+            <!-- input student OS Type -->
           </p>
           <p>
             <strong>Questions:</strong>
-            {{ details[2].questions }}
+            {{ details.questions.length }}
           </p>
         </div>
         <v-divider />
         <p class="pt-4">
           <strong>Instructions</strong>
         </p>
-        <p>{{ details[3].instructions }}</p>
+        {{ details.details.description }}
         <center>
-          <v-btn color="green" class="mt-8" to="/quizzes/quiz">
+          <v-btn color="green" class="mt-8" @click="takeQuiz()">
             Take Quiz
           </v-btn>
         </center>
@@ -36,19 +36,30 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   data: () => ({
-    details: [
-      { program: "Adobe Premiere" },
-      { os: "Mac OS" },
-      { questions: 25 },
-      {
-        instructions: `Use shortcut keys from the Adobe Premiere program to answer the quiz
-            questions. Try to improve your score and time, as you can take the quiz as many 
-            times as you would like`
-      }
-    ]
-  })
+    details: null,
+  }),
+  mounted() {
+    firebase
+      .database()
+      .ref(`quizzes/${this.$route.params.id}`)
+      .once("value")
+      .then(snapshot => {
+        this.details = snapshot.val()
+        // console.log(snapshot.val());
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
+  methods: {
+    takeQuiz() {
+      this.$router.replace("/quizzes/quiz/" + this.$route.params.id)
+    }
+  }
 };
 </script>
 
