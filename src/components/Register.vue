@@ -1,3 +1,4 @@
+Registration
 <template>
   <div class="container">
     <div class="row justify-content-center">
@@ -13,17 +14,37 @@
             <form action="#" @submit.prevent="submit">
               <div class="form-group row">
                 <label for="name" class="col-md-4 col-form-label text-md-right"
-                  >Name</label
+                  >First Name</label
                 >
 
                 <div class="col-md-6">
                   <v-text-field
-                    id="name"
-                    v-model="form.name"
-                    type="name"
+                    id="firstName"
+                    v-model="form.firstName"
+                    type="firstName"
                     :rules="[nameRules.required]"
                     class="form-control"
-                    name="name"
+                    name="firstName"
+                    value
+                    required
+                    autofocus
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="name" class="col-md-4 col-form-label text-md-right"
+                  >Last Name</label
+                >
+
+                <div class="col-md-6">
+                  <v-text-field
+                    id="lastName"
+                    v-model="form.lastName"
+                    type="lastName"
+                    :rules="[nameRules.required]"
+                    class="form-control"
+                    name="lastName"
                     value
                     required
                     autofocus
@@ -93,6 +114,29 @@
               </div>
 
               <div class="form-group row">
+                <label for="preferredOS" class="col-md-4 col-form-label text-md-right"
+                  >Preferred OS</label
+                >
+                <label for="">Mac OS</label>
+                <input
+                  id="macOS"
+                  v-model="form.preferredOS"
+                  checked
+                  type="radio"
+                  name="OSRadio"
+                  value="MacOS"
+                />
+                <label for="">Windows</label>
+                <input
+                  id="windows"
+                  v-model="form.preferredOS"
+                  type="radio"
+                  name="OSRadio"
+                  value="Windows"
+                />
+              </div>
+
+              <div class="form-group row">
                 <label
                   for="password"
                   class="col-md-4 col-form-label text-md-right"
@@ -135,10 +179,12 @@ export default {
   data() {
     return {
       form: {
-        name: "",
+        firstName: "",
+        lastName: "",
         email: "",
         uvid: "",
         role: "",
+        preferredOS: "",
         password: ""
       },
       error: null,
@@ -165,21 +211,22 @@ export default {
         .then(data => {
           data.user
             .updateProfile({
-              displayName: this.form.name
+              displayName: this.form.firstName
             })
             .then(moreData => {
               alert(`User ${moreData} created!`);
+              console.log(moreData)
               firebase
                 .database()
-                .ref("users/")
-                .push({
-                  uid: data.user.uid
-                })
+                .ref("users")
+                .child(data.user.uid)
                 .set({
-                  name: this.form.name,
+                  firstName: this.form.firstName,
+                  lastName: this.form.lastName,
                   email: this.form.email,
                   uvid: this.form.uvid,
-                  role: this.form.role
+                  role: this.form.role,
+                  preferredOS: this.form.preferredOS
                 });
             });
           this.$router.replace("/");

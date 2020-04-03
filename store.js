@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+// import firebase from 'firebase'
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
@@ -28,7 +29,11 @@ export default new Vuex.Store({
       if (user) {
         commit("SET_USER", {
           displayName: user.displayName,
-          email: user.email
+          email: user.email,
+          uvid: user.uvid,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          preferredOS: user.preferredOS
         });
       } else {
         commit("SET_USER", null);
