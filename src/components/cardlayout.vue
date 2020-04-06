@@ -24,9 +24,14 @@ export default {
   components: {
     Card,
   },
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      cards: [
+        {question: "this is the question",
+         answer: "this is the anwer"}
+      ]
+    }
+}
 }
 </script>
 
