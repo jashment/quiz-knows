@@ -38,7 +38,7 @@
                 </template>
                 <span>Profile Settings</span>
               </v-tooltip>
-              <div class="nav-item">{{ user.data.firstName }}</div>
+              <div class="nav-item">{{ user.data.displayName }}</div>
               <li class="nav-item">
                 <v-btn outlined>
                   <a class="nav-link" @click.prevent="signOut">Sign out</a>

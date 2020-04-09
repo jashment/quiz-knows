@@ -12,23 +12,10 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 firebase.initializeApp(firebaseConfig);
-const currUser = firebase.auth().currentUser
-if (currUser) {
-  const currUserId = currUser.uid
-  let userData = {}
 
-
-  firebase.database().ref(`users/${currUserId}`).once('value').then(snapshot => {
-    userData = { snapshot }
-    console.log(userData)
-  })
-  console.log(userData)
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      store.dispatch("fetchUser", userData);
-    }
-  });
-}
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch("fetchUser", user);
+});
 export const router = new VueRouter({
   routes,
   mode: "history"
