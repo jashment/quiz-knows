@@ -18,384 +18,29 @@
         </v-card-actions>
       </div>
     </div>
-    <div class="embed">
-      <div class="row mt-0 mb-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Clear mark in and out?"
-              back="Opt + X"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke Add Serial Node + CPW?"
-              back="Opt + C"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Auto Color?"
-              back="Opt + A"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="row mt-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Disable / Enable Current Node?"
-              back="Cmd + D"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Disable / Enable All Nodes?"
-              back="Opt + D"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to quit the program?"
-              back="Cmd + Q"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="row mt-0 mb-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke Add Serial Node + LPW?"
-              back="Opt + Q"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke start a new timeline?"
-              back="Cmd + N"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to start a new bin?"
-              back="Cmd + Shift + N"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="row mt-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke clear mark out?"
-              back="Opt + O"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to open Cinemark Viewer?"
-              back="Cmd + F"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to view Full Screen Viewer?"
-              back="Shift + F"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="row mt-0 mb-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Save a project?"
-              back="Cmd + S"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Audio Scrubbing?"
-              back="Shift + S"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Add a serial node?"
-              back="Opt + S"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="row mt-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to add and modify a new marker?"
-              back="Cmd + M"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Delete a marker?"
-              back="Shift + M"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to zoom out?"
-              back="Cmd + -"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="row mt-0 mb-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0 mb-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to zoom in?"
-              back="Cmd + ="
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to ripple delete?"
-              back="Shift + delete"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to add a parallel node?"
-              back="Opt + P"
-              header-front="Queston"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-      </div>
-      <div class="row mt-0">
-        <div class="col-md-12 col-lg-12 col-sm-12 mt-0">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Nudge the Multiframe left?"
-              back="Shift + ,"
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <div class="col-md-12 col-lg-12 col-sm-12">
-          <p>
-            <vue-flashcard
-              front="What is the keystroke to Nudge Multiframe Right?"
-              back="Shift + ."
-              header-front="Question"
-              footer-front=""
-              footer-back=""
-              color-front="#424242"
-              color-back="#01F0FF"
-              color-text-front="white"
-              color-text-back="black"
-            />
-          </p>
-        </div>
-        <!-- <div class="col-md-4 col-lg-4 col-sm-4">
-        <p>
-          <vue-flashcard
-            front="What is the keystroke to Apply a video transition?"
-            back="Cmd + D"
-            headerFront="Question"
-            footerFront=""
-            footerBack=""
-            colorFront="#424242"
-            colorBack="#01F0FF"
-            colorTextFront="white"
-            colorTextBack="black"
-          >
-          </vue-flashcard>
-        </p>
-      </div> -->
-      </div>
+
+ <div class="side-container embed">
+      <v-row
+        v-for="card in cards"
+        :key="card.i"
+      >
+        <v-col
+          cols="10"
+          class="mx-auto"
+        >
+          <vueFlashcard
+            :front="card.question"
+            :back="card.answer"
+            header-front="Question"
+            footer-front=""
+            footer-back=""
+            color-front="#424242"
+            color-back="#01F0FF"
+            color-text-front="white"
+            color-text-back="black"
+          />
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>
@@ -403,8 +48,62 @@
 <script>
 import vueFlashcard from "vue-flashcard";
 export default {
-  components: { vueFlashcard }
-};
+  components: { vueFlashcard },
+   data() {
+    return {
+cards: [
+  {question: "What is the keystroke to Clear mark in and out?",
+  answer: "Opt + X"},
+  {question: "What is the keystroke Add Serial Node + CPW?",
+  answer: "Opt + C"},
+  {question: "What is the keystroke to Auto Color?",
+  answer: "Opt + A"},
+  {question: "What is the keystroke to Disable / Enable Current Node?",
+  answer: "Cmd + D"},
+  {question: "What is the keystroke to Disable / Enable All Nodes?",
+  answer: "Opt + D"},
+  {question: "What is the keystroke to quit the program?",
+  answer: "Cmd + Q"},
+  {question: "What is the keystroke Add Serial Node + LPW?",
+  answer: "Opt + Q"},
+  {question: "What is the keystroke start a new timeline?", 
+  answer: "Cmd + N"},
+  {question: "What is the keystroke to start a new bin?",
+  answer: "Cmd + Shift + N"},
+  {question: "What is the keystroke clear mark out?", 
+  answer: "Opt + O"},
+  {question: "What is the keystroke to open Cinemark Viewer?", 
+  answer: "Cmd + F"},
+  {question: "What is the keystroke to view Full Screen Viewer?",
+   answer: "Shift + F"},
+  {question: "What is the keystroke to Save a project?", 
+  answer: "Cmd + S"},
+  {question: "What is the keystroke to Audio Scrubbing?", 
+  answer: "Shift + S"},
+  {question: "What is the keystroke to Add a serial node?",
+   answer: "Opt + S"},
+  {question: "What is the keystroke to add and modify a new marker?",
+   answer: "Cmd + M"},
+  {question: "What is the keystroke to Delete a marker?", 
+  answer: "Shift + M"},
+  {question: "What is the keystroke to zoom out?", 
+  answer: "Cmd + -"},
+  {question: "What is the keystroke to zoom in?", 
+  answer: "Cmd + ="},
+  {question: "What is the keystroke to ripple delete?", 
+  answer: "Shift + delete"},
+  {question: "What is the keystroke to add a parallel node?",
+   answer: "Opt + P"},
+  {question: "What is the keystroke to Nudge the Multiframe left?",
+   answer: "Shift + ,"},
+  {question: "What is the keystroke to Nudge Multiframe Right?", 
+  answer: "Shift + ."},
+  {question: "What is the keystroke to Apply a video transition?",
+   answer: "Cmd + D"},
+],
+    };
+   }
+}
 </script>
 
 <style scoped>
