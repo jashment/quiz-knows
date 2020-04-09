@@ -42,7 +42,6 @@
 <script>
 import vueFlashcard from "vue-flashcard";
 export default {
-<<<<<<< HEAD
   components: { vueFlashcard },
   data() {
     return {
@@ -100,10 +99,6 @@ cards: [
     };
   }
 }
-=======
-  components: { vueFlashcard }
-};
->>>>>>> 2e2f81bebfdf63bf7637096727a25fa601676a0d
 </script>
 
 <style scoped>
