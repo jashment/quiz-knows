@@ -5,11 +5,11 @@
       :headers="headers"
       :items="students"
       :sort-desc="[true, false]"
-      sort-by="approval"
+      sort-by="approved"
       class="elevation-3 mx-12 my-12"
     >
-      <template v-slot:item.approval="{ item }">
-        <v-chip :color="getColor(item.approval)" dark>{{ getApproved(item.approval) }}</v-chip>
+      <template v-slot:item.approved="{ item }">
+        <v-chip :color="getColor(item.approved)" dark>{{ getApproved(item.approved) }}</v-chip>
       </template>
 
       <template v-slot:top>
@@ -24,7 +24,7 @@
               </v-card-title>
 
               <!-- If student has not been approed, ability to approve -->
-              <v-card-text v-if="editedItem.approval === false">
+              <v-card-text v-if="editedItem.approved === false">
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="12" md="12" class="text-center">
@@ -42,7 +42,7 @@
                 </v-container>
               </v-card-text>
 
-              <v-card-actions v-if="editedItem.approval === false">
+              <v-card-actions v-if="editedItem.approved === false">
                 <v-spacer />
                 <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
                 <v-btn color="green" @click="save(true)">Approve</v-btn>
@@ -51,12 +51,12 @@
               <!-- end of not approving student -->
 
               <!-- If student has been approved, ability to remove approval -->
-              <v-card-text v-if="editedItem.approval === true">
+              <v-card-text v-if="editedItem.approved === true">
                 <v-container>
                   <v-row>
                     <v-col cols="12" sm="12" md="12" class="text-center">
                       <p class="title font-weight-regular">
-                        Would you like to remove approval for
+                        Would you like to remove approved for
                         <span
                           class="font-weight-bold blue--text"
                         >
@@ -71,10 +71,10 @@
                 </v-container>
               </v-card-text>
 
-              <v-card-actions v-if="editedItem.approval === true">
+              <v-card-actions v-if="editedItem.approved === true">
                 <v-spacer />
                 <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
-                <v-btn color="red" @click="save(false)">Remove Approval</v-btn>
+                <v-btn color="red" @click="save(false)">Remove approved</v-btn>
               </v-card-actions>
 
               <!-- end of removing approval from student -->
@@ -90,8 +90,8 @@
       </template>
 
       <template v-slot:item.action="{ item }">
-        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)">mdi-pencil-outline</v-icon>
-        <v-icon small class="title" color="red" @click="deleteItem(item)">mdi-trash-can-outline</v-icon>
+        <v-btn text @click="editItem(item)"><v-icon small class="mr-5 title" color="blue" >mdi-pencil-outline</v-icon></v-btn>
+        <v-btn text @click="deleteItem(item)"><v-icon small class="title" color="red">mdi-trash-can-outline</v-icon></v-btn>
       </template>
 
       <template v-slot:no-data>
@@ -112,18 +112,18 @@ export default {
       .once("value")
       .then(snapshot => {
         let data = snapshot.val();
-
+        console.log(snapshot.val());
         for (var key in data) {
           if (data.hasOwnProperty(key)) {
             this.students.push(data[key]);
           }
         }
-        console.log(this.students);
       });
   },
   data: () => ({
     dialog: false,
     test: [],
+    selectedStudent: null,
     headers: [
       { text: "Photo", value: `photo`, sortable: false },
       { text: "First", value: "firstName", sortable: false },
@@ -132,7 +132,7 @@ export default {
       { text: "Role", value: "role", sortable: false },
       { text: "Role", value: "email", sortable: false },
       { text: "SignUp Date", value: "signUp", sortable: false },
-      { text: "Approved", value: "approval", sortable: false },
+      { text: "Approved", value: "approved", sortable: false },
       { text: "Actions", value: "action", sortable: false }
     ],
     students: [],
@@ -169,8 +169,8 @@ export default {
     getColor(approve) {
       return approve ? "green" : "red";
     },
-    getApproved(approval) {
-      if (approval === true) return "Approved";
+    getApproved(approved) {
+      if (approved === true) return "Approved";
       else return "Not Approved";
     },
     initialize() {
@@ -178,15 +178,30 @@ export default {
     },
 
     editItem(item) {
+      firebase
+        .database()
+        .ref("users/")
+        .once("value")
+        .then(snapshot => {
+          let key = Object.keys(snapshot.val())[this.selectedStudent]
+          this.selectedStudent = key
+          console.log(this.selectedStudent);
+        })
       this.editedIndex = this.students.indexOf(item);
+      console.log(this.students.indexOf(item))
+      this.selectedStudent = this.students.indexOf(item)
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
 
     deleteItem(item) {
       const index = this.students.indexOf(item);
+      // console.log();
       confirm("Are you sure you want to delete this student?") &&
-        this.students.splice(index, 1);
+      this.students.splice(index, 1);
+      this.selectedStudent = this.students.indexOf(item)
+
+      // DELETE STUDENT FROM DB
     },
 
     close() {
@@ -199,6 +214,15 @@ export default {
 
     save(test) {
       this.editedItem.approval = test;
+      console.log(this.selectedStudent);
+      // APPROVE STUDENT
+      // let update = ['/users/' + this.selectedStudent]
+      // console.log(update);
+      // firebase
+      //   .database()
+      //   .ref()
+      //   .update(update.approved = true)
+
       if (this.editedIndex > -1) {
         Object.assign(this.students[this.editedIndex], this.editedItem);
       } else {
