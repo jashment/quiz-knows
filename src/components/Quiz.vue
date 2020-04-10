@@ -152,6 +152,7 @@ export default {
       answerSet: new Set(),
       empty: new Set(),
       answerArr: [],
+      attempts: [],
       input: this.$refs.input,
       questions: null
     };
@@ -167,6 +168,23 @@ export default {
       .catch(err => {
         console.log(err);
       });
+
+      this.uid = firebase.auth().currentUser.uid
+    firebase
+      .database()
+      .ref('users/' + this.uid)
+      .once("value")
+      .then(snapshot => {
+        if (snapshot.val().quizAttempts[this.$route.params.id] == null){
+          this.attempts = []
+          console.log("no quiz results");
+        }
+        else{
+          this.attempts = snapshot.val().quizAttempts[this.$route.params.id]  
+          console.log(snapshot.val().quizAttempts[this.$route.params.id]);  
+        }
+            
+      })
 
     this.startTime = new Date();
     // this.$refs.input.focus();
@@ -201,17 +219,17 @@ export default {
           this.wrong.push({ index, answer });
         }
         this.endTest = true;
+        this.attempts.push({
+            correct: this.correct.length,
+            incorrect: this.wrong.length,
+            timeInSeconds: this.end()})
 
         firebase
           .database()
           .ref(`users/${currUserId}`)
           .child("quizAttempts")
           .child(`${this.$route.params.id}`)
-          .push({
-            correct: this.correct.length,
-            incorrect: this.wrong.length,
-            timeInSeconds: this.end()
-          });
+          .set(this.attempts);
       }
     },
     addInput(input) {

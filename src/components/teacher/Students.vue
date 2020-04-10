@@ -129,7 +129,8 @@ export default {
       { text: "First", value: "firstName", sortable: false },
       { text: "Last", value: "lastName", sortable: false },
       { text: "UVU ID", value: "uvid", sortable: false },
-      { text: "Operating System", value: "preferredOS", sortable: false },
+      { text: "Role", value: "role", sortable: false },
+      { text: "Role", value: "email", sortable: false },
       { text: "SignUp Date", value: "signUp", sortable: false },
       { text: "Approved", value: "approval", sortable: false },
       { text: "Actions", value: "action", sortable: false }
