@@ -1,8 +1,6 @@
 <template>
   <v-container class="text-center">
-    <h1 class="text-center py-12 font-weight-light">
-      Students Enrolled
-    </h1>
+    <h1 class="text-center py-12 font-weight-light">Students Enrolled</h1>
     <v-data-table
       :headers="headers"
       :items="students"
@@ -11,9 +9,7 @@
       class="elevation-3 mx-12 my-12"
     >
       <template v-slot:item.approval="{ item }">
-        <v-chip :color="getColor(item.approval)" dark>
-          {{ getApproved(item.approval) }}
-        </v-chip>
+        <v-chip :color="getColor(item.approval)" dark>{{ getApproved(item.approval) }}</v-chip>
       </template>
 
       <template v-slot:top>
@@ -34,9 +30,11 @@
                     <v-col cols="12" sm="12" md="12" class="text-center">
                       <p class="title font-weight-regular">
                         Would you like to approve
-                        <span class="font-weight-bold blue--text">{{
+                        <span class="font-weight-bold blue--text">
+                          {{
                           editedItem.name
-                        }}</span>
+                          }}
+                        </span>
                         to your course?
                       </p>
                     </v-col>
@@ -46,12 +44,8 @@
 
               <v-card-actions v-if="editedItem.approval === false">
                 <v-spacer />
-                <v-btn color="blue darken-1" text @click="close">
-                  Cancel
-                </v-btn>
-                <v-btn color="green" @click="save(true)">
-                  Approve
-                </v-btn>
+                <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+                <v-btn color="green" @click="save(true)">Approve</v-btn>
               </v-card-actions>
 
               <!-- end of not approving student -->
@@ -63,9 +57,13 @@
                     <v-col cols="12" sm="12" md="12" class="text-center">
                       <p class="title font-weight-regular">
                         Would you like to remove approval for
-                        <span class="font-weight-bold blue--text">{{
+                        <span
+                          class="font-weight-bold blue--text"
+                        >
+                          {{
                           editedItem.name
-                        }}</span>
+                          }}
+                        </span>
                         to your course?
                       </p>
                     </v-col>
@@ -75,12 +73,8 @@
 
               <v-card-actions v-if="editedItem.approval === true">
                 <v-spacer />
-                <v-btn color="blue darken-1" text @click="close">
-                  Cancel
-                </v-btn>
-                <v-btn color="red" @click="save(false)">
-                  Remove Approval
-                </v-btn>
+                <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+                <v-btn color="red" @click="save(false)">Remove Approval</v-btn>
               </v-card-actions>
 
               <!-- end of removing approval from student -->
@@ -91,36 +85,51 @@
 
       <template v-slot:item.photo="{ item }">
         <v-avatar size="30px">
-          <v-img
-            :src="item.photo"
-            max-height="60"
-            max-width="60"
-            class="circular-thumb-frame"
-          />
+          <v-img :src="item.photo" max-height="60" max-width="60" class="circular-thumb-frame" />
         </v-avatar>
       </template>
 
       <template v-slot:item.action="{ item }">
-        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)">
-          mdi-pencil-outline
-        </v-icon>
-        <v-icon small class="title" color="red" @click="deleteItem(item)">
-          mdi-trash-can-outline
-        </v-icon>
+        <v-icon small class="mr-5 title" color="blue" @click="editItem(item)">mdi-pencil-outline</v-icon>
+        <v-icon small class="title" color="red" @click="deleteItem(item)">mdi-trash-can-outline</v-icon>
+      </template>
+
+      <template v-slot:no-data>
+        <v-progress-linear indeterminate color="cyan"></v-progress-linear>
       </template>
     </v-data-table>
   </v-container>
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
+  mounted() {
+    firebase
+      .database()
+      .ref("users")
+      .once("value")
+      .then(snapshot => {
+        let data = snapshot.val();
+
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+            this.students.push(data[key]);
+          }
+        }
+        console.log(this.students);
+      });
+  },
   data: () => ({
     dialog: false,
+    test: [],
     headers: [
       { text: "Photo", value: `photo`, sortable: false },
-      { text: "Name", value: "name", sortable: false },
-      { text: "UVU ID", value: "uvuid", sortable: false },
-      { text: "Operating System", value: "os", sortable: false },
+      { text: "First", value: "firstName", sortable: false },
+      { text: "Last", value: "lastName", sortable: false },
+      { text: "UVU ID", value: "uvid", sortable: false },
+      { text: "Operating System", value: "preferredOS", sortable: false },
       { text: "SignUp Date", value: "signUp", sortable: false },
       { text: "Approved", value: "approval", sortable: false },
       { text: "Actions", value: "action", sortable: false }
@@ -157,10 +166,6 @@ export default {
 
   methods: {
     getColor(approve) {
-      // if (approval === true) return 'red'
-      // else if (approval === false) return 'orange'
-      // else return 'green'
-      // console.log(approve)
       return approve ? "green" : "red";
     },
     getApproved(approval) {
@@ -168,64 +173,7 @@ export default {
       else return "Not Approved";
     },
     initialize() {
-      this.students = [
-        {
-          name: "Jacob Mendez",
-          photo: "https://uinames.com/api/photos/male/2.jpg",
-          uvuid: "55555555",
-          os: "macOS",
-          signUp: "3/1/20",
-          approval: true
-        },
-        {
-          name: "Wayne Bates",
-          photo: "https://uinames.com/api/photos/male/15.jpg",
-          uvuid: "55555555",
-          os: "macOS",
-          signUp: "3/1/20",
-          approval: true
-        },
-        {
-          name: "Joyce Owens",
-          photo: "https://uinames.com/api/photos/female/21.jpg",
-          uvuid: "55555555",
-          os: "macOS",
-          signUp: "3/1/20",
-          approval: true
-        },
-        {
-          name: "Eugene Herrera",
-          photo: "https://uinames.com/api/photos/male/20.jpg",
-          uvuid: "55555555",
-          os: "Windows",
-          signUp: "3/1/20",
-          approval: false
-        },
-        {
-          name: "Brittany Washington",
-          photo: "https://uinames.com/api/photos/female/18.jpg",
-          uvuid: "55555555",
-          os: "macOS",
-          signUp: "3/1/20",
-          approval: true
-        },
-        {
-          name: "Alan Curtis",
-          photo: "https://uinames.com/api/photos/male/6.jpg",
-          uvuid: "55555555",
-          os: "macOS",
-          signUp: "3/1/20",
-          approval: false
-        },
-        {
-          name: "Lauren Wells",
-          photo: "https://uinames.com/api/photos/female/10.jpg",
-          uvuid: "55555555",
-          os: "Windows",
-          signUp: "3/1/20",
-          approval: false
-        }
-      ];
+      this.students = [];
     },
 
     editItem(item) {

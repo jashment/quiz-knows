@@ -1,8 +1,6 @@
 <template>
   <v-container>
-    <h1 class="text-center py-12 font-weight-light">
-      Grades for {{ student.name }}
-    </h1>
+    <h1 class="text-center py-12 font-weight-light">Grades for {{ student.name }}</h1>
     <v-expansion-panels>
       <v-expansion-panel v-for="quiz in quizzes" :key="quiz.index">
         <v-expansion-panel-header>{{ quiz.name }}</v-expansion-panel-header>
@@ -23,6 +21,8 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
   data() {
     return {
@@ -75,8 +75,22 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    let user = firebase.auth().currentUser
+    if (user != null){
+    console.log(user.firstName)
+    }
+    // const currentFirebaseUserId = firebase.auth().currentUser.uid
+    // firebase
+    //   .database()
+    //   .ref(`users/`)
+    //   .then(snapshot => {
+    //     console.log(snapshot);
+    //   })
+    // }  
   }
-};
+}
 </script>
 
 <style scoped></style>
