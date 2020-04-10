@@ -27,18 +27,18 @@
                   <span v-on="on">
                     <router-link to="/settings">
                       <v-avatar color="blue" size="38">
-                        <span class="white--text headline">{{
+                        <span class="white--text headline">
+                          {{
                           user.data.image
-                        }}</span>
+                          }}
+                        </span>
                       </v-avatar>
                     </router-link>
                   </span>
                 </template>
                 <span>Profile Settings</span>
               </v-tooltip>
-              <div class="nav-item">
-                {{ user.data.displayName }}
-              </div>
+              <div class="nav-item">{{ user.data.displayName }}</div>
               <li class="nav-item">
                 <v-btn outlined>
                   <a class="nav-link" @click.prevent="signOut">Sign out</a>
@@ -48,16 +48,12 @@
             <template v-else>
               <li class="nav-item">
                 <v-btn outlined>
-                  <router-link to="/login" class="nav-link">
-                    Login
-                  </router-link>
+                  <router-link to="/login" class="nav-link">Login</router-link>
                 </v-btn>
               </li>
               <li class="nav-item">
                 <v-btn outlined>
-                  <router-link to="/register" class="nav-link">
-                    Register
-                  </router-link>
+                  <router-link to="/register" class="nav-link">Register</router-link>
                 </v-btn>
               </li>
             </template>
@@ -92,9 +88,7 @@ export default {
     //
   }),
   computed: {
-    ...mapGetters({
-      user: "user"
-    })
+    ...mapGetters(["user"])
   },
   methods: {
     signOut() {
