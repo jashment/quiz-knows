@@ -185,7 +185,7 @@ export default {
         uvid: "",
         role: "",
         preferredOS: "",
-        password: ""
+        password: "",
       },
       error: null,
       emailRules: [
@@ -226,7 +226,8 @@ export default {
                   email: this.form.email,
                   uvid: this.form.uvid,
                   role: this.form.role,
-                  preferredOS: this.form.preferredOS
+                  preferredOS: this.form.preferredOS,
+                  approved: false
                 });
             });
           this.$router.replace("/");

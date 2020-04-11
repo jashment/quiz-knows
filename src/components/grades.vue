@@ -1,80 +1,93 @@
 <template>
   <v-container>
-    <h1 class="text-center py-12 font-weight-light">
-      Grades for {{ student.name }}
-    </h1>
-    <v-expansion-panels>
-      <v-expansion-panel v-for="quiz in quizzes" :key="quiz.index">
-        <v-expansion-panel-header>{{ quiz.name }}</v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-data-table
-            :headers="headers"
-            :items="attempts"
-            hide-default-footer
-            :sort-by="['Date', 'Score']"
-            :sort-desc="[false, true]"
-            multi-sort
-            class="elevation-1"
-          />
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+    <h1 class="text-center py-12 font-weight-light">Grades for {{ user.data.displayName }}</h1>
+    <v-col v-if="this.attempts == []" class="d-flex flex-column text-center">
+      <v-progress-circular :size="70" class="mx-auto mb-7" :width="7" color="cyan" indeterminate></v-progress-circular>Loading Courses
+    </v-col>
+    <v-row>
+      <v-col xl="8" class="mx-auto">
+        <v-expansion-panels>
+          <v-expansion-panel v-for="(quiz, i) in attempts" :key="quiz.i">
+            <v-expansion-panel-header>{{ i }}</v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-row>
+                <v-col class="d-flex justify-center">Attempt</v-col>
+                <v-col class="d-flex justify-center">Correct</v-col>
+                <v-col class="d-flex justify-center">Out Of</v-col>
+                <v-col class="d-flex justify-center">Time</v-col>
+                <v-col class="d-flex justify-center">Score</v-col>
+              </v-row>
+              <v-card>
+                <v-row v-for="(attempt, i) in quiz" :key="attempt.i">
+                  <v-col class="py-0 d-flex justify-center">
+                    <p>{{ i += 1 }}</p>
+                  </v-col>
+                  <v-col class="py-0 d-flex justify-center">
+                    <p>{{ attempt.correct }}</p>
+                  </v-col>
+                  <v-col class="py-0 d-flex justify-center">
+                    <p>{{ attempt.incorrect + attempt.correct }}</p>
+                  </v-col>
+                  <v-col class="py-0 d-flex justify-center">
+                    <span id="minutes">{{ getMinutes(attempt.timeInSeconds) }}</span>
+                    <span id="middle">:</span>
+                    <span id="seconds">{{ getSeconds(attempt.timeInSeconds) }}</span>
+                  </v-col>
+                  <v-col class="py-0 d-flex justify-center">
+                    <p>{{ Math.trunc((attempt.correct / (attempt.correct + attempt.incorrect)) * 100)}}%</p>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import firebase from "firebase";
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      student: { name: "Coby Yates" },
+      name: null,
+      uid: null,
+      email: null,
+      attempts: [],
       headers: [
-        {
-          text: "Attempts",
-          align: "left",
-          sortable: false,
-          value: "name"
-        },
-        { text: "Date", value: "Date" },
-        { text: "Score", value: "Score" },
+        { text: "Attempts", align: "left", sortable: false, value: "correct" },
+        { text: "Score", value: "correct.length" },
         { text: "Out of", value: "OutOf" },
-        { text: "Time", value: "Time" }
-      ],
-      quizzes: [
-        { name: "Adobe Premiere" },
-        { name: "Avid Media Composer" },
-        { name: "DaVinci Resolve" }
-      ],
-      attempts: [
-        {
-          name: "Attempt 1",
-          Date: "1/24/2020",
-          Score: 25,
-          OutOf: 50,
-          Time: "5 minutes"
-        },
-        {
-          name: "Attempt 2",
-          Date: "1/25/2020",
-          Score: 35,
-          OutOf: 50,
-          Time: "5 minutes"
-        },
-        {
-          name: "Attempt 3",
-          Date: "1/25/2020",
-          Score: 42,
-          OutOf: 50,
-          Time: "5 minutes"
-        },
-        {
-          name: "Attempt 4",
-          Date: "1/25/2020",
-          Score: 50,
-          OutOf: 50,
-          Time: "5 minutes"
-        }
+        { text: "Time", value: "timeInSeconds" }
       ]
     };
+  },
+  mounted() {
+    this.uid = firebase.auth().currentUser.uid;
+    firebase
+      .database()
+      .ref("users/" + this.uid)
+      .once("value")
+      .then(snapshot => {
+        this.attempts = snapshot.val().quizAttempts;
+      });
+  },
+  computed: {
+    ...mapGetters(["user"])
+  },
+  methods: {
+    formatNumber(num) {
+      return (num < 10 ? "0" : "") + num.toString();
+    },
+    getMinutes(time) {
+      return this.formatNumber(Math.floor(time / 60));
+    },
+    getSeconds(time) {
+      return this.formatNumber(time % 60);
+    }
   }
 };
 </script>
