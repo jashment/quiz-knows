@@ -20,13 +20,13 @@
               <v-card>
                 <v-row v-for="(attempt, i) in quiz" :key="attempt.i">
                   <v-col class="py-0 d-flex justify-center">
-                    <p>{{ i }}</p>
+                    <p>{{ i += 1 }}</p>
                   </v-col>
                   <v-col class="py-0 d-flex justify-center">
                     <p>{{ attempt.correct }}</p>
                   </v-col>
                   <v-col class="py-0 d-flex justify-center">
-                    <p>{{ attempt.incorrect }}</p>
+                    <p>{{ attempt.incorrect + attempt.correct }}</p>
                   </v-col>
                   <v-col class="py-0 d-flex justify-center">
                     <span id="minutes">{{ getMinutes(attempt.timeInSeconds) }}</span>
