@@ -26,9 +26,7 @@
         </p>
         {{ details.details.description }}
         <center>
-          <v-btn color="green" class="mt-8" @click="takeQuiz()">
-            Take Quiz
-          </v-btn>
+          <v-btn color="green" class="mt-8" @click="takeQuiz()">Take Quiz</v-btn>
         </center>
       </v-col>
     </v-row>
@@ -40,7 +38,7 @@ import firebase from "firebase";
 
 export default {
   data: () => ({
-    details: null,
+    details: null
   }),
   mounted() {
     firebase
@@ -48,7 +46,7 @@ export default {
       .ref(`quizzes/${this.$route.params.id}`)
       .once("value")
       .then(snapshot => {
-        this.details = snapshot.val()
+        this.details = snapshot.val();
         // console.log(snapshot.val());
       })
       .catch(err => {
@@ -57,7 +55,7 @@ export default {
   },
   methods: {
     takeQuiz() {
-      this.$router.replace("/quizzes/quiz/" + this.$route.params.id)
+      this.$router.replace("/quizzes/quiz/" + this.$route.params.id);
     }
   }
 };

@@ -154,7 +154,8 @@ export default {
       answerArr: [],
       attempts: [],
       input: this.$refs.input,
-      questions: null
+      questions: null,
+      randomizedQuestions: []
     };
   },
   mounted() {
@@ -169,22 +170,20 @@ export default {
         console.log(err);
       });
 
-      this.uid = firebase.auth().currentUser.uid
+    this.uid = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref('users/' + this.uid)
+      .ref("users/" + this.uid)
       .once("value")
       .then(snapshot => {
-        if (snapshot.val().quizAttempts[this.$route.params.id] == null){
-          this.attempts = []
+        if (snapshot.val().quizAttempts[this.$route.params.id] == null) {
+          this.attempts = [];
           console.log("no quiz results");
+        } else {
+          this.attempts = snapshot.val().quizAttempts[this.$route.params.id];
+          console.log(snapshot.val().quizAttempts[this.$route.params.id]);
         }
-        else{
-          this.attempts = snapshot.val().quizAttempts[this.$route.params.id]  
-          console.log(snapshot.val().quizAttempts[this.$route.params.id]);  
-        }
-            
-      })
+      });
 
     this.startTime = new Date();
     // this.$refs.input.focus();
@@ -220,9 +219,10 @@ export default {
         }
         this.endTest = true;
         this.attempts.push({
-            correct: this.correct.length,
-            incorrect: this.wrong.length,
-            timeInSeconds: this.end()})
+          correct: this.correct.length,
+          incorrect: this.wrong.length,
+          timeInSeconds: this.end()
+        });
 
         firebase
           .database()
@@ -266,6 +266,13 @@ export default {
     },
     toDashboard() {
       this.$router.replace("/");
+    },
+    shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      this.randomizedQuestions = array;
     }
   }
 };
