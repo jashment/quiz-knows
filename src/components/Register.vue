@@ -214,8 +214,6 @@ export default {
               displayName: this.form.firstName
             })
             .then(moreData => {
-              alert(`User ${moreData} created!`);
-              console.log(moreData)
               firebase
                 .database()
                 .ref("users")
@@ -229,6 +227,7 @@ export default {
                   preferredOS: this.form.preferredOS,
                   approved: false
                 });
+                return moreData
             });
           this.$router.replace("/");
         })

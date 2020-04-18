@@ -150,17 +150,6 @@ export default {
   computed: {
     ...mapGetters(["user"])
   }
-  // mounted() {
-  //   const uUid = firebase.auth().currentUser.uid;
-  //   firebase
-  //     .database()
-  //     .ref(`users/ ${uUid}`)
-  //     .once("value")
-  //     .then(snapshot => {
-  //       const userInfo = snapshot.val();
-  //       console.log(userInfo);
-  //     });
-  // }
 };
 </script>
 
