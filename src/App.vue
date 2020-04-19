@@ -62,6 +62,7 @@
       </v-toolbar-items>
     </v-app-bar>
     <v-content>
+      <v-btn @click="getSessionStore">Click Me</v-btn>
       <app-home>
         <router-view />
       </app-home>
@@ -96,8 +97,12 @@ export default {
         .auth()
         .signOut()
         .then(() => {
+          sessionStorage.removeItem("firebaseUserData");
           this.$router.replace("/register");
         });
+    },
+    getSessionStore() {
+      console.log(window.sessionStorage.getItem("firebaseUserData"));
     }
   }
 };

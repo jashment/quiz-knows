@@ -83,7 +83,13 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(() => {
+        .then(user => {
+          firebase.database().ref(`users/${user.user.uid}`).once("value").then(firebaseUser => {
+            const firebaseUserData = firebaseUser.val()
+            console.log(firebaseUserData)
+            sessionStorage.setItem('firebaseUserData', JSON.stringify(firebaseUserData))
+          })
+        }).then(() => {
           this.$router.replace("/");
         })
         .catch(err => {
