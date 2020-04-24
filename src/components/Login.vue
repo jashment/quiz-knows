@@ -84,18 +84,25 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(user => {
-          firebase.database().ref(`users/${user.user.uid}`).once("value").then(firebaseUser => {
-            const firebaseUserData = firebaseUser.val()
-            console.log(firebaseUserData)
-            sessionStorage.setItem('firebaseUserData', JSON.stringify(firebaseUserData))
-          })
-        }).then(() => {
-          this.$router.replace("/");
+          return Promise.resolve(firebase
+            .database()
+            .ref(`users/${user.user.uid}`)
+            .once("value")
+            .then(firebaseUser => {
+              const firebaseUserData = firebaseUser.val();
+              sessionStorage.setItem(
+                "firebaseUserData",
+                JSON.stringify(firebaseUserData)
+              );
+              return firebaseUserData
+            }))
+            
         })
         .catch(err => {
           this.error = err.message;
         });
+        this.$router.replace("/");
     }
-  }
+  },
 };
 </script>

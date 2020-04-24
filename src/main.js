@@ -22,35 +22,22 @@ export const router = new VueRouter({
   mode: "history"
 });
 
-
-// const userId = firebase.auth().currentUser.uid
-
-// const firebaseUser = firebase.database().ref(`users/${userId}`).once("value")
-//   .then(snapshot => {
-//     let authUserData = snapshot.val();
-//     return authUserData
-//   })
 router.beforeEach((to, from, next) => {
-
   if (to.meta.requireAuth) {
-    const authUser = window.sessionStorage.getItem('firebaseUserData')
+    const authUser = JSON.parse(sessionStorage.getItem('firebaseUserData'))
     if (!authUser) {
       next({ name: 'register' })
     }
     else if (to.meta.teacherAuth) {
-      const authUser = window.sessionStorage.getItem('firebaseUserData')
-      if (authUser.data.role === 'Teacher') {
+      const authUser = JSON.parse(sessionStorage.getItem('firebaseUserData'))
+      if (authUser.role === 'Teacher') {
         next()
-      } else {
-        next('/quizzes')
       }
     }
     else {
-      const authUser = window.sessionStorage.getItem('firebaseUserData')
-      if (authUser.data.role === 'Student') {
+      const authUser = JSON.parse(sessionStorage.getItem('firebaseUserData'))
+      if (authUser.role === 'Student') {
         next()
-      } else {
-        next('/register')
       }
     }
   } else {

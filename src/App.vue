@@ -62,12 +62,9 @@
       </v-toolbar-items>
     </v-app-bar>
     <v-content>
-      <v-btn @click="getSessionStore">Click Me</v-btn>
       <app-home>
         <router-view />
       </app-home>
-      <!-- <Logger /> -->
-      <!-- <Login /> -->
     </v-content>
   </v-app>
 </template>
@@ -80,10 +77,7 @@ import firebase from "firebase";
 export default {
   name: "App",
   components: {
-    // Card,
     appHome: Home
-    // Logger,
-    // Login,
   },
   data: () => ({
     //
@@ -113,7 +107,6 @@ div.cardComp.v-card {
   margin: auto;
 }
 div.container {
-  /* margin-left: 5; */
   margin: 5;
 }
 h1 {
