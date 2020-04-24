@@ -164,6 +164,7 @@ export default {
       .once("value")
       .then(snapshot => {
         this.questions = snapshot.val();
+        console.log(this.questions);
       })
       .catch(err => {
         console.log(err);
@@ -177,11 +178,11 @@ export default {
       .then(snapshot => {
         if (snapshot.val().quizAttempts[this.$route.params.id] == null){
           this.attempts = []
-          console.log("no quiz results");
+          // console.log("no quiz results");
         }
         else{
           this.attempts = snapshot.val().quizAttempts[this.$route.params.id]  
-          console.log(snapshot.val().quizAttempts[this.$route.params.id]);  
+          // console.log(snapshot.val().quizAttempts[this.$route.params.id]);  
         }
             
       })
