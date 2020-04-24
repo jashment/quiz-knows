@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-// import firebase from 'firebase'
+import firebase from 'firebase'
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
@@ -20,7 +20,17 @@ export default new Vuex.Store({
       state.user.loggedIn = value;
     },
     SET_USER(state, data) {
-      state.user.data = data;
+      const uUid = firebase.auth().currentUser.uid;
+      firebase
+        .database()
+        .ref(`users/${uUid}`)
+        .once("value")
+        .then(snapshot => {
+          const userInfo = snapshot.val();
+          state.user.data = userInfo;
+          return userInfo
+        })
+      return data
     }
   },
   actions: {

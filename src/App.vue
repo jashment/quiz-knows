@@ -25,7 +25,7 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
-                    <router-link to="/settings">
+                    <a href="/settings">
                       <v-avatar color="blue" size="38">
                         <span class="white--text headline">
                           {{
@@ -33,12 +33,12 @@
                           }}
                         </span>
                       </v-avatar>
-                    </router-link>
+                    </a>
                   </span>
                 </template>
                 <span>Profile Settings</span>
               </v-tooltip>
-              <div class="nav-item">{{ user.data.displayName }}</div>
+              <div class="nav-item">{{ user.data.firstName }}</div>
               <li class="nav-item">
                 <v-btn outlined>
                   <a class="nav-link" @click.prevent="signOut">Sign out</a>
