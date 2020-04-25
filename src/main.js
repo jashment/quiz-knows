@@ -22,6 +22,30 @@ export const router = new VueRouter({
   mode: "history"
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    const authUser = JSON.parse(sessionStorage.getItem('firebaseUserData'))
+    if (!authUser) {
+      next({ name: 'register' })
+    }
+    else if (to.meta.teacherAuth) {
+      const authUser = JSON.parse(sessionStorage.getItem('firebaseUserData'))
+      if (authUser.role === 'Teacher') {
+        next()
+      }
+    }
+    else {
+      const authUser = JSON.parse(sessionStorage.getItem('firebaseUserData'))
+      if (authUser.role === 'Student') {
+        next()
+      }
+    }
+  } else {
+    next()
+  }
+})
+
+
 new Vue({
   vuetify,
   store,

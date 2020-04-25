@@ -65,8 +65,6 @@
       <app-home>
         <router-view />
       </app-home>
-      <!-- <Logger /> -->
-      <!-- <Login /> -->
     </v-content>
   </v-app>
 </template>
@@ -79,10 +77,7 @@ import firebase from "firebase";
 export default {
   name: "App",
   components: {
-    // Card,
     appHome: Home
-    // Logger,
-    // Login,
   },
   data: () => ({
     //
@@ -96,8 +91,12 @@ export default {
         .auth()
         .signOut()
         .then(() => {
+          sessionStorage.removeItem("firebaseUserData");
           this.$router.replace("/register");
         });
+    },
+    getSessionStore() {
+      console.log(window.sessionStorage.getItem("firebaseUserData"));
     }
   }
 };
@@ -108,7 +107,6 @@ div.cardComp.v-card {
   margin: auto;
 }
 div.container {
-  /* margin-left: 5; */
   margin: 5;
 }
 h1 {

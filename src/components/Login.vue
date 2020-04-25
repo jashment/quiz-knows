@@ -83,13 +83,26 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(() => {
-          this.$router.replace("/");
+        .then(user => {
+          return Promise.resolve(firebase
+            .database()
+            .ref(`users/${user.user.uid}`)
+            .once("value")
+            .then(firebaseUser => {
+              const firebaseUserData = firebaseUser.val();
+              sessionStorage.setItem(
+                "firebaseUserData",
+                JSON.stringify(firebaseUserData)
+              );
+              return firebaseUserData
+            }))
+            
         })
         .catch(err => {
           this.error = err.message;
         });
+        this.$router.replace("/");
     }
-  }
+  },
 };
 </script>
