@@ -65,8 +65,6 @@
       <app-home>
         <router-view />
       </app-home>
-      <!-- <Logger /> -->
-      <!-- <Login /> -->
     </v-content>
   </v-app>
 </template>

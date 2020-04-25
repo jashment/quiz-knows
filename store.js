@@ -8,7 +8,7 @@ export default new Vuex.Store({
     user: {
       loggedIn: false,
       data: null
-    }
+    },
   },
   getters: {
     user(state) {
