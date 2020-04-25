@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1 class="text-center py-12 font-weight-light">Grades for {{ user.data.displayName }}</h1>
+    <h1 class="text-center py-12 font-weight-light">Grades for {{ this.name }}</h1>
     <v-col v-if="this.attempts == []" class="d-flex flex-column text-center">
       <v-progress-circular :size="70" class="mx-auto mb-7" :width="7" color="cyan" indeterminate></v-progress-circular>Loading Courses
     </v-col>
@@ -66,14 +66,14 @@ export default {
     };
   },
   mounted() {
-    this.uid = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref(`users/${this.$route.params.id}/quizAttempts`)
+      .ref(`users/${this.$route.params.id}`)
       .once("value")
       .then(snapshot => {
-        this.attempts = snapshot.val()
-        console.log(snapshot.val());
+        this.name = snapshot.val().firstName
+        this.attempts = snapshot.val().quizAttempts
+        console.log(this.attempts);
       });
   },
   computed: {

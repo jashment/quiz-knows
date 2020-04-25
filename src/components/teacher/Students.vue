@@ -102,6 +102,7 @@ export default {
 
     viewStudent(item) {
       let index = this.students.indexOf(item)
+      console.log(index);
       this.$router.replace("/grades/" + this.IDs[index])
     },
 

@@ -1,17 +1,28 @@
 <template>
   <div>
     <v-card>
-      <v-navigation-drawer
-        class="navDrawer"
-        expand-on-hover
-        permanent
-        clipped
-        floating
-        app
-      >
+      <v-navigation-drawer class="navDrawer" expand-on-hover permanent clipped floating app>
         <v-divider />
-        <v-list nav>
+        <v-list v-if="user.loggedIn && user.data.role === 'Teacher'" nav>
           <v-list-item v-for="item in items" :key="item.to" link :to="item.to">
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon />
+            </v-list-item-icon>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+        <v-list v-if="user.loggedIn && user.data.role === 'Student'" nav>
+          <v-list-item v-for="item in studentItems" :key="item.to" link :to="item.to">
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon />
+            </v-list-item-icon>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+        <v-list v-if="!user.loggedIn" nav>
+          <v-list-item v-for="item in noAuthItems" :key="item.to" link :to="item.to">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
               <v-icon />
@@ -25,18 +36,12 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "App",
   data() {
     return {
       items: [
-        // {
-        //   title: "Register",
-        //   icon: "mdi-account-plus-outline",
-        //   disabled: false,
-        //   to: "/register"
-        // },
-        // { title: "Login", icon: "mdi-login", disabled: false, to: "/login" },
         { title: "Quizzes", icon: "mdi-brain", disabled: false, to: "/" },
         {
           title: "Grades",
@@ -64,9 +69,34 @@ export default {
           to: "/flashcards"
         }
       ],
-      user: { name: "Grant Shoop", email: "grant@gmail.com" },
+      studentItems: [
+        { title: "Quizzes", icon: "mdi-brain", disabled: false, to: "/" },
+        {
+          title: "Grades",
+          icon: "mdi-percent",
+          disabled: false,
+          to: "/grades"
+        },
+        {
+          title: "Flashcards",
+          icon: "mdi-card-text",
+          disabled: false,
+          to: "/flashcards"
+        }
+      ],
+      noAuthItems: [
+        {
+          title: "Flashcards",
+          icon: "mdi-card-text",
+          disabled: false,
+          to: "/flashcards"
+        }
+      ],
       right: null
     };
+  },
+  computed: {
+    ...mapGetters(["user"])
   }
 };
 </script>
