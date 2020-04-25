@@ -62,7 +62,11 @@ export default {
       .then((snapshot) => {
         let data = snapshot.val();
         console.log(snapshot.val());
-        this.IDs = snapshot.val();
+
+        for (let item in data){
+          this.IDs.push(item)
+        }
+
         for (var key in data) {
           if (data.hasOwnProperty(key)) {
             this.students.push(data[key]);
@@ -74,7 +78,7 @@ export default {
     dialog: false,
     test: [],
     search: "",
-    IDs: {},
+    IDs: [],
     selectedStudent: null,
     headers: [
       { text: "Grades", value: `grades`, sortable: false, width: '100' },
@@ -98,8 +102,7 @@ export default {
 
     viewStudent(item) {
       let index = this.students.indexOf(item)
-      console.log(index)
-      console.log(this.IDs[0]);
+      this.$router.replace("/grades/" + this.IDs[index])
     },
 
     editItem(item) {
