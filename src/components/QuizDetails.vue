@@ -13,7 +13,6 @@
           </p>
           <p>
             <strong>Operating System:</strong>
-            <!-- input student OS Type -->
           </p>
           <p>
             <strong>Questions:</strong>

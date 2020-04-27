@@ -61,12 +61,9 @@ export default {
       .once("value")
       .then((snapshot) => {
         let data = snapshot.val();
-        console.log(snapshot.val());
-
         for (let item in data){
           this.IDs.push(item)
         }
-
         for (var key in data) {
           if (data.hasOwnProperty(key)) {
             this.students.push(data[key]);
@@ -86,7 +83,6 @@ export default {
       { text: "Last", value: "lastName", sortable: false },
       { text: "UVU ID", value: "uvid", sortable: false },
       { text: "Role", value: "role", sortable: false },
-      { text: "Email", value: "email", sortable: false },
       { text: "Actions", value: "action", sortable: false, width: '200' },
     ],
     students: null,
@@ -102,7 +98,6 @@ export default {
 
     viewStudent(item) {
       let index = this.students.indexOf(item)
-      console.log(index);
       this.$router.replace("/grades/" + this.IDs[index])
     },
 
@@ -114,10 +109,8 @@ export default {
         .then((snapshot) => {
           let key = Object.keys(snapshot.val())[this.selectedStudent];
           this.selectedStudent = key;
-          console.log(this.selectedStudent);
         });
       this.editedIndex = this.students.indexOf(item);
-      console.log(this.students.indexOf(item));
       this.selectedStudent = this.students.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
@@ -125,12 +118,9 @@ export default {
 
     deleteItem(item) {
       const index = this.students.indexOf(item);
-      // console.log();
       confirm("Are you sure you want to delete this student?") &&
         this.students.splice(index, 1);
       this.selectedStudent = this.students.indexOf(item);
-
-      // DELETE STUDENT FROM DB
     },
   },
 };

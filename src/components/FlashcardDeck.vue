@@ -68,8 +68,4 @@ export default {
 </script>
 
 <style scoped>
-button {
-    /* background: linear-gradient(to bottom, #00f4ff 0%, #0cafff 100%); */
-    /* color: #424242!important; */
-}
 </style>

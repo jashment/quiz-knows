@@ -189,7 +189,6 @@ export default {
         this.keystrokeMac.pop()
       }
       this.editedItem.macOS = this.keystrokeMac
-      // console.log(`Mac: ${this.keystrokeMac}`)
     },
     logKeyW: function(event) {
       event.preventDefault()
@@ -205,7 +204,6 @@ export default {
         this.keystrokeWin.pop()
       }
       this.editedItem.windows = this.keystrokeWin
-      // console.log(`Win: ${this.keystrokeWin}`)
     },
 
     initialize(){},

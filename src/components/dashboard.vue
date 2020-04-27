@@ -85,7 +85,6 @@ export default {
     },
     adjustQuiz(button, quizIndex) {
       if (button === 0) {
-        // Edit the quiz
         this.$router.replace("teacher/edit-quiz/" + quizIndex)
       } else if (button === 1) {
         firebase

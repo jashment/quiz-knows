@@ -9,7 +9,6 @@
             <v-text-field ref="input" v-model="pressedKey" aria-autocomplete="off" type="text" label="type here to provide answer" @keydown="logKey" />
             <v-row>
               <v-col v-if="answerArr.length == 0" class="py-7">
-                <!-- <p class="text-center">Select input to type in answer</p> -->
               </v-col>
               <v-col v-for="(info, i) in answerArr" :key="info" cols="3">
                 <v-card

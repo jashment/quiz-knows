@@ -18,7 +18,6 @@
         </v-col>
         <v-col v-for="(quiz, i) in quizzes" :key="quiz.i" sm="3">
           <v-card elevation="6" class="cardComp">
-            <!-- <div class="cardTop d-flex justify-center flex-column" />  -->
             <center><v-icon size="150" class="mt-6">mdi-cards-outline</v-icon></center>
             <v-card-title>{{ quiz.details.title }} - (Flashcards)</v-card-title>
             <v-card-subtitle

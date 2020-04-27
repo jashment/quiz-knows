@@ -73,7 +73,6 @@ export default {
       .then(snapshot => {
         this.name = snapshot.val().firstName
         this.attempts = snapshot.val().quizAttempts
-        console.log(this.attempts);
       });
   },
   computed: {

@@ -71,7 +71,6 @@ export default {
     window.addEventListener("keypress", e => {
       e.preventDefault();
       String.fromCharCode(e.keyCode);
-      // logKey(e.key)
     });
   },
   methods: {
@@ -88,23 +87,19 @@ export default {
       }
     },
     submitQuestion(answer) {
-      //take mac or pc in to evaluate the array
       this.userAnswers.push(answer);
       this.infoArray = [];
-      // console.log(this.userAnswers)
     },
     clearArray: function() {
       this.infoArray = [];
     },
     submitQuiz(lastValue) {
-      // let results = []
       this.userAnswers.push(lastValue);
       for (let i = 0; i < this.questions.length; i++) {
         if (this.userAnswers[i] == this.questions[i].windows) {
           this.results.push(true);
         } else this.results.push(false);
       }
-      // console.log(results)
       this.endTest = true;
     }
   }
