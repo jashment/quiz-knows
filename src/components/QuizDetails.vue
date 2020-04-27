@@ -49,7 +49,6 @@ export default {
       .once("value")
       .then(snapshot => {
         this.details = snapshot.val()
-        // console.log(snapshot.val());
       })
       .catch(err => {
         console.log(err);
@@ -64,7 +63,4 @@ export default {
 </script>
 
 <style>
-/* p {
-  padding-top: 20px;
-} */
 </style>
