@@ -1,9 +1,7 @@
 <template>
   <v-container>
     <h1 class="text-center py-12 font-weight-light">Grades for {{ this.name }}</h1>
-    <v-col v-if="this.attempts == []" class="d-flex flex-column text-center">
-      <v-progress-circular :size="70" class="mx-auto mb-7" :width="7" color="cyan" indeterminate></v-progress-circular>Loading Courses
-    </v-col>
+    <p class="text-center display-1 mt-12" v-if="this.attempts === undefined">This student currently has no quiz attempts.</p>
     <v-row>
       <v-col xl="8" class="mx-auto">
         <v-expansion-panels>
