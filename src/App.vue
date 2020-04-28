@@ -26,16 +26,17 @@
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
                     <a href="/settings">
-                      <div class="nav-item profileName">
+                      <div class="nav-item">
                         <v-icon>mdi-chevron-left</v-icon>
-                        {{ user.data.firstName }}
                       </div>
                     </a>
                   </span>
                 </template>
                 <span>Profile Settings</span>
               </v-tooltip>
-
+              <a href="/settings">
+                <div class="nav-item profileName">{{ user.data.firstName }}</div>
+              </a>
               <li class="nav-item">
                 <v-btn outlined>
                   <a class="nav-link" @click.prevent="signOut">Sign out</a>
