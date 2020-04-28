@@ -19,7 +19,7 @@
         <v-col v-for="(quiz, i) in quizzes" :key="quiz.i" sm="3">
           <v-card elevation="6" class="cardComp">
             <center><v-icon size="150" class="mt-6">mdi-cards-outline</v-icon></center>
-            <v-card-title>{{ quiz.details.title }} - (Flashcards)</v-card-title>
+            <v-card-title><span class="cyan--text">{{ quiz.details.title }}</span> - (Flashcards)</v-card-title>
             <v-card-subtitle
               >Practice your knowledge by practicing these Flashcards</v-card-subtitle
             >

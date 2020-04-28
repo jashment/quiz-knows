@@ -80,13 +80,14 @@
 
     <v-row v-if="endTest == true">
       <v-col cols="10" class="mx-auto">
-        <h2 class="text-center green--text">Correct Answers</h2>
+        <h2 class="display">Your Quiz Answer Results</h2>
+        <!-- <h2 class="text-center green--text">Correct Answers</h2> -->
         <v-alert type="success" dense v-for="corrects in correct" :key="corrects.i">
             <p class="headline my-0">Question: {{ questions[corrects.index].question }}</p>
             <p class="my-0">Your Answer:</p>
             <v-chip label class="mx-4 headline text-center black--text" color="white" medium v-for="answer in questions[corrects.index].macOS" :key="answer.i">{{ answer }}</v-chip>
         </v-alert>
-        <h2 class="text-center red--text">Incorrect Answers</h2>
+        <!-- <h2 class="text-center red--text">Incorrect Answers</h2> -->
         <v-alert type="error" icon="mdi-close-circle" dense v-for="wrongs in wrong" :key="wrongs.question">
           <p class="headline my-0 py-0">Question: {{ questions[wrongs.index].question }}</p>
           <v-row class="my-0 py-0">

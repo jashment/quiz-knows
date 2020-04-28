@@ -83,7 +83,7 @@ export default {
       { text: "Last", value: "lastName", sortable: false },
       { text: "UVU ID", value: "uvid", sortable: false },
       { text: "Role", value: "role", sortable: false },
-      { text: "Actions", value: "action", sortable: false, width: '200' },
+      // { text: "Actions", value: "action", sortable: false, width: '200' },
     ],
     students: null,
   }),
@@ -116,12 +116,28 @@ export default {
       this.dialog = true;
     },
 
-    deleteItem(item) {
-      const index = this.students.indexOf(item);
-      confirm("Are you sure you want to delete this student?") &&
-        this.students.splice(index, 1);
-      this.selectedStudent = this.students.indexOf(item);
-    },
+    // deleteItem(item) {
+    //   firebase
+    //     .database()
+    //     .ref("users/")
+    //     .once("value")
+    //     .then((snapshot) => {
+    //       console.log(snapshot.val());
+    //       console.log(Object.keys(snapshot.val())[this.students.indexOf(item)]);
+    //       // let id = Object.keys(snapshot.val())[this.students.indexOf(item)]
+    //       // this.deleteUser(id)
+    //     });
+    //   console.log(item);
+    //   // const index = this.students.indexOf(item);
+    //   // confirm("Are you sure you want to delete this student?") &&
+    //   // this.students.splice(index, 1);
+    //   // this.selectedStudent = this.students.indexOf(item);
+      
+    // },
+    // async deleteUser(id) {
+    //   firebase
+    //     .deleteUser(id)
+    // }
   },
 };
 </script>
