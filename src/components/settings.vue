@@ -43,7 +43,6 @@
       <h3>Full Name: {{user.data.firstName}} {{user.data.lastName}}</h3>
       <h3>Display Name: {{user.data.firstName}}</h3>
       <h3>UVU Email: {{user.data.email}}</h3>
-      <h3>Current Courses:</h3>
       <h3>Operating System: {{user.data.preferredOS}}</h3>
       <!-- <v-btn>Edit Settings</v-btn> -->
 

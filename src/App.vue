@@ -26,19 +26,16 @@
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
                     <a href="/settings">
-                      <v-avatar color="blue" size="38">
-                        <span class="white--text headline">
-                          {{
-                          user.data.image
-                          }}
-                        </span>
-                      </v-avatar>
+                      <div class="nav-item profileName">
+                        <v-icon>mdi-chevron-left</v-icon>
+                        {{ user.data.firstName }}
+                      </div>
                     </a>
                   </span>
                 </template>
                 <span>Profile Settings</span>
               </v-tooltip>
-              <div class="nav-item">{{ user.data.firstName }}</div>
+
               <li class="nav-item">
                 <v-btn outlined>
                   <a class="nav-link" @click.prevent="signOut">Sign out</a>
@@ -116,6 +113,11 @@ h1 {
   list-style-type: none;
   display: inline-block;
   padding: 0.75rem 0.25rem;
+}
+
+.profileName {
+  color: white;
+  padding-right: 20px;
 }
 
 button.v-btn a {

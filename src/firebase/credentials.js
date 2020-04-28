@@ -1,10 +1,10 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyC7CpLy21ojqLWN7aUsHhuxU_2TCb6hQP8",
-  authDomain: "uvu-cinema-portal.firebaseapp.com",
-  databaseURL: "https://uvu-cinema-portal.firebaseio.com",
-  projectId: "uvu-cinema-portal",
-  storageBucket: "uvu-cinema-portal.appspot.com",
-  messagingSenderId: "803364752596",
-  appId: "1:803364752596:web:988d39708306b9ba40bf41",
-  measurementId: "G-2TT1C27H44"
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_FIREBASE_DB_URL,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_FIREBASE_APP_ID,
+  measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
 };
