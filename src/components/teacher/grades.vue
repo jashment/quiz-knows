@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <h1 class="text-center py-12 font-weight-light">Your Grades</h1>
-    <p class="text-center display-1 mt-12" v-if="this.attempts === undefined">You currently have no quiz attempts. Please take a quiz to display your grade here.</p>
-    <v-row v-if="this.attempts !== []">
+    <h1 class="text-center py-12 font-weight-light">Grades for {{ this.name }}</h1>
+    <p class="text-center display-1 mt-12" v-if="this.attempts === undefined">This student currently has no quiz attempts.</p>
+    <v-row>
       <v-col xl="8" class="mx-auto">
         <v-expansion-panels>
           <v-expansion-panel v-for="(quiz, i) in attempts" :key="quiz.i">
@@ -54,7 +54,6 @@ export default {
       name: null,
       uid: null,
       email: null,
-      noAttempts: false,
       attempts: [],
       headers: [
         { text: "Attempts", align: "left", sortable: false, value: "correct" },
@@ -65,14 +64,14 @@ export default {
     };
   },
   mounted() {
-    this.uid = firebase.auth().currentUser.uid;
     firebase
       .database()
-      .ref("users/" + this.uid)
+      .ref(`users/${this.$route.params.id}`)
       .once("value")
       .then(snapshot => {
-        this.attempts = snapshot.val().quizAttempts;
-      })
+        this.name = snapshot.val().firstName
+        this.attempts = snapshot.val().quizAttempts
+      });
   },
   computed: {
     ...mapGetters(["user"])
@@ -86,7 +85,7 @@ export default {
     },
     getSeconds(time) {
       return this.formatNumber(time % 60);
-    },
+    }
   }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <v-container class="text-center mb-12">
-    <h1 class="text-center py-12 font-weight-light">Create New Quiz</h1>
+    <h1 class="text-center py-12 font-weight-light">Editing <span class="cyan--text">{{quiz.details.title}}</span></h1>
     <v-row>
       <v-col cols="6" class="mx-auto">
         <v-card class="pa-10 elevation-8">
@@ -135,14 +135,7 @@ export default {
       macOS: "",
       windows: ""
     },
-    quiz: {
-      details: {
-        title: "",
-        description: "",
-        software: ""
-      },
-      questions: []
-    }
+    quiz: {}
   }),
 
   computed: {
@@ -206,7 +199,15 @@ export default {
       this.editedItem.windows = this.keystrokeWin
     },
 
-    initialize(){},
+    initialize(){
+      firebase
+        .database()
+        .ref(`quizzes/${this.$route.params.id}`)
+        .once("value")
+        .then(snapshot => {
+          this.quiz = snapshot.val()
+        })
+    },
 
     editItem(item) {
       this.editedIndex = this.quiz.questions.indexOf(item);

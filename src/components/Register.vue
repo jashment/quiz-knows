@@ -72,6 +72,28 @@ Registration
               </div>
 
               <div class="form-group row">
+                <label
+                  for="password"
+                  class="col-md-4 col-form-label text-md-right"
+                  >Password</label
+                >
+
+                <div class="col-md-6">
+                  <v-text-field
+                    id="password"
+                    v-model="form.password"
+                    type="password"
+                    :rules="[rules.required, rules.min]"
+                    class="form-control"
+                    name="password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <v-divider class="my-6"></v-divider>
+
+              <div class="form-group row">
                 <label for="uvid" class="col-md-4 col-form-label text-md-right"
                   >UVU ID</label
                 >
@@ -134,26 +156,6 @@ Registration
                   name="OSRadio"
                   value="Windows"
                 />
-              </div>
-
-              <div class="form-group row">
-                <label
-                  for="password"
-                  class="col-md-4 col-form-label text-md-right"
-                  >Password</label
-                >
-
-                <div class="col-md-6">
-                  <v-text-field
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    :rules="[rules.required, rules.min]"
-                    class="form-control"
-                    name="password"
-                    required
-                  />
-                </div>
               </div>
 
               <div class="form-group row mb-0">

@@ -6,10 +6,9 @@
           <div class="loggerDiv">
             <h1 class="display-1 py-5">Question {{ questions[currentPage].id }}</h1>
             <label>{{ questions[currentPage].question }}</label>
-            <v-text-field ref="input" v-model="pressedKey" type="text" @keydown="logKey" />
+            <v-text-field ref="input" v-model="pressedKey" aria-autocomplete="off" type="text" label="type here to provide answer" @keydown="logKey" />
             <v-row>
               <v-col v-if="answerArr.length == 0" class="py-7">
-                <p class="text-center">Select input to type in answer</p>
               </v-col>
               <v-col v-for="(info, i) in answerArr" :key="info" cols="3">
                 <v-card
@@ -21,7 +20,6 @@
             </v-row>
             <div class="d-flex justify-space-around py-8">
               <v-btn class="red" elevation="4" large @click="clearArray">Clear Answer</v-btn>
-              <!--  submitQuestion(answerArr, question)-->
               <v-btn
                 v-if="this.currentPage !== this.questions.length - 1"
                 color="green"
@@ -41,7 +39,6 @@
                   end();
                 "
               >Submit Quiz</v-btn>
-              <!-- to="/quizzes/quiz/results" -->
             </div>
           </div>
         </v-card>
@@ -55,77 +52,55 @@
         />
       </v-col>
     </v-row>
-    <v-card class="ml-auto mr-auto" width="50%">
-      <v-row v-if="endTest == true" class="d-flex flex-column">
+    <v-card class="mx-auto my-12" width="50%">
+      <v-row v-if="endTest == true" class="flex-column">
         <v-col>
           <h2 class="text-center">Here are the results of your quiz</h2>
         </v-col>
         <v-row>
-          <v-col class="text-center" width="50%">
-            <p>Time: {{ this.seconds }} seconds</p>
-            <p>
+          <v-col class="d-flex flex-column align-center justify-center ml-12">
+            <p class="headline text-center">Time:</p>
+            <p class="subtitle-1 text-center">{{ this.seconds }} seconds</p>
+          </v-col>
+          <v-col class="d-flex flex-column align-center justify-center mr-12">
+            <p class="headline">
               Score:
-              {{
-              Math.trunc(
-              (this.correct.length /
-              (this.correct.length + this.wrong.length)) *
-              100
-              )
-              }}%
             </p>
-            <v-container width="300px">
-              <v-progress-linear
-                height="25px"
-                :value="
-                  (this.correct.length /
-                    (this.correct.length + this.wrong.length)) *
-                    100
-                "
-              >
-                {{ this.correct.length }}/{{
-                this.correct.length + this.wrong.length
-                }}
-              </v-progress-linear>
-            </v-container>
-            <v-btn outlined @click="toDashboard">Back To Quizzes Page</v-btn>
+            <p class="subtitle-1">
+              {{ Math.trunc(
+                (this.correct.length /
+                (this.correct.length + this.wrong.length)) * 100)
+              }}% ({{ this.correct.length }}/{{ this.correct.length + this.wrong.length }})
+            </p>
           </v-col>
         </v-row>
+            <v-btn width="200" class="mx-auto mb-5" outlined @click="toDashboard">Back To Quizzes Page</v-btn>
       </v-row>
     </v-card>
 
     <v-row v-if="endTest == true">
-      <v-col cols="6" class="ml-auto">
-        <h2 class="text-center green--text">Correct Answers</h2>
-        <v-card v-for="corrects in correct" :key="corrects.i" class="my-5 py-4 px-4">
-          <v-card-title class="display font-weight-light">
-            <!-- {{ this.questions[corrects.index].question }} -->
-            Question: {{ questions[corrects.index].question }}
-          </v-card-title>
-          <v-divider dark />
-          <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Your Answer: {{corrects.answer}}</v-card-text> -->
-          <v-card-text
-            class="green--text ml-8 headline font-weight-light"
-          >Your Answer: {{ questions[corrects.index].macOS }}</v-card-text>
-        </v-card>
-      </v-col>
-      <v-col cols="6" class="mr-auto">
-        <h2 class="text-center red--text">Incorrect Answers</h2>
-        <v-card v-for="wrongs in wrong" :key="wrongs.question" class="my-5 py-4 px-4">
-          <v-card-title
-            class="display font-weight-light"
-          >Question: {{ questions[wrongs.index].question }}</v-card-title>
-          <v-divider dark />
-          <!-- <v-card-text class="red--text ml-8 headline font-weight-light">Your Answer: {{wrongs.answer}}</v-card-text> -->
-          <v-card-text class="red--text ml-8 headline font-weight-light">
-            Your Answer:
-            <span v-for="ans in wrongs.answer" :key="ans.i">{{ ans }}</span>
-          </v-card-text>
-          <!-- <v-card-text class="green--text ml-8 headline font-weight-light">Correct Answer: {{wrongs.correctAnswer}}</v-card-text> -->
-          <v-card-text class="green--text ml-8 headline font-weight-light">
-            Correct Answer:
-            <span v-for="ans in questions[wrongs.index].macOS" :key="ans">{{ ans }}</span>
-          </v-card-text>
-        </v-card>
+      <v-col cols="10" class="mx-auto">
+        <h2 class="display">Your Quiz Answer Results</h2>
+        <!-- <h2 class="text-center green--text">Correct Answers</h2> -->
+        <v-alert type="success" dense v-for="corrects in correct" :key="corrects.i">
+            <p class="headline my-0">Question: {{ questions[corrects.index].question }}</p>
+            <p class="my-0">Your Answer:</p>
+            <v-chip label class="mx-4 headline text-center black--text" color="white" medium v-for="answer in questions[corrects.index].macOS" :key="answer.i">{{ answer }}</v-chip>
+        </v-alert>
+        <!-- <h2 class="text-center red--text">Incorrect Answers</h2> -->
+        <v-alert type="error" icon="mdi-close-circle" dense v-for="wrongs in wrong" :key="wrongs.question">
+          <p class="headline my-0 py-0">Question: {{ questions[wrongs.index].question }}</p>
+          <v-row class="my-0 py-0">
+            <v-col class="my-0 py-0">
+              <p class="my-0 py-0">Your Answer:</p>
+              <v-chip label class="mx-2 black--text headline text-center" color="white" medium v-for="answer in wrongs.answer" :key="answer.i">{{ answer }}</v-chip>
+            </v-col>
+            <v-col class="my-0 py-0">
+              <p class="my-0 py-0">Correct Answer:</p>
+              <v-chip label class="mx-2 headline text-center black--text" color="white" medium v-for="answer in questions[wrongs.index].macOS" :key="answer.i">{{ answer }}</v-chip>
+            </v-col>
+          </v-row>
+        </v-alert>
       </v-col>
     </v-row>
   </v-container>
@@ -177,17 +152,14 @@ export default {
       .then(snapshot => {
         if (snapshot.val().quizAttempts[this.$route.params.id] == null){
           this.attempts = []
-          console.log("no quiz results");
         }
         else{
           this.attempts = snapshot.val().quizAttempts[this.$route.params.id]  
-          console.log(snapshot.val().quizAttempts[this.$route.params.id]);  
         }
             
       })
 
     this.startTime = new Date();
-    // this.$refs.input.focus();
     window.addEventListener("keypress", e => {
       e.preventDefault();
       String.fromCharCode(e.keyCode);

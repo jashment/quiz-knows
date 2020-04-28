@@ -44,7 +44,6 @@
       <h3>Display Name: {{user.data.firstName}}</h3>
       <h3>UVU Email: {{user.data.email}}</h3>
       <h3>Operating System: {{user.data.preferredOS}}</h3>
-      <!-- <v-btn>Edit Settings</v-btn> -->
 
       <v-dialog v-model="dialog2" width="500">
         <template v-slot:activator="{ on }">

@@ -19,22 +19,10 @@ export default {
   components: {
     Card
   },
-<<<<<<< HEAD
-  data() {
-    return {
-      cards: [
-        {question: "this is the question",
-         answer: "this is the anwer"}
-      ]
-    }
-}
-}
-=======
   data: () => ({
     //
   })
 };
->>>>>>> 2e2f81bebfdf63bf7637096727a25fa601676a0d
 </script>
 
 <style scoped>
