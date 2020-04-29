@@ -25,18 +25,18 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
-                    <a href="/settings">
+                    <router-link to="/settings">
                       <div class="nav-item">
                         <v-icon>mdi-chevron-left</v-icon>
                       </div>
-                    </a>
+                    </router-link>
                   </span>
                 </template>
                 <span>Profile Settings</span>
               </v-tooltip>
-              <a href="/settings">
+              <router-link to="/settings">
                 <div class="nav-item profileName">{{ user.data.firstName }}</div>
-              </a>
+              </router-link>
               <li class="nav-item">
                 <v-btn outlined>
                   <a class="nav-link" @click.prevent="signOut">Sign out</a>
