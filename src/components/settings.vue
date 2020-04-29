@@ -10,7 +10,7 @@
         <div class="col-md-12 mt-0 pt-0">
           <v-dialog v-model="dialog3" width="500">
             <template v-slot:activator="{ on }">
-              <v-btn text small color="primary" v-on="on">Change Photo</v-btn>
+              <!-- <v-btn text small color="primary" v-on="on">Change Photo</v-btn> -->
             </template>
 
             <v-card>
@@ -47,7 +47,8 @@
 
       <v-dialog v-model="dialog2" width="500">
         <template v-slot:activator="{ on }">
-          <v-btn v-on="on">Change Password</v-btn>
+          <v-btn @click="sendPasswordReset">Send Password Reset Email</v-btn>
+          <!-- <v-btn v-on="on">Change Password</v-btn> -->
         </template>
 
         <v-card>
@@ -86,7 +87,7 @@
 
       <v-dialog v-model="dialog" width="500">
         <template v-slot:activator="{ on }">
-          <v-btn v-on="on">Edit Settings</v-btn>
+          <!-- <v-btn v-on="on">Edit Settings</v-btn> -->
         </template>
 
         <v-card>
@@ -133,7 +134,7 @@
 </template>
 
 <script>
-// import firebase from "firebase";
+import firebase from "firebase";
 import { mapGetters } from "vuex";
 export default {
   data() {
@@ -147,6 +148,18 @@ export default {
   },
   computed: {
     ...mapGetters(["user"])
+  },
+  methods: {
+    sendPasswordReset() {
+      const currUserEmail = firebase.auth().currentUser.email;
+      console.log(currUserEmail);
+      firebase
+        .auth()
+        .sendPasswordResetEmail(currUserEmail)
+        .then(() => {
+          alert("Password Reset Email Sent!");
+        });
+    }
   }
 };
 </script>
